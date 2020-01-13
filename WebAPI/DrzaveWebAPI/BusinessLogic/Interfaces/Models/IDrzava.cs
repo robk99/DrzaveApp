@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace BusinessLogic.Interfaces.Models
+﻿namespace BusinessLogic.Interfaces.Models
 {
     public interface IDrzava
     {

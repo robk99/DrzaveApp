@@ -1,11 +1,13 @@
 ﻿using BusinessLogic.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
 
-namespace DataAccess
+namespace BusinessLogic
 {
     public class DrzavedbContext : DbContext
     {
+        public DrzavedbContext()
+        {
+        }
         public DrzavedbContext(DbContextOptions<DrzavedbContext> options)
             :base(options)
         {

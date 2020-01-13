@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BusinessLogic.Interfaces.Models
+﻿namespace BusinessLogic.Interfaces.Models
 {
     public interface IGrad
     {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace DrzaveWebAPI.Migrations
+namespace BusinessLogic.Migrations
 {
     public partial class DodatiRequirediIdentityuModele : Migration
     {
