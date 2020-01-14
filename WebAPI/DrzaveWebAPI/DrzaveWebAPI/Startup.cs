@@ -23,9 +23,8 @@ namespace DrzaveWebAPI
         
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton(Configuration);
-            services.AddScoped<IDrzavaService, DrzavaService>();
-            services.AddScoped<IGradService, GradService>();
+            services.AddTransient<IDrzavaService, DrzavaService>();
+            services.AddTransient<IGradService, GradService>();
             services.AddEntityFrameworkNpgsql().AddDbContext<DrzavedbContext>(opt => opt.UseNpgsql(Configuration.GetConnectionString("DrzaveConnection")))
                 .AddUnitOfWork<DrzavedbContext>();
             services.AddControllers().AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
