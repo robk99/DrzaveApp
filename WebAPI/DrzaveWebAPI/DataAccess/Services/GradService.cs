@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using BusinessLogic.Interfaces.Services;
 using BusinessLogic.Models;
 using BusinessLogic;
@@ -37,25 +35,20 @@ namespace DataAccess.Services
 
         public async Task<Grad> IzmijeniGrad(Grad grad)
         {
-            _context.Entry(grad).State = EntityState.Modified;
-
             try
             {
+                _context.Entry(grad).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
+                return grad;
             }
-            catch (DbUpdateConcurrencyException)
+            catch
             {
-                if (!GradPostoji(id))
+                if (!GradPostoji(grad.Id))
                 {
-                    return grad;
+                    grad = null;
                 }
-                else
-                {
-                    throw;
-                }
+                return grad;
             }
-
-            return grad;
         }
 
         public async Task<Grad> ObrisiGrad(int id)

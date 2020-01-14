@@ -63,7 +63,7 @@ namespace DrzaveWebAPI.Controllers
 
             if (izvucenaDrzava == drzava)
             {
-                return CreatedAtAction("DohvatiDrzavu", new { id = izvucenaDrzava.Id }, izvucenaDrzava);
+                return CreatedAtAction("DohvatiDrzavu", new { id = drzava.Id }, izvucenaDrzava);
             }
             else if (izvucenaDrzava == null)
             {
@@ -74,7 +74,7 @@ namespace DrzaveWebAPI.Controllers
 
         // DELETE: api/drzave/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Drzava>> DeleteOdvjetnici(int id)
+        public async Task<ActionResult> ObrisiDrzavu(int id)
         {
             Drzava obrisanaDrzava = await _drzavaService.ObrisiDrzavu(id);
             if (obrisanaDrzava == null)
