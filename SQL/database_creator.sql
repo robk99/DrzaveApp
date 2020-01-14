@@ -1,8 +1,8 @@
 -- \c postgres;
 
 -- Resetiranje baze na pocetno stanje
-DELETE FROM "Gradovi";
-DELETE FROM "Drzave";
+DELETE FROM gradovi;
+DELETE FROM drzave;
 
 ALTER SEQUENCE "Drzave_Id_seq" RESTART WITH 1;
 ALTER SEQUENCE "Gradovi_Id_seq" RESTART WITH 1;
@@ -12,34 +12,34 @@ DROP FUNCTION vrati_gradove_i_drzave_vece_od(INT);
 
 
 -- Popunjavanje baze
-INSERT INTO public."Drzave" ("Ime") VALUES ('Danska');
-INSERT INTO public."Drzave" ("Ime") VALUES ('Njemacka');
-INSERT INTO public."Drzave" ("Ime") VALUES ('Svedska');
+INSERT INTO public.drzave (ime) VALUES ('Danska');
+INSERT INTO public.drzave (ime) VALUES ('Njemacka');
+INSERT INTO public.drzave (ime) VALUES ('Svedska');
 
-INSERT INTO public."Gradovi"("Ime", "Populacija", "DrzavaId") VALUES ('Copenhagen', 100250, 1);
-INSERT INTO public."Gradovi"("Ime", "Populacija", "DrzavaId") VALUES ('Odense', 67327, 1);
+INSERT INTO public.gradovi(ime, populacija, drzava_id) VALUES ('Copenhagen', 100250, 1);
+INSERT INTO public.gradovi(ime, populacija, drzava_id) VALUES ('Odense', 67327, 1);
 
-INSERT INTO public."Gradovi"("Ime", "Populacija", "DrzavaId") VALUES ('Berlin', 88220, 2);
-INSERT INTO public."Gradovi"("Ime", "Populacija", "DrzavaId") VALUES ('Bonn', 76548, 2);
-INSERT INTO public."Gradovi"("Ime", "Populacija", "DrzavaId") VALUES ('Aalen', 79324, 2);
+INSERT INTO public.gradovi(ime, populacija, drzava_id) VALUES ('Berlin', 88220, 2);
+INSERT INTO public.gradovi(ime, populacija, drzava_id) VALUES ('Bonn', 76548, 2);
+INSERT INTO public.gradovi(ime, populacija, drzava_id) VALUES ('Aalen', 79324, 2);
 
-INSERT INTO public."Gradovi"("Ime", "Populacija", "DrzavaId") VALUES ('Stockholm', 109859, 3);
-INSERT INTO public."Gradovi"("Ime", "Populacija", "DrzavaId") VALUES ('Gothenburg', 99508, 3);
-INSERT INTO public."Gradovi"("Ime", "Populacija", "DrzavaId") VALUES ('Karlstad', 66912, 3);
-INSERT INTO public."Gradovi"("Ime", "Populacija", "DrzavaId") VALUES ('Uppsala', 46983, 3);
+INSERT INTO public.gradovi(ime, populacija, drzava_id) VALUES ('Stockholm', 109859, 3);
+INSERT INTO public.gradovi(ime, populacija, drzava_id) VALUES ('Gothenburg', 99508, 3);
+INSERT INTO public.gradovi(ime, populacija, drzava_id) VALUES ('Karlstad', 66912, 3);
+INSERT INTO public.gradovi(ime, populacija, drzava_id) VALUES ('Uppsala', 46983, 3);
 
 
 --Funkcije:
 -- VRACANJE GRADOVA PO DEFINIRANOJ DRZAVI
 CREATE FUNCTION vrati_gradove_po_drzavi(_drzava TEXT) 
-RETURNS SETOF "Gradovi"
+RETURNS SETOF gradovi
 AS $$
 BEGIN
 
-RETURN query SELECT * FROM "Gradovi" WHERE "DrzavaId" = 
-(SELECT "Id" from "Drzave" WHERE "Drzave"."Ime" = _drzava);
+RETURN query SELECT * FROM gradovi WHERE drzava_id = 
+(SELECT id from drzave WHERE drzave.ime = _drzava);
 IF NOT FOUND THEN
-RETURN query SELECT * FROM "Gradovi";
+RETURN query SELECT * FROM gradovi;
 END IF;
 
 END
@@ -53,17 +53,17 @@ AS $$
 BEGIN
 
 RETURN query (
-SELECT "Gradovi"."Ime", "Gradovi"."Populacija" FROM "Gradovi"
-WHERE "Gradovi"."Populacija" > _populacija
+SELECT gradovi.ime, gradovi.populacija FROM gradovi
+WHERE gradovi.populacija > _populacija
 UNION ALL
 SELECT * FROM
 (
-SELECT "Drzave"."Ime",
-SUM("Gradovi"."Populacija") AS drzave_populacija
-FROM "Gradovi", "Drzave"
-WHERE "Gradovi"."DrzavaId" = "Drzave"."Id"  
-GROUP BY "Drzave"."Ime"
-ORDER BY "Drzave"."Ime"
+SELECT drzave.ime,
+SUM(gradovi.populacija) AS drzave_populacija
+FROM gradovi, drzave
+WHERE gradovi.drzava_id = drzave.id  
+GROUP BY drzave.ime
+ORDER BY drzave.ime
 ) AS inner_query
 WHERE drzave_populacija > _populacija );
 
