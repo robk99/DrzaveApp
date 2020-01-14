@@ -3,15 +3,17 @@ using System;
 using BusinessLogic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace DAL.Migrations
 {
     [DbContext(typeof(DrzavedbContext))]
-    partial class DrzavedbContextModelSnapshot : ModelSnapshot
+    [Migration("20200114205033_SnakeCaseSchema")]
+    partial class SnakeCaseSchema
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
