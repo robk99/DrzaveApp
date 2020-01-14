@@ -18,14 +18,14 @@ namespace DataAccess.Services
         {
             _context = context;
         }
-        public async Task<IEnumerable<Drzava>> DohvatiDrzave()
+        public async Task<ICollection<Drzava>> DohvatiDrzave()
         {
-            return await _context.Drzave.ToListAsync(); /*   CASE AKO JE NULL   */
+            return await _context.Drzave.ToListAsync();
         }
 
         public async Task<Drzava> DohvatiDrzavu(int id)
         {
-            return await _context.Drzave.FindAsync(id); /*   CASE AKO JE NULL   */
+            return await _context.Drzave.FindAsync(id);
         }
 
         public async Task<Drzava> ZapisiDrzavu(Drzava drzava)
@@ -33,30 +33,25 @@ namespace DataAccess.Services
             await _context.Drzave.AddAsync(drzava);
             await _context.SaveChangesAsync();
 
-            return drzava; /*  CASE AKO JE NULL     */
+            return drzava;
         }
 
-        public async Task<Drzava> IzmijeniDrzavu(int id, Drzava drzava)
+        public async Task<Drzava> IzmijeniDrzavu(Drzava drzava)
         {
-            _context.Entry(drzava).State = EntityState.Modified;
-
             try
             {
+                _context.Entry(drzava).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
+                return drzava;
             }
-            catch (DbUpdateConcurrencyException)
+            catch
             {
-                if (!DrzavaPostoji(id))
+                if (!DrzavaPostoji(drzava.Id))
                 {
-                    return drzava; /*  CASE AKO JE NULL     */
+                    drzava = null;
                 }
-                else
-                {
-                    throw;
-                }
+                return drzava;
             }
-
-            return drzava; /*  CASE AKO JE NULL     */
         }
 
         public async Task<Drzava> ObrisiDrzavu(int id)
@@ -64,7 +59,7 @@ namespace DataAccess.Services
             Drzava drzava = await _context.Drzave.FindAsync(id);
             if (drzava == null)
             {
-                return drzava; /*  CASE AKO JE NULL     */
+                return drzava;
             }
 
             _context.Drzave.Remove(drzava);

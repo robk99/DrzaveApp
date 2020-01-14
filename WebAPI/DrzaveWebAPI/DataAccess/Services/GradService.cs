@@ -20,22 +20,22 @@ namespace DataAccess.Services
 
         public async Task<ICollection<Grad>> DohvatiGradove()
         {
-            return await _context.Gradovi.ToListAsync(); /*   CASE AKO JE NULL    */
+            return await _context.Gradovi.ToListAsync();
         }
 
         public async Task<Grad> DohvatiGrad(int id)
         {
-            return await _context.Gradovi.FindAsync(id); /*   CASE AKO JE NULL    */
+            return await _context.Gradovi.FindAsync(id);
         }
         public async Task<Grad> ZapisiGrad(Grad grad)
         {
             await _context.Gradovi.AddAsync(grad);
             await _context.SaveChangesAsync();
 
-            return grad; /*  CASE AKO JE NULL     */
+            return grad;
         }
 
-        public async Task<Grad> IzmijeniGrad(int id, Grad grad)
+        public async Task<Grad> IzmijeniGrad(Grad grad)
         {
             _context.Entry(grad).State = EntityState.Modified;
 
@@ -47,7 +47,7 @@ namespace DataAccess.Services
             {
                 if (!GradPostoji(id))
                 {
-                    return grad; /*    CASE AKO JE NULL    */
+                    return grad;
                 }
                 else
                 {
@@ -55,7 +55,7 @@ namespace DataAccess.Services
                 }
             }
 
-            return grad; /*    CASE AKO JE NULL    */
+            return grad;
         }
 
         public async Task<Grad> ObrisiGrad(int id)
@@ -63,7 +63,7 @@ namespace DataAccess.Services
             Grad grad = await _context.Gradovi.FindAsync(id);
             if (grad == null)
             {
-                return grad; /*  CASE AKO JE NULL   */
+                return grad;
             }
 
             _context.Gradovi.Remove(grad);
