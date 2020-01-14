@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.29509.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DrzaveWebAPI", "DrzaveWebAPI\DrzaveWebAPI.csproj", "{83117CA6-74CE-49F3-BFA8-765DD0444E24}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogic", "BusinessLogic\BusinessLogic.csproj", "{A2AAB457-B0F6-458E-B8B7-AA41558EEC35}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "BusinessLogic\DAL.csproj", "{A2AAB457-B0F6-458E-B8B7-AA41558EEC35}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{D048074C-79C5-411D-A0F1-9EE6FF178D7A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BLL", "DataAccess\BLL.csproj", "{D048074C-79C5-411D-A0F1-9EE6FF178D7A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

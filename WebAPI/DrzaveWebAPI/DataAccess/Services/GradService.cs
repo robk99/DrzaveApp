@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Services
 {
-    class GradService : IGradService
+    public class GradService : IGradService
     {
         private readonly DrzavedbContext _context;
         public GradService(DrzavedbContext context)

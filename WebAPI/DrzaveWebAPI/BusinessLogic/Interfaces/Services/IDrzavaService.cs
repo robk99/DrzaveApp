@@ -6,7 +6,7 @@ namespace BusinessLogic.Interfaces.Services
 {
     public interface IDrzavaService
     {
-        Task<ICollection<Drzava>> DohvatiDrzave();
+        Task<IEnumerable<Drzava>> DohvatiDrzave();
         Task<Drzava> DohvatiDrzavu(int id);
         Task<Drzava> ZapisiDrzavu(Drzava drzava);
         Task<Drzava> IzmijeniDrzavu(int id, Drzava drzava);

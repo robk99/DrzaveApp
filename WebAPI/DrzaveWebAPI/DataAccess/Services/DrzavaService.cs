@@ -10,7 +10,7 @@ using System.Linq;
 
 namespace DataAccess.Services
 {
-    class DrzavaService : IDrzavaService
+    public class DrzavaService : IDrzavaService
     {
         private readonly DrzavedbContext _context;
 
@@ -18,7 +18,7 @@ namespace DataAccess.Services
         {
             _context = context;
         }
-        public async Task<ICollection<Drzava>> DohvatiDrzave()
+        public async Task<IEnumerable<Drzava>> DohvatiDrzave()
         {
             return await _context.Drzave.ToListAsync(); /*   CASE AKO JE NULL   */
         }

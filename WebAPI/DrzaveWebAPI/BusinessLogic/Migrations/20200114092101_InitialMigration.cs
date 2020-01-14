@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
-namespace BusinessLogic.Migrations
+namespace DAL.Migrations
 {
     public partial class InitialMigration : Migration
     {
@@ -13,7 +13,7 @@ namespace BusinessLogic.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Ime = table.Column<string>(nullable: true)
+                    Ime = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -26,9 +26,9 @@ namespace BusinessLogic.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Ime = table.Column<string>(nullable: true),
-                    Populacija = table.Column<int>(nullable: false),
-                    DrzavaId = table.Column<int>(nullable: false)
+                    Ime = table.Column<string>(nullable: false),
+                    Populacija = table.Column<int>(nullable: true),
+                    DrzavaId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -38,7 +38,7 @@ namespace BusinessLogic.Migrations
                         column: x => x.DrzavaId,
                         principalTable: "Drzave",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
