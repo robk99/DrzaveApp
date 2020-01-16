@@ -10,3 +10,19 @@ body {
 .container h1 {
     text-align: center;
 }
+
+.izbornik {
+    color: rgb(46, 2, 2);
+    font-weight: 400;
+}
+
+.izbornik span {
+    font-weight: 100;
+    color: rgb(199, 199, 199);
+}
+
+.izbornik span.neoznaceni:hover {
+    color: rgb(46, 2, 2);
+    font-weight: 200;
+    cursor: pointer;
+}
