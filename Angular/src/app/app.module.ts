@@ -8,6 +8,8 @@ import { ListaDrzavaComponent } from './drzave-app/drzava/lista-drzava/lista-drz
 import { InputGradovaComponent } from './drzave-app/grad/input-gradova/input-gradova.component';
 import { ListaGradovaComponent } from './drzave-app/grad/lista-gradova/lista-gradova.component';
 import { DrzaveAppComponent } from './drzave-app/drzave-app.component';
+import { DrzavaComponent } from './drzave-app/drzava/drzava.component';
+import { GradComponent } from './drzave-app/grad/grad.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { DrzaveAppComponent } from './drzave-app/drzave-app.component';
     ListaDrzavaComponent,
     InputGradovaComponent,
     ListaGradovaComponent,
-    DrzaveAppComponent
+    DrzaveAppComponent,
+    DrzavaComponent,
+    GradComponent
   ],
   imports: [
     BrowserModule,
