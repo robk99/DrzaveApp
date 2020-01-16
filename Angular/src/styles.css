@@ -1,1 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    background-color: rgb(8, 19, 39);
+}
+
+.container {
+    background-color: rgb(192, 202, 211);
+    border-radius: 6px;
+}
+
+.container h1 {
+    text-align: center;
+}
