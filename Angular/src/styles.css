@@ -25,6 +25,12 @@ body {
     color: rgb(46, 2, 2);
     font-weight: 200;
     cursor: pointer;
+    text-shadow: 3px 3px 2px rgb(190, 190, 190);
+    text-decoration: none;
+}
+
+.izbornik a {
+    text-decoration: none;
 }
 
 .input-group-text {
