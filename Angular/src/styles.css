@@ -26,3 +26,7 @@ body {
     font-weight: 200;
     cursor: pointer;
 }
+
+.input-group-text {
+    background-color: white;
+}
