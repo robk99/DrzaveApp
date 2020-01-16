@@ -1,4 +1,4 @@
 export class Drzava {
-    id: number;
+    id?: number;
     ime: string;
 }
