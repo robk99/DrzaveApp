@@ -3,10 +3,20 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { InputDrzavaComponent } from './drzave-app/drzava/input-drzava/input-drzava.component';
+import { ListaDrzavaComponent } from './drzave-app/drzava/lista-drzava/lista-drzava.component';
+import { InputGradovaComponent } from './drzave-app/grad/input-gradova/input-gradova.component';
+import { ListaGradovaComponent } from './drzave-app/grad/lista-gradova/lista-gradova.component';
+import { DrzaveAppComponent } from './drzave-app/drzave-app.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    InputDrzavaComponent,
+    ListaDrzavaComponent,
+    InputGradovaComponent,
+    ListaGradovaComponent,
+    DrzaveAppComponent
   ],
   imports: [
     BrowserModule,
