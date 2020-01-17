@@ -23,4 +23,8 @@ export class DrzavaService {
     .then(res => this.listaDrzava = res as Drzava[]);
   }
 
+  putDrzava(){
+    return this._http.put(this.drzavaURL, this.formData);
+  }
+
 }

@@ -22,6 +22,15 @@ export class InputDrzavaComponent implements OnInit {
     this._service.formData = { ime:'' };
   }
 
+  onSubmit(form:NgForm){
+    if(this._service.formData.id == null){
+      this.insertDrzava(form);
+    }
+    else{
+      this.updateDrzava(form);
+    }
+  }
+
   insertDrzava(form:NgForm){
     this._service.postDrzava().subscribe(res =>{
       console.log("DRZAVA USPJESNO ZAPISANA");
@@ -33,6 +42,18 @@ export class InputDrzavaComponent implements OnInit {
       console.log(this._service.formData);
     }
     );
+  }
+
+  updateDrzava(form:NgForm){
+    this._service.putDrzava().subscribe(
+      res => {
+        this.resetForm(form);
+        this._service.getDrzave();
+      },
+      err =>{
+        console.log(err);
+      }
+    )
   }
 
 

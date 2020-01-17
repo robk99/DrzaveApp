@@ -6,7 +6,7 @@
     </thead>
     <tbody>
         <tr *ngFor="let drzava of _service.listaDrzava">
-            <td>{{drzava.ime}}</td>
+            <td (click)="populateForm(drzava)">{{drzava.ime}}</td>
         </tr>
     </tbody>
 </table>

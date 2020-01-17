@@ -18,4 +18,8 @@ export class ListaDrzavaComponent implements OnInit {
     this._service.getDrzave();
   }
 
+  populateForm(drzava: Drzava){
+    this._service.formData = Object.assign({}, drzava);
+  }
+
 }
