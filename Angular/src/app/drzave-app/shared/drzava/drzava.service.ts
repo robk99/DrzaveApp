@@ -6,11 +6,15 @@ import { HttpClient } from "@angular/common/http";
   providedIn: 'root'
 })
 export class DrzavaService {
-  formData: Drzava = { ime:'' };
+  formData: Drzava = { id: 0, ime:'' };
   listaDrzava: Drzava[];
   readonly drzavaURL = "https://localhost:44326/api/drzave";
 
   constructor(private _http:HttpClient) { 
+  }
+
+  anullDrzava(){
+    this.formData = { id: 0, ime:'' };
   }
 
   postDrzava(){
