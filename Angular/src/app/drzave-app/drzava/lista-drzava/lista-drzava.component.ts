@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { DrzavaService } from "../../shared/drzava/drzava.service";
+import { Drzava } from "../../shared/drzava/drzava.model";
+import { ToastrService } from 'ngx-toastr';
+
+
 
 @Component({
   selector: 'app-lista-drzava',
@@ -7,9 +12,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListaDrzavaComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _service:DrzavaService) { }
 
   ngOnInit() {
+    this._service.getDrzave();
   }
 
 }

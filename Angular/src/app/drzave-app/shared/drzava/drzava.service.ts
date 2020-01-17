@@ -7,6 +7,7 @@ import { HttpClient } from "@angular/common/http";
 })
 export class DrzavaService {
   formData: Drzava = { ime:'' };
+  listaDrzava: Drzava[];
   readonly drzavaURL = "https://localhost:44326/api/drzave";
 
   constructor(private _http:HttpClient) { 
@@ -16,5 +17,10 @@ export class DrzavaService {
     return this._http.post(this.drzavaURL, this.formData);
   }
 
+  getDrzave(){
+    this._http.get(this.drzavaURL)
+    .toPromise()
+    .then(res => this.listaDrzava = res as Drzava[]);
+  }
 
 }

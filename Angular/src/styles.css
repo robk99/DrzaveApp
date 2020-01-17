@@ -39,3 +39,12 @@ body {
 .form-control::placeholder {
     color: rgb(228, 228, 228);
 }
+
+.underlined {
+    font-weight: 650;
+    color: rgb(102, 102, 102);
+}
+
+table tbody tr:hover {
+    cursor: pointer;
+}

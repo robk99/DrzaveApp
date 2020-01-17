@@ -13,7 +13,6 @@ export class InputDrzavaComponent implements OnInit {
   constructor(private _service:DrzavaService) { }
 
   ngOnInit() {
-    //this.resetForm();
   }
 
   resetForm(form?: NgForm){
@@ -27,6 +26,7 @@ export class InputDrzavaComponent implements OnInit {
     this._service.postDrzava().subscribe(res =>{
       console.log("DRZAVA USPJESNO ZAPISANA");
       this.resetForm(form);
+      this._service.getDrzave();
     },
     err =>{
       console.log("GRESKA U ZAPISIVANJU DRZAVE");
