@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm, FormBuilder, FormArray } from '@angular/forms';
+import { FormBuilder, FormArray, Validators, FormGroup } from '@angular/forms';
 import { DrzavaService } from "../shared/drzava/drzava.service";
 import { Drzava } from "../shared/drzava/drzava.model";
 
@@ -12,71 +12,77 @@ export class DrzavaComponent implements OnInit {
 
   drzaveListForms: FormArray = this._formBuilder.array([]);
   listaDrzava: Drzava[];
-  
-  constructor(private _service:DrzavaService, 
+
+  constructor(private _service: DrzavaService,
     private _formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this._service.getDrzave().subscribe(res => this.listaDrzava = res as Drzava[]);
+    this._service.getDrzave().subscribe(
+      res => {
+        if (res == [])
+          this.addDrzavaInList();
+        else {
+          (res as []).forEach((drz: Drzava) => {
+            this.drzaveListForms.push(this._formBuilder.group(drz))
+          })
+        }});
     this.resetForm();
-    this.addDrzavaInList();
   }
 
-  addDrzavaInList(){
+  addDrzavaInList() {
     this.drzaveListForms.push(this._formBuilder.group({
-      id: [0],
-      ime: ['']
+      ime: ['', Validators.required]
     }));
   }
 
-  resetForm(form?: NgForm){
-    if(form!=null){
-      form.resetForm();
+  resetForm(form?: FormGroup) {
+    if (form != null) {
+      form.reset();
     }
     this._service.anullDrzava();
   }
 
-  onSubmit(form:NgForm){
-    if(this._service.postFormData.id == 0){
+  onSubmit(form: FormGroup) {
+    if (this._service.savedFormData.id == 0) {
       this.insertDrzava(form);
     }
-    else{
+    else {
       this.updateDrzava(form);
     }
   }
 
-  insertDrzava(form:NgForm){
-    this._service.postDrzava().subscribe(res =>{
+  insertDrzava(form: FormGroup) {
+    this._service.postDrzava().subscribe(res => {
       console.log("DRZAVA USPJESNO ZAPISANA");
       this.resetForm(form);
       this._service.getDrzave();
     },
-    err =>{
-      console.log("GRESKA U ZAPISIVANJU DRZAVE");
-      console.log(this._service.postFormData);
-    }
+      err => {
+        console.log("GRESKA U ZAPISIVANJU DRZAVE");
+        console.log(this._service.savedFormData);
+      }
     );
   }
 
-  updateDrzava(form:NgForm){
+  updateDrzava(form: FormGroup) {
     this._service.putDrzava().subscribe(
       res => {
         this.resetForm(form);
         this._service.getDrzave();
       },
-      err =>{
+      err => {
         console.log(err);
       }
     )
   }
 
-  populateForm(drzava: Drzava){
-    this._service.postFormData = Object.assign({}, drzava);
+  populateForm(drzava: Drzava) {
+    this._service.savedFormData = Object.assign({}, drzava);
     console.log("POPULATEEEEEE");
   }
 
-  unpopulateForm(){
-    this._service.postFormData = Object.assign({});
+  unpopulateForm() {
+    this._service.savedFormData = Object.assign({});
     console.log("UNPOPULATExxxxxxx");
   }
 
