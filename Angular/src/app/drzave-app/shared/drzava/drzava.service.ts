@@ -6,29 +6,26 @@ import { HttpClient } from "@angular/common/http";
   providedIn: 'root'
 })
 export class DrzavaService {
-  formData: Drzava = { id: 0, ime:'' };
-  listaDrzava: Drzava[];
+  postFormData: Drzava = { id: 0, ime:'' };
   readonly drzavaURL = "https://localhost:44326/api/drzave";
 
   constructor(private _http:HttpClient) { 
   }
 
   anullDrzava(){
-    this.formData = { id: 0, ime:'' };
+    this.postFormData = { id: 0, ime:'' };
   }
 
   postDrzava(){
-    return this._http.post(this.drzavaURL, this.formData);
+    return this._http.post(this.drzavaURL, this.postFormData);
   }
 
   getDrzave(){
-    this._http.get(this.drzavaURL)
-    .toPromise()
-    .then(res => this.listaDrzava = res as Drzava[]);
+    return this._http.get(this.drzavaURL);
   }
 
   putDrzava(){
-    return this._http.put(this.drzavaURL, this.formData);
+    return this._http.put(this.drzavaURL, this.postFormData);
   }
 
 }

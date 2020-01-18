@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormBuilder, FormArray } from '@angular/forms';
 import { DrzavaService } from "../shared/drzava/drzava.service";
 import { Drzava } from "../shared/drzava/drzava.model";
 
@@ -10,11 +10,23 @@ import { Drzava } from "../shared/drzava/drzava.model";
 })
 export class DrzavaComponent implements OnInit {
 
-  constructor(private _service:DrzavaService) { }
+  drzaveListForms: FormArray = this._formBuilder.array([]);
+  listaDrzava: Drzava[];
+  
+  constructor(private _service:DrzavaService, 
+    private _formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this._service.getDrzave();
+    this._service.getDrzave().subscribe(res => this.listaDrzava = res as Drzava[]);
     this.resetForm();
+    this.addDrzavaInList();
+  }
+
+  addDrzavaInList(){
+    this.drzaveListForms.push(this._formBuilder.group({
+      id: [0],
+      ime: ['']
+    }));
   }
 
   resetForm(form?: NgForm){
@@ -25,7 +37,7 @@ export class DrzavaComponent implements OnInit {
   }
 
   onSubmit(form:NgForm){
-    if(this._service.formData.id == 0){
+    if(this._service.postFormData.id == 0){
       this.insertDrzava(form);
     }
     else{
@@ -41,7 +53,7 @@ export class DrzavaComponent implements OnInit {
     },
     err =>{
       console.log("GRESKA U ZAPISIVANJU DRZAVE");
-      console.log(this._service.formData);
+      console.log(this._service.postFormData);
     }
     );
   }
@@ -59,12 +71,12 @@ export class DrzavaComponent implements OnInit {
   }
 
   populateForm(drzava: Drzava){
-    this._service.formData = Object.assign({}, drzava);
+    this._service.postFormData = Object.assign({}, drzava);
     console.log("POPULATEEEEEE");
   }
 
   unpopulateForm(){
-    this._service.formData = Object.assign({});
+    this._service.postFormData = Object.assign({});
     console.log("UNPOPULATExxxxxxx");
   }
 
