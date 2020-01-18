@@ -11,7 +11,6 @@ import { Drzava } from "../shared/drzava/drzava.model";
 export class DrzavaComponent implements OnInit {
 
   drzaveListForms: FormArray = this._formBuilder.array([]);
-  listaDrzava: Drzava[];
 
   constructor(private _service: DrzavaService,
     private _formBuilder: FormBuilder) { }
@@ -19,71 +18,47 @@ export class DrzavaComponent implements OnInit {
   ngOnInit() {
     this._service.getDrzave().subscribe(
       res => {
-        if (res == [])
-          this.addDrzavaInList();
+        if (res == []){
+          this.addDrzavaInList();}
         else {
-          (res as []).forEach((drz: Drzava) => {
-            this.drzaveListForms.push(this._formBuilder.group(drz))
+          (res as []).forEach((drz: any) => {
+            this.drzaveListForms.push(this._formBuilder.group({
+              id: [drz.id],
+              ime: [drz.ime, Validators.required]
+            }))
           })
         }});
-    this.resetForm();
   }
 
   addDrzavaInList() {
+    console.log("NULA");
     this.drzaveListForms.push(this._formBuilder.group({
+      id:[0],
       ime: ['', Validators.required]
     }));
   }
 
-  resetForm(form?: FormGroup) {
-    if (form != null) {
-      form.reset();
-    }
-    this._service.anullDrzava();
-  }
-
   onSubmit(form: FormGroup) {
-    if (this._service.savedFormData.id == 0) {
-      this.insertDrzava(form);
+    if (form.value.id == 0) {
+      this.insertDrzava(form.value);
     }
     else {
-      this.updateDrzava(form);
+      this.updateDrzava(form.value);
     }
   }
 
   insertDrzava(form: FormGroup) {
-    this._service.postDrzava().subscribe(res => {
+    this._service.postDrzava(form).subscribe(res => {
       console.log("DRZAVA USPJESNO ZAPISANA");
-      this.resetForm(form);
-      this._service.getDrzave();
     },
       err => {
         console.log("GRESKA U ZAPISIVANJU DRZAVE");
-        console.log(this._service.savedFormData);
+        console.log(form.value);
       }
     );
   }
 
   updateDrzava(form: FormGroup) {
-    this._service.putDrzava().subscribe(
-      res => {
-        this.resetForm(form);
-        this._service.getDrzave();
-      },
-      err => {
-        console.log(err);
-      }
-    )
+    this._service.putDrzava(form);
   }
-
-  populateForm(drzava: Drzava) {
-    this._service.savedFormData = Object.assign({}, drzava);
-    console.log("POPULATEEEEEE");
-  }
-
-  unpopulateForm() {
-    this._service.savedFormData = Object.assign({});
-    console.log("UNPOPULATExxxxxxx");
-  }
-
 }

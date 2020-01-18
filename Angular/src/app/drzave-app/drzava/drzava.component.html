@@ -13,7 +13,7 @@
                                 <i class="fas fa-globe-europe"></i>
                             </div>
                         </div>
-                        <input class="form-control" name="ime" #ime="ngModel" [(ngModel)]="_service.savedFormData.ime" placeholder="Unesi ime drzave" required maxlength="30">
+                        <input class="form-control" name="ime" #ime="ngModel" [(ngModel)]="drzaveListForms.value.ime" placeholder="Unesi ime drzave" required maxlength="30">
                     </div>
                 </div>
                 <div class="form-group">
@@ -38,7 +38,7 @@
                         <div class="td">
                             <button type="submit" class="btn btn-primary" [disabled]="drzava.invalid">
                                 <i class="fas fa-pencil-alt"></i>
-                                Spremi izmjene</button>
+                                Spremi</button>
                         </div>
                     </form>
                 </div>
