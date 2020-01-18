@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormArray, Validators, FormGroup } from '@angular/forms';
+import { FormBuilder, FormArray, Validators, FormGroup, NgForm } from '@angular/forms';
 import { DrzavaService } from "../shared/drzava/drzava.service";
-import { Drzava } from "../shared/drzava/drzava.model";
 
 @Component({
   selector: 'app-drzava',
@@ -19,7 +18,7 @@ export class DrzavaComponent implements OnInit {
     this._service.getDrzave().subscribe(
       res => {
         if (res == []){
-          this.addDrzavaInList();}
+          /* Handle 404 Request if empty observable is returned */ }
         else {
           (res as []).forEach((drz: any) => {
             this.drzaveListForms.push(this._formBuilder.group({
@@ -30,16 +29,8 @@ export class DrzavaComponent implements OnInit {
         }});
   }
 
-  addDrzavaInList() {
-    console.log("NULA");
-    this.drzaveListForms.push(this._formBuilder.group({
-      id:[0],
-      ime: ['', Validators.required]
-    }));
-  }
-
   onSubmit(form: FormGroup) {
-    if (form.value.id == 0) {
+    if (form.value.id == null) {
       this.insertDrzava(form.value);
     }
     else {
@@ -48,17 +39,24 @@ export class DrzavaComponent implements OnInit {
   }
 
   insertDrzava(form: FormGroup) {
-    this._service.postDrzava(form).subscribe(res => {
-      console.log("DRZAVA USPJESNO ZAPISANA");
+    this._service.postDrzava(form).subscribe(
+      res => {
+      console.log("DRZAVA USPJESNO ZAPISANA!");
     },
       err => {
-        console.log("GRESKA U ZAPISIVANJU DRZAVE");
-        console.log(form.value);
+        console.log("GRESKA u zapisivanju drzave!", err);
       }
     );
   }
 
   updateDrzava(form: FormGroup) {
-    this._service.putDrzava(form);
+    this._service.putDrzava(form).subscribe(
+      res => {
+        console.log("DRZAVA USPJESNO EDITIRANA");
+      },
+      err => {
+        console.log("GRESKA u editiranju drzave!",err);
+      }
+    );
   }
 }
