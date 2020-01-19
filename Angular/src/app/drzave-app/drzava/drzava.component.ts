@@ -29,19 +29,24 @@ export class DrzavaComponent implements OnInit {
         }});
   }
 
-  onSubmit(form: FormGroup) {
+  onSubmit(form: NgForm) {
     if (form.value.id == null) {
-      this.insertDrzava(form.value);
+      this.insertDrzava(form);
     }
     else {
       this.updateDrzava(form.value);
     }
   }
 
-  insertDrzava(form: FormGroup) {
-    this._service.postDrzava(form).subscribe(
+  resetInputForm(form: NgForm){
+    form.resetForm();
+  }
+
+  insertDrzava(form: NgForm) {
+    this._service.postDrzava(form.value).subscribe(
       res => {
       console.log("DRZAVA USPJESNO ZAPISANA!");
+      this.resetInputForm(form);
     },
       err => {
         console.log("GRESKA u zapisivanju drzave!", err);
