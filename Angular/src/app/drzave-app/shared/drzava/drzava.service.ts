@@ -21,4 +21,9 @@ export class DrzavaService {
     return this._http.put(this.drzavaURL, form);
   }
 
+  deleteDrzava(id: number){
+    console.log("Really DELETED?", id);
+    return this._http.delete(this.drzavaURL + '/' + id);
+  }
+
 }

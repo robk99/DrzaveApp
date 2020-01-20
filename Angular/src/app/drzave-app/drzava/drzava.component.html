@@ -31,14 +31,15 @@
                     </div>
                 </div>
                 <div class="tbody">
-                    <form class="tr" [formGroup]="drzava" *ngFor="let drzava of drzaveListForms.controls" (submit)="onSubmit(drzava)">
+                    <form class="tr" [formGroup]="drzava" *ngFor="let drzava of drzaveListForms.controls; let i=index;">
                         <div class="td">
                             <input class="form-control" formControlName="ime">
                         </div>
                         <div class="td">
-                            <button type="submit" class="btn btn-primary" [disabled]="drzava.invalid || drzava.pristine">
+                            <button type="submit" class="btn btn-primary" (submit)="onSubmit(drzava)" [disabled]="drzava.invalid || drzava.pristine">
                                 <i class="fas fa-pencil-alt"></i></button>
-                            <button class="btn btn-light ml-1" (click)="onDelete(fg.get('bankAccountID').value,i)">
+                            <button class="btn btn-danger ml-1" [disabled]="drzava.invalid" mwlConfirmationPopover [popoverTitle]="popoverTitle" [popoverMessage]="popoverMessage" placement="bottom" (confirm)="cancelClicked = true; onDelete(drzava.value.id, i)" (cancel)="cancelClicked = true"
+                                [confirmText]="confirmText" [cancelText]="cancelText">
                                 <i class="fas fa-trash"></i>
                             </button>
                         </div>
