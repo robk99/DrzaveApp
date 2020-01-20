@@ -36,10 +36,13 @@
                             <input class="form-control" formControlName="ime">
                         </div>
                         <div class="td">
-                            <button type="submit" class="btn btn-primary" [disabled]="drzava.invalid">
-                                <i class="fas fa-pencil-alt"></i>
-                                Spremi</button>
+                            <button type="submit" class="btn btn-primary" [disabled]="drzava.invalid || drzava.pristine">
+                                <i class="fas fa-pencil-alt"></i></button>
+                            <button class="btn btn-light ml-1" (click)="onDelete(fg.get('bankAccountID').value,i)">
+                                <i class="fas fa-trash"></i>
+                            </button>
                         </div>
+
                     </form>
                 </div>
             </div>
