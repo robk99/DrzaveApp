@@ -22,7 +22,6 @@ export class DrzavaService {
   }
 
   deleteDrzava(id: number){
-    console.log("Really DELETED?", id);
     return this._http.delete(this.drzavaURL + '/' + id);
   }
 

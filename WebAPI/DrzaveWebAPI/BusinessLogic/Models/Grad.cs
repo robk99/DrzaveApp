@@ -16,6 +16,7 @@ namespace BusinessLogic.Models
         [Required]
         public string Ime { get; set; }
         public int? Populacija { get; set; }
-        public int? DrzavaId { get; set; }
+        [ForeignKey("drzava_id")]
+        public  Drzava Drzava { get; set; }
     }
 }

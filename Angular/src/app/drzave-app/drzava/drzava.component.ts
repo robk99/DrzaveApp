@@ -12,7 +12,7 @@ export class DrzavaComponent implements OnInit {
 
   drzaveListForms: FormArray = this._formBuilder.array([]);
   newDrzava: FormGroup;
-  placements: String[] = ['top','bottom','left','right'];
+  placements: String[] = ['top', 'bottom', 'left', 'right'];
   popoverTitle: String = 'Potvrda';
   popoverMessage: String = 'Jeste li stvarno <b>sigurni</b> da zelite izbrisati drzavu?';
   confirmText: String = 'Da <i class="fas fa-check"></i>';
@@ -101,10 +101,13 @@ export class DrzavaComponent implements OnInit {
   }
 
   onDelete(id: number, i: number) {
-    console.log("DELETED", id);
     this._service.deleteDrzava(id).subscribe(
       res => {
         this.drzaveListForms.removeAt(i);
+        console.log("DRZAVA OBRISANA", id);
+      },
+      err => {
+        console.log("GRESKA U BRISANJU BRZANJE", id);
       }
     );
   }
