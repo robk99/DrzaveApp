@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormArray, Validators, FormGroup, NgForm } from '@angular/forms';
+import { FormBuilder, FormArray, Validators, FormGroup, NgForm, FormControlName, FormControl } from '@angular/forms';
 import { DrzavaService } from "../shared/drzava/drzava.service";
 
 @Component({
@@ -10,9 +10,15 @@ import { DrzavaService } from "../shared/drzava/drzava.service";
 export class DrzavaComponent implements OnInit {
 
   drzaveListForms: FormArray = this._formBuilder.array([]);
+  newDrzava: FormGroup;
 
   constructor(private _service: DrzavaService,
-    private _formBuilder: FormBuilder) { }
+    private _formBuilder: FormBuilder) { 
+      this.newDrzava = this._formBuilder.group({
+        id: new FormControl(0),
+        ime: new FormControl('')
+      });
+    }
 
   ngOnInit() {
     this._service.getDrzave().subscribe(
@@ -24,25 +30,25 @@ export class DrzavaComponent implements OnInit {
             this.drzaveListForms.push(this._formBuilder.group({
               id: [drz.id],
               ime: [drz.ime, Validators.required]
-            }))
+            }));
           })
         }});
   }
 
-  onSubmit(form: NgForm) {
-    if (form.value.id == null) {
+  onSubmit(form: FormGroup) {
+    if (form.value.id == 0) {
       this.insertDrzava(form);
     }
     else {
-      this.updateDrzava(form.value);
+      this.updateDrzava(form);
     }
   }
 
-  resetInputForm(form: NgForm){
-    form.resetForm();
+  resetInputForm(form: FormGroup){
+    form.reset();
   }
 
-  insertDrzava(form: NgForm) {
+  insertDrzava(form: FormGroup) {
     this._service.postDrzava(form.value).subscribe(
       res => {
       console.log("DRZAVA USPJESNO ZAPISANA!");
@@ -50,17 +56,20 @@ export class DrzavaComponent implements OnInit {
     },
       err => {
         console.log("GRESKA u zapisivanju drzave!", err);
+        console.log(form.value);
       }
     );
   }
 
   updateDrzava(form: FormGroup) {
-    this._service.putDrzava(form).subscribe(
+    this._service.putDrzava(form.value).subscribe(
       res => {
         console.log("DRZAVA USPJESNO EDITIRANA");
       },
       err => {
         console.log("GRESKA u editiranju drzave!",err);
+        console.log(form.value);
+
       }
     );
   }
