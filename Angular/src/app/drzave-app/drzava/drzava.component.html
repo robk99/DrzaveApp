@@ -24,7 +24,7 @@
             </form>
         </div>
         <div class="col-md-7">
-            <div class="grid-table">
+            <div class="grid-table" *ngIf="drzaveListForms?.length; else emptyList">
                 <div class="thead">
                     <div class="tr">
                         <div class="td">Ime drzave</div>
@@ -37,15 +37,19 @@
                         </div>
                         <div class="td">
                             <button type="submit" class="btn btn-primary" (click)="onSubmit(drzava)" [disabled]="drzava.invalid || drzava.pristine">
-                                <i class="fas fa-pencil-alt"></i></button>
+                                    <i class="fas fa-pencil-alt"></i></button>
                             <button class="btn btn-danger ml-1" [disabled]="drzava.invalid" mwlConfirmationPopover [popoverTitle]="popoverTitle" [popoverMessage]="popoverMessage" placement="bottom" (confirm)="cancelClicked = true; onDelete(drzava.value.id, i)" (cancel)="cancelClicked = true"
                                 [confirmText]="confirmText" [cancelText]="cancelText">
-                                <i class="fas fa-trash"></i>
-                            </button>
+                                    <i class="fas fa-trash"></i>
+                                </button>
                         </div>
                     </form>
                 </div>
             </div>
+
+            <ng-template #emptyList>
+                <h3 class="emptyList">Trenutno nemate niti jednu drzavu u bazi.</h3>
+            </ng-template>
         </div>
     </div>
 </div>

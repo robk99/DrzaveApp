@@ -11,8 +11,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DrzavaComponent } from './drzave-app/drzava/drzava.component';
 import { GradComponent } from './drzave-app/grad/grad.component';
-import { DrzavaService } from "./drzave-app/shared/drzava/drzava.service";
-import { GradService } from "./drzave-app/shared/grad/grad.service";
 
 @NgModule({
   declarations: [
@@ -28,10 +26,10 @@ import { GradService } from "./drzave-app/shared/grad/grad.service";
     ToastrModule,
     ReactiveFormsModule,
     ConfirmationPopoverModule.forRoot({
-      confirmButtonType: 'danger'
+      cancelButtonType:"light", 
+      confirmButtonType:"danger"
     })
   ],
-  providers: [DrzavaService, GradService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
