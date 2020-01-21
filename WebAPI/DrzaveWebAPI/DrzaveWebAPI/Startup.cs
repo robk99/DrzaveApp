@@ -48,11 +48,11 @@ namespace DrzaveWebAPI
 
             app.UseHttpsRedirection();
 
-            app.UseRouting();
-            
             app.UseCors();
-
+            
             app.UseAuthorization();
+
+            app.UseRouting();
 
             app.UseEndpoints(endpoints =>
             {

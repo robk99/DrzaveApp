@@ -26,9 +26,10 @@ namespace DataAccess.Services
             return await _context.Gradovi.FindAsync(id);
         }
 
-        public async Task<ICollection<Grad>> DohvatiGradovePoDrzavi()
+        public async Task<ICollection<Grad>> DohvatiGradovePoDrzavi(int id)
         {
-            return null;
+            ICollection<Grad> lista = await _context.Gradovi.Where<Grad>(g => g.DrzavaId == id).ToListAsync();
+            return lista;
         }
 
         public async Task<Grad> ZapisiGrad(Grad grad)

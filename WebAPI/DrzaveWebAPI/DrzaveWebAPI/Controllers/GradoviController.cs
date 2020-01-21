@@ -46,6 +46,21 @@ namespace DrzaveWebAPI.Controllers
             return Ok(grad);
         }
 
+        // GET: api/drzave/id/gradovi
+        [HttpGet]
+        [Route("~/api/drzave/{id:int}/gradovi")]
+        public async Task<ActionResult> DohvatiGradovePoDrzavama(int id)
+        {
+            ICollection<Grad> listaGradova = await _gradService.DohvatiGradovePoDrzavi(id);
+
+            if (!listaGradova.Any())
+            {
+                return NotFound();
+            }
+
+            return Ok(listaGradova);
+        }
+
         // POST: api/gradovi
         [HttpPost]
         public async Task<ActionResult> ZapisiGrad(Grad grad)
