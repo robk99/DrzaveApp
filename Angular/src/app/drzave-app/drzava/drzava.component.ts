@@ -21,7 +21,6 @@ export class DrzavaComponent implements OnInit {
 
   constructor(private _service: DrzavaService,
     private _formBuilder: FormBuilder) {
-    this.defineDeleteButtons();
 
   }
 
@@ -29,7 +28,6 @@ export class DrzavaComponent implements OnInit {
     this.getDrzaveToList();
     this.setInputToDefaultValues();
   }
-
 
   getDrzaveToList() {
     this._service.getDrzave().subscribe(
@@ -91,6 +89,7 @@ export class DrzavaComponent implements OnInit {
     this._service.putDrzava(form.value).subscribe(
       res => {
         console.log("DRZAVA USPJESNO EDITIRANA");
+        form.markAsPristine();
       },
       err => {
         console.log("GRESKA u editiranju drzave!", err);
@@ -111,7 +110,5 @@ export class DrzavaComponent implements OnInit {
     );
   }
 
-  defineDeleteButtons() {
-
-  }
+  
 }
