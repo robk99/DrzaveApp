@@ -7,6 +7,12 @@
   <ItemGroup>
     <Compile Remove="Migrations\20200114092259_test.cs" />
     <Compile Remove="Migrations\20200114092259_test.Designer.cs" />
+    <Compile Remove="Migrations\20200120173104_Cascade Delete Added.cs" />
+    <Compile Remove="Migrations\20200120173104_Cascade Delete Added.Designer.cs" />
+    <Compile Remove="Migrations\20200120184938_Cascade.cs" />
+    <Compile Remove="Migrations\20200120184938_Cascade.Designer.cs" />
+    <Compile Remove="Migrations\20200120192605_Cascade.cs" />
+    <Compile Remove="Migrations\20200120192605_Cascade.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

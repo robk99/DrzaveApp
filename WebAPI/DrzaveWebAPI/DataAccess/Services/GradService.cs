@@ -25,6 +25,12 @@ namespace DataAccess.Services
         {
             return await _context.Gradovi.FindAsync(id);
         }
+
+        public async Task<ICollection<Grad>> DohvatiGradovePoDrzavi()
+        {
+            return null;
+        }
+
         public async Task<Grad> ZapisiGrad(Grad grad)
         {
             await _context.Gradovi.AddAsync(grad);
@@ -65,10 +71,10 @@ namespace DataAccess.Services
             return grad;
         }
 
-
         private bool GradPostoji(int id)
         {
             return _context.Gradovi.Any(g => g.Id == id);
         }
+
     }
 }

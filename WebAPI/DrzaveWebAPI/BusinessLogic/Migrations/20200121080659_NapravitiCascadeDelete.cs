@@ -2,7 +2,7 @@
 
 namespace DAL.Migrations
 {
-    public partial class CascadeDeleteAdded : Migration
+    public partial class NapravitiCascadeDelete : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

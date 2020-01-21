@@ -27,10 +27,6 @@ namespace BusinessLogic
                 .WithMany(d => d.Gradovi)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            builder.Entity<Drzava>()
-                .HasMany<Grad>(d => d.Gradovi)
-                .WithOne(g => g.Drzava)
-                .OnDelete(DeleteBehavior.Cascade);
 
             foreach (var entity in builder.Model.GetEntityTypes())
             {

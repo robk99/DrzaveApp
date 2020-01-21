@@ -36,7 +36,7 @@
                             <input class="form-control" formControlName="ime">
                         </div>
                         <div class="td">
-                            <button type="submit" class="btn btn-primary" (submit)="onSubmit(drzava)" [disabled]="drzava.invalid || drzava.pristine">
+                            <button type="submit" class="btn btn-primary" (click)="onSubmit(drzava)" [disabled]="drzava.invalid || drzava.pristine">
                                 <i class="fas fa-pencil-alt"></i></button>
                             <button class="btn btn-danger ml-1" [disabled]="drzava.invalid" mwlConfirmationPopover [popoverTitle]="popoverTitle" [popoverMessage]="popoverMessage" placement="bottom" (confirm)="cancelClicked = true; onDelete(drzava.value.id, i)" (cancel)="cancelClicked = true"
                                 [confirmText]="confirmText" [cancelText]="cancelText">

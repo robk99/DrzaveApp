@@ -10,8 +10,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DAL.Migrations
 {
     [DbContext(typeof(DrzavedbContext))]
-    [Migration("20200120173104_Cascade Delete Added")]
-    partial class CascadeDeleteAdded
+    [Migration("20200121080659_NapravitiCascadeDelete")]
+    partial class NapravitiCascadeDelete
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -48,6 +48,10 @@ namespace DAL.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
+                    b.Property<int?>("DrzavaId")
+                        .HasColumnName("drzava_id")
+                        .HasColumnType("integer");
+
                     b.Property<string>("Ime")
                         .IsRequired()
                         .HasColumnName("ime")
@@ -57,14 +61,10 @@ namespace DAL.Migrations
                         .HasColumnName("populacija")
                         .HasColumnType("integer");
 
-                    b.Property<int?>("drzava_id")
-                        .HasColumnName("drzava_id")
-                        .HasColumnType("integer");
-
                     b.HasKey("Id")
                         .HasName("pk_gradovi");
 
-                    b.HasIndex("drzava_id")
+                    b.HasIndex("DrzavaId")
                         .HasName("ix_gradovi_drzava_id");
 
                     b.ToTable("gradovi");
@@ -74,7 +74,7 @@ namespace DAL.Migrations
                 {
                     b.HasOne("BusinessLogic.Models.Drzava", "Drzava")
                         .WithMany("Gradovi")
-                        .HasForeignKey("drzava_id")
+                        .HasForeignKey("DrzavaId")
                         .HasConstraintName("fk_gradovi_drzave_drzava_id")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
