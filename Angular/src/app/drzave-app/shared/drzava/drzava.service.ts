@@ -1,28 +1,33 @@
 import { Injectable } from '@angular/core';
+import { environment } from '../../../../environments/environment';
 import { HttpClient } from "@angular/common/http";
+import { Observable } from 'rxjs';
+import { Drzava } from './drzava.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DrzavaService {
-  readonly drzavaURL = "https://localhost:44326/api/drzave";
+
+  baseUrl = environment.baseUrl;
+  
   constructor(private _http:HttpClient) { 
   }
 
-  postDrzava(form){
-    return this._http.post(this.drzavaURL, form);
+  postDrzava(form): Observable<any>{
+    return this._http.post(this.baseUrl + "/drzave", form);
   }
 
-  getDrzave(){
-    return this._http.get(this.drzavaURL);
+  getDrzave(): Observable<Drzava[]>{
+    return this._http.get<Drzava[]>(this.baseUrl + "/drzave");
   }
 
-  putDrzava(form){
-    return this._http.put(this.drzavaURL, form);
+  putDrzava(form): Observable<any>{
+    return this._http.put(this.baseUrl + "/drzave", form);
   }
 
-  deleteDrzava(id: number){
-    return this._http.delete(this.drzavaURL + '/' + id);
+  deleteDrzava(id: number): Observable<any>{
+    return this._http.delete(this.baseUrl + '/drzave/' + id);
   }
 
 }

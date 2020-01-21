@@ -7,7 +7,7 @@ import { GradComponent } from './drzave-app/grad/grad.component';
 
 
 export const ROUTES: Routes = [
-  { path: '', component: DrzavaComponent},
+  { path: '', redirectTo: '/drzave', pathMatch: 'full' },
   { path: 'drzave', component: DrzavaComponent},
   { path: 'gradovi', component: GradComponent}
 ];

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormArray, Validators, FormGroup, FormControl } from '@angular/forms';
 import { DrzavaService } from "../shared/drzava/drzava.service";
-import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 
 @Component({
   selector: 'app-drzava',
