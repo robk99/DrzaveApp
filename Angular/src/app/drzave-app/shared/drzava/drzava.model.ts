@@ -1,4 +1,4 @@
-export class Drzava {
+interface Drzava {
     id?: number;
     ime: string;
 }

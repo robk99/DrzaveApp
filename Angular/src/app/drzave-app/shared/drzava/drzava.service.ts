@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../../../environments/environment';
 import { HttpClient } from "@angular/common/http";
 import { Observable } from 'rxjs';
-import { Drzava } from './drzava.model';
+import { FormGroup } from '@angular/forms';
+
 
 @Injectable({
   providedIn: 'root'

@@ -1,6 +1,6 @@
-export class Grad {
-    id: number;
+interface Grad {
+    id?: number;
     ime: string;
     populacija: number;
-    drzavaId: number;
+    drzavaId?: number;
 }
