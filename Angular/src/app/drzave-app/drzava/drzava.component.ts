@@ -23,20 +23,15 @@ export class DrzavaComponent implements OnInit {
   }
 
   getDrzaveToList() {
-    this._service.getDrzave().subscribe(
+    this._service.getAll().subscribe(
       res => {
-        if (res == []) {
-          /* Handle 404 Request if empty observable is returned */
-        }
-        else {
           (res as []).forEach((drz: any) => {
             this.drzaveListForms.push(this._formBuilder.group({
               id: [drz.id],
               ime: [drz.ime, Validators.required]
             }));
           })
-        }
-      });
+        });
   }
 
   setInputToDefaultValues() {
@@ -64,7 +59,7 @@ export class DrzavaComponent implements OnInit {
   }
 
   insertDrzava(form: FormGroup) {
-    this._service.postDrzava(form.value).subscribe(
+    this._service.post(form.value).subscribe(
       (res: any) => {
         form.patchValue({ id: res.id });
         console.log("DRZAVA USPJESNO ZAPISANA!");
@@ -79,7 +74,7 @@ export class DrzavaComponent implements OnInit {
   }
 
   updateDrzava(form: FormGroup) {
-    this._service.putDrzava(form.value).subscribe(
+    this._service.put(form.value).subscribe(
       res => {
         console.log("DRZAVA USPJESNO EDITIRANA");
         form.markAsPristine();
@@ -92,7 +87,7 @@ export class DrzavaComponent implements OnInit {
   }
 
   onDelete(id: number, i: number) {
-    this._service.deleteDrzava(id).subscribe(
+    this._service.delete(id).subscribe(
       res => {
         this.drzaveListForms.removeAt(i);
         console.log("DRZAVA OBRISANA", id);
