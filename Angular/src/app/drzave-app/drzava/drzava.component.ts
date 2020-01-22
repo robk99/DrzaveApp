@@ -10,8 +10,8 @@ import { PopoverService } from '../shared/services/popover.service';
 })
 export class DrzavaComponent implements OnInit {
 
-  drzaveListForms: FormArray = this._formBuilder.array([]);
-  newDrzava: FormGroup;
+  private _drzaveListForms: FormArray = this._formBuilder.array([]);
+  private _newDrzava: FormGroup;
   
   constructor(private _service: DrzavaService,
     private _formBuilder: FormBuilder, private _popover: PopoverService) {
@@ -26,7 +26,7 @@ export class DrzavaComponent implements OnInit {
     this._service.getAll().subscribe(
       res => {
           (res as []).forEach((drz: any) => {
-            this.drzaveListForms.push(this._formBuilder.group({
+            this._drzaveListForms.push(this._formBuilder.group({
               id: [drz.id],
               ime: [drz.ime, Validators.required]
             }));
@@ -35,7 +35,7 @@ export class DrzavaComponent implements OnInit {
   }
 
   setInputToDefaultValues() {
-    this.newDrzava = this._formBuilder.group({
+    this._newDrzava = this._formBuilder.group({
       id: new FormControl(0),
       ime: new FormControl('')
     });
@@ -43,7 +43,7 @@ export class DrzavaComponent implements OnInit {
 
   pushFormGroupIntoArray(form: FormGroup) {
     console.log(form.value);
-    this.drzaveListForms.push(this._formBuilder.group({
+    this._drzaveListForms.push(this._formBuilder.group({
       id: [form.value.id],
       ime: [form.value.ime]
     }));
@@ -89,7 +89,7 @@ export class DrzavaComponent implements OnInit {
   onDelete(id: number, i: number) {
     this._service.delete(id).subscribe(
       res => {
-        this.drzaveListForms.removeAt(i);
+        this._drzaveListForms.removeAt(i);
         console.log("DRZAVA OBRISANA", id);
       },
       err => {

@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export abstract class GenericHttpService {
+export abstract class GenericHttpService<T extends any> {
 
   private _baseUrl = environment.baseUrl;
 
@@ -14,19 +14,19 @@ export abstract class GenericHttpService {
     private _http: HttpClient,
     private _endpoint: string) { }
 
-    post(item: any): Observable<any>{
-      return this._http.post(`${this._baseUrl}/${this._endpoint}`, item);
+    post(item: T): Observable<T>{
+      return this._http.post<T>(`${this._baseUrl}/${this._endpoint}`, item);
     }
   
-    getAll(): Observable<any[]>{
-      return this._http.get<any[]>(`${this._baseUrl}/${this._endpoint}`);
+    getAll(): Observable<T[]>{
+      return this._http.get<T[]>(`${this._baseUrl}/${this._endpoint}`);
     }
   
-    put(item: any): Observable<any>{
-      return this._http.put(`${this._baseUrl}/${this._endpoint}`, item);
+    put(item: T): Observable<T>{
+      return this._http.put<T>(`${this._baseUrl}/${this._endpoint}`, item);
     }
   
-    delete(id: number): Observable<any>{
+    delete(id: number){
       return this._http.delete(`${this._baseUrl}/${this._endpoint}/${id}`);
     }
 
