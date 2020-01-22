@@ -38,7 +38,7 @@
                         <div class="td">
                             <button type="submit" class="btn btn-primary" (click)="onSubmit(drzava)" [disabled]="drzava.invalid || drzava.pristine">
                                     <i class="fas fa-pencil-alt"></i></button>
-                            <button class="btn btn-danger ml-1" [disabled]="drzava.invalid" mwlConfirmationPopover [popoverTitle]="_popover.popoverTitle" [popoverMessage]="_popover.popoverMessage" placement="bottom" (confirm)="_popover.cancelClicked = true; onDelete(drzava.value.id, i)"
+                            <button class="btn btn-danger ml-1" [disabled]="drzava.invalid" mwlConfirmationPopover [popoverTitle]="_popover.popoverTitle" [popoverMessage]="this.popoverMessage" placement="bottom" (confirm)="_popover.cancelClicked = true; onDelete(drzava.value.id, i)"
                                 (cancel)="_popover.cancelClicked = true" [confirmText]="_popover.confirmText" [cancelText]="_popover.cancelText">
                                     <i class="fas fa-trash"></i>
                                 </button>

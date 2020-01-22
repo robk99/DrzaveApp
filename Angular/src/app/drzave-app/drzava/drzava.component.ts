@@ -12,6 +12,7 @@ export class DrzavaComponent implements OnInit {
 
   private _drzaveListForms: FormArray = this._formBuilder.array([]);
   private _newDrzava: FormGroup;
+  private popoverMessage: string = 'Jeste li stvarno sigurni da zelite obrisati ovu drzavu? <b>Ukoliko drzava posjeduje gradove i oni ce biti uklonjeni iz baze!</b>';
   
   constructor(private _service: DrzavaService,
     private _formBuilder: FormBuilder, private _popover: PopoverService) {
