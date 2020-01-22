@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormArray, Validators, FormGroup, FormControl } from '@angular/forms';
-import { DrzavaService } from "../shared/drzava/drzava.service";
-import { PopoverService } from '../shared/popover.service';
+import { DrzavaService } from "../shared/services/http/drzava.service";
+import { PopoverService } from '../shared/services/popover.service';
 
 @Component({
   selector: 'app-drzava',
