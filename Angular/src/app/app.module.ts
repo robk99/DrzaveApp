@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule }   from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http'; 
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'; 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DrzavaComponent } from './drzave-app/drzava/drzava.component';
 import { GradComponent } from './drzave-app/grad/grad.component';
+import { HttpErrorInterceptorService } from "./drzave-app/shared/services/http/http-error-interceptor.service";
 
 @NgModule({
   declarations: [
@@ -30,6 +31,11 @@ import { GradComponent } from './drzave-app/grad/grad.component';
       confirmButtonType:"danger"
     })
   ],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+     useClass: HttpErrorInterceptorService,
+     multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

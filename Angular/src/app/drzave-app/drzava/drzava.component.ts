@@ -15,7 +15,7 @@ export class DrzavaComponent implements OnInit {
   private _drzaveListForms: FormArray = this._formBuilder.array([]);
   private _newDrzava: FormGroup;
   private popoverMessage: string = 'Jeste li stvarno sigurni da zelite obrisati ovu drzavu? <b>Ukoliko drzava posjeduje gradove i oni ce biti uklonjeni iz baze!</b>';
-  
+
 
   constructor(private _drzavaService: DrzavaService, private _gradService: GradService,
     private _formBuilder: FormBuilder, private _popover: PopoverService) {
@@ -29,13 +29,16 @@ export class DrzavaComponent implements OnInit {
   getDrzaveToList() {
     this._drzavaService.getAll().subscribe(
       res => {
-          (res as []).forEach((drz: any) => {
-            this._drzaveListForms.push(this._formBuilder.group({
-              id: [drz.id],
-              ime: [drz.ime, Validators.required]
-            }));
-          })
-        });
+        (res as []).forEach((drz: any) => {
+          this._drzaveListForms.push(this._formBuilder.group({
+            id: [drz.id],
+            ime: [drz.ime, Validators.required]
+          }));
+        })
+      },
+      err => {
+        console.log("Dohvacanje liste drzava iz baze: ", err);
+      });
   }
 
   setInputToDefaultValues() {
@@ -75,8 +78,8 @@ export class DrzavaComponent implements OnInit {
         console.log(form.value);
       }
     );
-    
-    
+
+
   }
 
   updateDrzava(form: FormGroup) {
@@ -104,5 +107,5 @@ export class DrzavaComponent implements OnInit {
     );
   }
 
-  
+
 }

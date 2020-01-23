@@ -29,7 +29,4 @@ export abstract class GenericHttpService<T extends any> {
     delete(id: number){
       return this.http.delete(`${this.baseUrl}/${this.endpoint}/${id}`);
     }
-
-
-
 }
