@@ -23,13 +23,16 @@
                 </div>
             </form>
         </div>
-        <div class="col-md-7">
+        <div class="separator"></div>
+        <div class="col-md-6">
             <table class="table table-hover">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Id</th>
-                        <th scope="col">Ime</th>
+                        <th scope="col">Ime drzave</th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -37,6 +40,20 @@
                         <th scope="row">{{i+1}}</th>
                         <td>{{drzava.value.id}}</td>
                         <td>{{drzava.value.ime}}</td>
+                        <td class="table-button">
+                            <button type="submit" class="btn btn-primary" (click)="editButtonClick(drzava.value.id)" data-toggle="tooltip" data-html="true" title="Izmijeni drzavu">
+                                <i class="fas fa-pencil-alt"></i>
+                            </button>
+                        </td>
+                        <td class="table-button">
+                            <button class="btn btn-danger ml-1" [disabled]="drzava.invalid" mwlConfirmationPopover [popoverTitle]="_popover.popoverTitle" [popoverMessage]="this.popoverMessage" placement="bottom" (confirm)="_popover.cancelClicked = true; onDelete(drzava.value.id, i)"
+                                (cancel)="_popover.cancelClicked = true" [confirmText]="_popover.confirmText" [cancelText]="_popover.cancelText" data-toggle="tooltip" data-html="true" title="Izbrisi drzavu">
+                                    <i class="fas fa-trash"></i>
+                            </button>
+                        </td>
+                        <!-- <button type="submit" class="btn btn-primary" (click)="onSubmit(drzava)" [disabled]="drzava.invalid || drzava.pristine" data-toggle="tooltip" data-html="true" title="Izmijeni drzavu">
+                                    <i class="fas fa-pencil-alt"></i></button> -->
+
                     </tr>
                 </tbody>
             </table>
@@ -52,19 +69,7 @@
                         <div class="td">
                             <input class="form-control" formControlName="ime" maxlength="30">
                         </div>
-                        <div class="td">
-                            <!-- <button type="submit" class="btn btn-primary" (click)="onSubmit(drzava)" [disabled]="drzava.invalid || drzava.pristine" data-toggle="tooltip" data-html="true" title="Izmijeni drzavu">
-                                    <i class="fas fa-pencil-alt"></i></button> -->
 
-                            <button type="submit" class="btn btn-primary" (click)="editButtonClick(drzava.value.id)" data-toggle="tooltip" data-html="true" title="Izmijeni drzavu">
-                                <i class="fas fa-pencil-alt"></i>
-                            </button>
-
-                            <button class="btn btn-danger ml-1" [disabled]="drzava.invalid" mwlConfirmationPopover [popoverTitle]="_popover.popoverTitle" [popoverMessage]="this.popoverMessage" placement="bottom" (confirm)="_popover.cancelClicked = true; onDelete(drzava.value.id, i)"
-                                (cancel)="_popover.cancelClicked = true" [confirmText]="_popover.confirmText" [cancelText]="_popover.cancelText" data-toggle="tooltip" data-html="true" title="Izbrisi drzavu">
-                                    <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
                     </form>
                 </div>
             </div>

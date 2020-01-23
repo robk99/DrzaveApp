@@ -133,3 +133,28 @@ select.ng-invalid.ng-touched {
 
 
 /* END: Input table */
+
+.row {
+    padding-left: 3%;
+}
+
+.separator {
+    width: 2vw;
+}
+
+.table {
+    max-width: 550px;
+}
+
+.table td {
+    max-width: 296px;
+}
+
+td.table-button {
+    padding: 0;
+    width: 48px;
+}
+
+.popover {
+    min-width: 300px;
+}
