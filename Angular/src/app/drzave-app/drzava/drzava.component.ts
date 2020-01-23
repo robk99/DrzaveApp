@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormArray, Validators, FormGroup, FormControl } from '@angular/forms';
 import { DrzavaService } from "../shared/services/http/drzava.service";
 import { GradService } from "../shared/services/http/grad.service";
 import { PopoverService } from '../shared/services/popover.service';
 import { Router } from '@angular/router';
+import { environment } from '../../../environments/environment';
+
 
 
 @Component({
@@ -16,7 +18,6 @@ export class DrzavaComponent implements OnInit {
   private _drzaveListForms: FormArray = this._formBuilder.array([]);
   private _newDrzava: FormGroup;
   private popoverMessage: string = 'Jeste li stvarno sigurni da zelite obrisati ovu drzavu? <b>Ukoliko drzava posjeduje gradove i oni ce biti uklonjeni iz baze!</b>';
-
 
   constructor(private _drzavaService: DrzavaService, private _gradService: GradService,
     private _formBuilder: FormBuilder, private _popover: PopoverService, private _router: Router) {
@@ -106,7 +107,7 @@ export class DrzavaComponent implements OnInit {
     );
   }
 
-  editButtonClick(form: FormGroup){
-    this._router.navigateByUrl('/drzava-edit');
+  editButtonClick(drzavaName: string){
+    this._router.navigateByUrl(`${environment.drzaveEditRoute}/${drzavaName.toLowerCase()}`);
   }
 }
