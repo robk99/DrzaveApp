@@ -3,7 +3,8 @@ import { FormBuilder, FormArray, Validators, FormGroup, FormControl } from '@ang
 import { DrzavaService } from "../shared/services/http/drzava.service";
 import { GradService } from "../shared/services/http/grad.service";
 import { PopoverService } from '../shared/services/popover.service';
-import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-drzava',
@@ -18,7 +19,7 @@ export class DrzavaComponent implements OnInit {
 
 
   constructor(private _drzavaService: DrzavaService, private _gradService: GradService,
-    private _formBuilder: FormBuilder, private _popover: PopoverService) {
+    private _formBuilder: FormBuilder, private _popover: PopoverService, private _router: Router) {
   }
 
   ngOnInit() {
@@ -105,5 +106,7 @@ export class DrzavaComponent implements OnInit {
     );
   }
 
-
+  editButtonClick(form: FormGroup){
+    this._router.navigateByUrl('/drzava-edit');
+  }
 }

@@ -36,8 +36,13 @@
                             <input class="form-control" formControlName="ime" maxlength="30">
                         </div>
                         <div class="td">
-                            <button type="submit" class="btn btn-primary" (click)="onSubmit(drzava)" [disabled]="drzava.invalid || drzava.pristine" data-toggle="tooltip" data-html="true" title="Izmijeni drzavu">
-                                    <i class="fas fa-pencil-alt"></i></button>
+                            <!-- <button type="submit" class="btn btn-primary" (click)="onSubmit(drzava)" [disabled]="drzava.invalid || drzava.pristine" data-toggle="tooltip" data-html="true" title="Izmijeni drzavu">
+                                    <i class="fas fa-pencil-alt"></i></button> -->
+
+                            <button type="submit" class="btn btn-primary" (click)="editButtonClick(drzava)">
+                                <i class="fas fa-pencil-alt"></i>
+                            </button>
+
                             <button class="btn btn-danger ml-1" [disabled]="drzava.invalid" mwlConfirmationPopover [popoverTitle]="_popover.popoverTitle" [popoverMessage]="this.popoverMessage" placement="bottom" (confirm)="_popover.cancelClicked = true; onDelete(drzava.value.id, i)"
                                 (cancel)="_popover.cancelClicked = true" [confirmText]="_popover.confirmText" [cancelText]="_popover.cancelText" data-toggle="tooltip" data-html="true" title="Izbrisi drzavu">
                                     <i class="fas fa-trash"></i>
