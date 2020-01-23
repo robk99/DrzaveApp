@@ -55,33 +55,39 @@ namespace DrzaveWebAPI.Controllers
             return CreatedAtAction("DohvatiDrzavu", new { id = drzava.Id }, drzava);
         }
 
-        // PUT: api/drzave
-        [HttpPut]
-        public async Task<ActionResult> IzmijeniDrzavu(Drzava drzava)
+        // PUT: api/drzave/5
+        [HttpPut("{id}")]
+        public async Task<ActionResult> IzmijeniDrzavu(int id, Drzava drzava)
         {
-            Drzava izvucenaDrzava = await _drzavaService.IzmijeniDrzavu(drzava);
-
-            if (izvucenaDrzava == drzava)
+            if (id != drzava.Id)
             {
-                return CreatedAtAction("DohvatiDrzavu", new { id = drzava.Id }, izvucenaDrzava);
+                return BadRequest();
             }
-            else if (izvucenaDrzava == null)
+
+            Drzava spremljenaNovaDrzava = await _drzavaService.IzmijeniDrzavu(drzava);
+
+            if (spremljenaNovaDrzava == drzava)
             {
-                return NotFound();
+                return CreatedAtAction("DohvatiDrzavu", new { id = drzava.Id }, spremljenaNovaDrzava);
+            }
+            else if (spremljenaNovaDrzava == null)
+            {
+                return NoContent();
             }
             return BadRequest();
         }
 
         // DELETE: api/drzave/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult> ObrisiDrzavu(int id)
+        public async Task<ActionResult<Drzava>> ObrisiDrzavu(int id)
         {
             Drzava obrisanaDrzava = await _drzavaService.ObrisiDrzavu(id);
             if (obrisanaDrzava == null)
             {
                 return NotFound();
             }
-            return Ok(obrisanaDrzava);
+
+            return obrisanaDrzava;
         }
 
     }

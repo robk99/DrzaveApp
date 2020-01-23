@@ -23,7 +23,7 @@ export abstract class GenericHttpService<T extends any> {
     }
   
     put(item: T): Observable<T>{
-      return this._http.put<T>(`${this._baseUrl}/${this._endpoint}`, item);
+      return this._http.put<T>(`${this._baseUrl}/${this._endpoint}/${item.id}`, item);
     }
   
     delete(id: number){
