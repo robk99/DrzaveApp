@@ -12,7 +12,7 @@ export const ROUTES: Routes = [
   { path: '', redirectTo: '/drzave', pathMatch: 'full' },
   { path: 'drzave', component: DrzavaComponent},
   { path: 'gradovi', component: GradComponent},
-  { path: `${environment.drzaveEditRoute}/:ime`, component: DrzavaEditComponent}
+  { path: `${environment.drzaveEditRoute}/:id`, component: DrzavaEditComponent}
 ];
 
 @NgModule({

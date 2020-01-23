@@ -107,7 +107,7 @@ export class DrzavaComponent implements OnInit {
     );
   }
 
-  editButtonClick(drzavaName: string){
-    this._router.navigateByUrl(`${environment.drzaveEditRoute}/${drzavaName.toLowerCase()}`);
+  editButtonClick(id: number){
+    this._router.navigateByUrl(`${environment.drzaveEditRoute}/${id}`);
   }
 }
