@@ -8,26 +8,26 @@ import { Observable } from 'rxjs';
 })
 export abstract class GenericHttpService<T extends any> {
 
-  private _baseUrl = environment.baseUrl;
+  protected baseUrl = environment.baseUrl;
 
   constructor(
-    private _http: HttpClient,
-    private _endpoint: string) { }
+    protected http: HttpClient,
+    protected endpoint: string) { }
 
     post(item: T): Observable<T>{
-      return this._http.post<T>(`${this._baseUrl}/${this._endpoint}`, item);
+      return this.http.post<T>(`${this.baseUrl}/${this.endpoint}`, item);
     }
   
     getAll(): Observable<T[]>{
-      return this._http.get<T[]>(`${this._baseUrl}/${this._endpoint}`);
+      return this.http.get<T[]>(`${this.baseUrl}/${this.endpoint}`);
     }
   
     put(item: T): Observable<T>{
-      return this._http.put<T>(`${this._baseUrl}/${this._endpoint}/${item.id}`, item);
+      return this.http.put<T>(`${this.baseUrl}/${this.endpoint}/${item.id}`, item);
     }
   
     delete(id: number){
-      return this._http.delete(`${this._baseUrl}/${this._endpoint}/${id}`);
+      return this.http.delete(`${this.baseUrl}/${this.endpoint}/${id}`);
     }
 
 

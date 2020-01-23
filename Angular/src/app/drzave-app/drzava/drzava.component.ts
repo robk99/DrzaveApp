@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormArray, Validators, FormGroup, FormControl } from '@angular/forms';
 import { DrzavaService } from "../shared/services/http/drzava.service";
+import { GradService } from "../shared/services/http/grad.service";
 import { PopoverService } from '../shared/services/popover.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-drzava',
@@ -14,7 +16,8 @@ export class DrzavaComponent implements OnInit {
   private _newDrzava: FormGroup;
   private popoverMessage: string = 'Jeste li stvarno sigurni da zelite obrisati ovu drzavu? <b>Ukoliko drzava posjeduje gradove i oni ce biti uklonjeni iz baze!</b>';
   
-  constructor(private _service: DrzavaService,
+
+  constructor(private _drzavaService: DrzavaService, private _gradService: GradService,
     private _formBuilder: FormBuilder, private _popover: PopoverService) {
   }
 
@@ -24,7 +27,7 @@ export class DrzavaComponent implements OnInit {
   }
 
   getDrzaveToList() {
-    this._service.getAll().subscribe(
+    this._drzavaService.getAll().subscribe(
       res => {
           (res as []).forEach((drz: any) => {
             this._drzaveListForms.push(this._formBuilder.group({
@@ -60,7 +63,7 @@ export class DrzavaComponent implements OnInit {
   }
 
   insertDrzava(form: FormGroup) {
-    this._service.post(form.value).subscribe(
+    this._drzavaService.post(form.value).subscribe(
       (res: any) => {
         form.patchValue({ id: res.id });
         console.log("DRZAVA USPJESNO ZAPISANA!");
@@ -72,10 +75,12 @@ export class DrzavaComponent implements OnInit {
         console.log(form.value);
       }
     );
+    
+    
   }
 
   updateDrzava(form: FormGroup) {
-    this._service.put(form.value).subscribe(
+    this._drzavaService.put(form.value).subscribe(
       res => {
         console.log("DRZAVA USPJESNO IZMIJENJENA");
         form.markAsPristine();
@@ -88,7 +93,7 @@ export class DrzavaComponent implements OnInit {
   }
 
   onDelete(id: number, i: number) {
-    this._service.delete(id).subscribe(
+    this._drzavaService.delete(id).subscribe(
       res => {
         this._drzaveListForms.removeAt(i);
         console.log("DRZAVA IZBRISANA", id);
