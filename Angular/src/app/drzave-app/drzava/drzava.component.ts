@@ -78,8 +78,6 @@ export class DrzavaComponent implements OnInit {
         console.log(form.value);
       }
     );
-
-
   }
 
   updateDrzava(form: FormGroup) {
@@ -102,7 +100,7 @@ export class DrzavaComponent implements OnInit {
         console.log("DRZAVA IZBRISANA", id);
       },
       err => {
-        console.log("GRESKA u brisanju drzave", id);
+        console.log(`GRESKA u brisanju drzave( ID: ${id} )`, err);
       }
     );
   }

@@ -72,7 +72,7 @@ namespace DrzaveWebAPI.Controllers
             }
             else if (spremljenaNovaDrzava == null)
             {
-                return NoContent();
+                return NotFound();
             }
             return BadRequest();
         }

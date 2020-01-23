@@ -87,7 +87,7 @@ namespace DrzaveWebAPI.Controllers
             }
             else if (spremljenNoviGrad == null)
             {
-                return NoContent();
+                return NotFound();
             }
             return BadRequest();
         }
