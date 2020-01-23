@@ -58,7 +58,7 @@ namespace DataAccess.Services
             }
         }
 
-        public async Task<Grad> ObrisiGrad(int id)
+        public async Task<Grad> IzbrisiGrad(int id)
         {
             Grad grad = await _context.Gradovi.FindAsync(id);
             if (grad == null)

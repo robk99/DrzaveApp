@@ -77,11 +77,11 @@ export class DrzavaComponent implements OnInit {
   updateDrzava(form: FormGroup) {
     this._service.put(form.value).subscribe(
       res => {
-        console.log("DRZAVA USPJESNO EDITIRANA");
+        console.log("DRZAVA USPJESNO IZMIJENJENA");
         form.markAsPristine();
       },
       err => {
-        console.log("GRESKA u editiranju drzave!", err);
+        console.log("GRESKA u izmjeni drzave!", err);
         console.log(form.value);
       }
     );
@@ -91,10 +91,10 @@ export class DrzavaComponent implements OnInit {
     this._service.delete(id).subscribe(
       res => {
         this._drzaveListForms.removeAt(i);
-        console.log("DRZAVA OBRISANA", id);
+        console.log("DRZAVA IZBRISANA", id);
       },
       err => {
-        console.log("GRESKA U BRISANJU BRZANJE", id);
+        console.log("GRESKA u brisanju drzave", id);
       }
     );
   }

@@ -10,6 +10,6 @@ namespace BusinessLogic.Interfaces.Services
         Task<Drzava> DohvatiDrzavu(int id);
         Task<Drzava> ZapisiDrzavu(Drzava drzava);
         Task<Drzava> IzmijeniDrzavu(Drzava drzava);
-        Task<Drzava> ObrisiDrzavu(int id);
+        Task<Drzava> IzbrisiDrzavu(int id);
     }
 }

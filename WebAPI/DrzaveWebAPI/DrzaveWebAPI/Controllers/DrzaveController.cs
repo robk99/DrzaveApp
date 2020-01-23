@@ -79,9 +79,9 @@ namespace DrzaveWebAPI.Controllers
 
         // DELETE: api/drzave/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Drzava>> ObrisiDrzavu(int id)
+        public async Task<ActionResult<Drzava>> IzbrisiDrzavu(int id)
         {
-            Drzava obrisanaDrzava = await _drzavaService.ObrisiDrzavu(id);
+            Drzava obrisanaDrzava = await _drzavaService.IzbrisiDrzavu(id);
             if (obrisanaDrzava == null)
             {
                 return NotFound();

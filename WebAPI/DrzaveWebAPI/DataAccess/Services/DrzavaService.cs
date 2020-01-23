@@ -52,7 +52,7 @@ namespace DataAccess.Services
             }
         }
 
-        public async Task<Drzava> ObrisiDrzavu(int id)
+        public async Task<Drzava> IzbrisiDrzavu(int id)
         {
             Drzava drzava = await _context.Drzave.FindAsync(id);
             if (drzava == null)

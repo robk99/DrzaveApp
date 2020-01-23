@@ -94,9 +94,9 @@ namespace DrzaveWebAPI.Controllers
 
         // DELETE: api/gradovi/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Grad>> ObrisiGrad(int id)
+        public async Task<ActionResult<Grad>> IzbrisiGrad(int id)
         {
-            Grad obrisaniGrad = await _gradService.ObrisiGrad(id);
+            Grad obrisaniGrad = await _gradService.IzbrisiGrad(id);
             if (obrisaniGrad == null)
             {
                 return NotFound();

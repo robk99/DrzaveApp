@@ -11,6 +11,6 @@ namespace BusinessLogic.Interfaces.Services
         Task<ICollection<Grad>> DohvatiGradovePoDrzavi(int id);
         Task<Grad> ZapisiGrad(Grad grad);
         Task<Grad> IzmijeniGrad(Grad grad);
-        Task<Grad> ObrisiGrad(int id);
+        Task<Grad> IzbrisiGrad(int id);
     }
 }
