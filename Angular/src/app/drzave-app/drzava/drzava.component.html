@@ -24,6 +24,23 @@
             </form>
         </div>
         <div class="col-md-7">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Id</th>
+                        <th scope="col">Ime</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr [formGroup]="drzava" *ngFor="let drzava of _drzaveListForms.controls; let i=index;">
+                        <th scope="row">{{i+1}}</th>
+                        <td>{{drzava.value.id}}</td>
+                        <td>{{drzava.value.ime}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
             <div class="grid-table" *ngIf="_drzaveListForms?.length; else emptyList">
                 <div class="thead">
                     <div class="tr">
@@ -39,7 +56,7 @@
                             <!-- <button type="submit" class="btn btn-primary" (click)="onSubmit(drzava)" [disabled]="drzava.invalid || drzava.pristine" data-toggle="tooltip" data-html="true" title="Izmijeni drzavu">
                                     <i class="fas fa-pencil-alt"></i></button> -->
 
-                            <button type="submit" class="btn btn-primary" (click)="editButtonClick(drzava.value.ime)">
+                            <button type="submit" class="btn btn-primary" (click)="editButtonClick(drzava.value.ime)" data-toggle="tooltip" data-html="true" title="Izmijeni drzavu">
                                 <i class="fas fa-pencil-alt"></i>
                             </button>
 
