@@ -35,11 +35,11 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tbody [formGroup]="drzava" *ngFor="let drzava of _drzaveListForms.controls; let i=index;">
+                <tbody [formGroup]="drzava" *ngFor="let drzava of _listaDrzava.controls; let i=index;">
                     <tr data-toggle="collapse" [attr.data-target]="'#' + drzava.value.ime" class="clickable">
                         <th scope="row">{{i+1}}</th>
-                        <td>{{drzava.value.id}}</td>
-                        <td>{{drzava.value.ime}}</td>
+                        <td data-toggle="tooltip" data-html="true" title="Klikni za popis gradova">{{drzava.value.id}}</td>
+                        <td data-toggle="tooltip" data-html="true" title="Klikni za popis gradova">{{drzava.value.ime}}</td>
                         <td class="table-button">
                             <button type="submit" class="btn btn-primary" (click)="editButtonClick(drzava.value.id)" data-toggle="tooltip" data-html="true" title="Izmijeni drzavu">
                                 <i class="far fa-edit"></i>
@@ -53,28 +53,34 @@
                         </td>
                     </tr>
                     <tr>
-                        <th class="collapsedItem"></th>
+                        <td class="collapsedItem"></td>
                         <td class="collapsedItem"></td>
                         <td colspan="3" class="collapsedItem">
-                            <div class="collapse" [attr.id]="drzava.value.ime">Gradovi:</div>
-                            <div class="collapse" [attr.id]="drzava.value.ime">- Copenhagen</div>
+                            <h6 class="collapse gradoviNaslov" [attr.id]="drzava.value.ime">Gradovi:</h6>
+                        </td>
+                    </tr>
+                    <tr [formGroup]="grad" *ngFor="let grad of _listaGradova.controls;">
+                        <th class="collapsedItem"></th>
+                        <td class="collapsedItem "></td>
+                        <td colspan="3" class="collapsedItem ">
+                            <div class="collapse gradIme" [attr.id]="drzava.value.ime">{{(grad.value.drzavaId == drzava.value.id) ? grad.value.ime : null }}</div>
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <div *ngIf="!_drzaveListForms?.length;">
-                <h3 class="emptyList">Trenutno nemate niti jednu drzavu u bazi.</h3>
+            <div *ngIf="!_listaDrzava?.length; ">
+                <h3 class="emptyList ">Trenutno nemate niti jednu drzavu u bazi.</h3>
             </div>
-            <!-- <div class="grid-table">
-                <div class="thead">
-                    <div class="tr">
-                        <div class="td">Ime drzave</div>
+            <!-- <div class="grid-table ">
+                <div class="thead ">
+                    <div class="tr ">
+                        <div class="td ">Ime drzave</div>
                     </div>
                 </div>
-                <div class="tbody">
-                    <form class="tr" [formGroup]="drzava" *ngFor="let drzava of _drzaveListForms.controls; let i=index;">
-                        <div class="td">
-                            <input class="form-control" formControlName="ime" maxlength="30">
+                <div class="tbody ">
+                    <form class="tr " [formGroup]="drzava " *ngFor="let drzava of _drzaveListForms.controls; let i=index; ">
+                        <div class="td ">
+                            <input class="form-control " formControlName="ime " maxlength="30 ">
                         </div>
 
                     </form>

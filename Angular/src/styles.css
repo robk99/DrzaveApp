@@ -169,3 +169,12 @@ td.table-button {
 .table tr {
     margin: 10px 10px;
 }
+
+.gradoviNaslov {
+    padding-left: 2%;
+}
+
+.gradIme {
+    color: rgb(92, 92, 92);
+    padding-left: 3.5%;
+}

@@ -15,7 +15,8 @@ import { environment } from '../../../environments/environment';
 })
 export class DrzavaComponent implements OnInit {
 
-  private _drzaveListForms: FormArray = this._formBuilder.array([]);
+  private _listaDrzava: FormArray = this._formBuilder.array([]);
+  private _listaGradova: FormArray = this._formBuilder.array([]);
   private _newDrzava: FormGroup;
   private popoverMessage: string = 'Jeste li stvarno sigurni da zelite obrisati ovu drzavu? <b>Ukoliko drzava posjeduje gradove i oni ce biti uklonjeni iz baze!</b>';
 
@@ -25,14 +26,15 @@ export class DrzavaComponent implements OnInit {
 
   ngOnInit() {
     this.getDrzaveToList();
+    this.getGradoviToList();
     this.setInputToDefaultValues();
   }
 
   getDrzaveToList() {
     this._drzavaService.getAll().subscribe(
       res => {
-        (res as []).forEach((drz: any) => {
-          this._drzaveListForms.push(this._formBuilder.group({
+        (res as []).forEach((drz: Drzava) => {
+          this._listaDrzava.push(this._formBuilder.group({
             id: [drz.id],
             ime: [drz.ime, Validators.required]
           }));
@@ -40,6 +42,23 @@ export class DrzavaComponent implements OnInit {
       },
       err => {
         console.log("Dohvacanje liste drzava iz baze: ", err);
+      });
+  }
+
+  getGradoviToList() {
+    this._gradService.getAll().subscribe(
+      res => {
+        (res as []).forEach((grad: Grad) => {
+          this._listaGradova.push(this._formBuilder.group({
+            id: [grad.id],
+            ime: [grad.ime, Validators.required],
+            populacija: [grad.populacija],
+            drzavaId: [grad.drzavaId]
+          }));
+        })
+      },
+      err => {
+        console.log("Dohvacanje liste gradova iz baze: ", err);
       });
   }
 
@@ -52,7 +71,7 @@ export class DrzavaComponent implements OnInit {
 
   pushFormGroupIntoArray(form: FormGroup) {
     console.log(form.value);
-    this._drzaveListForms.push(this._formBuilder.group({
+    this._listaDrzava.push(this._formBuilder.group({
       id: [form.value.id],
       ime: [form.value.ime]
     }));
@@ -98,7 +117,7 @@ export class DrzavaComponent implements OnInit {
   onDelete(id: number, i: number) {
     this._drzavaService.delete(id).subscribe(
       res => {
-        this._drzaveListForms.removeAt(i);
+        this._listaDrzava.removeAt(i);
         console.log("DRZAVA IZBRISANA", id);
       },
       err => {
