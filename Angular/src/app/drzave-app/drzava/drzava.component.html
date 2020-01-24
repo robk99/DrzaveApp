@@ -28,21 +28,21 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Id</th>
-                        <th scope="col">Ime drzave</th>
+                        <th class="drzHeader" scope="col">#</th>
+                        <th class="drzHeader" scope="col">Id</th>
+                        <th class="drzHeader" scope="col">Ime drzave</th>
                         <th></th>
                         <th></th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr [formGroup]="drzava" *ngFor="let drzava of _drzaveListForms.controls; let i=index;">
+                <tbody [formGroup]="drzava" *ngFor="let drzava of _drzaveListForms.controls; let i=index;">
+                    <tr data-toggle="collapse" [attr.data-target]="'#' + drzava.value.ime" class="clickable">
                         <th scope="row">{{i+1}}</th>
                         <td>{{drzava.value.id}}</td>
                         <td>{{drzava.value.ime}}</td>
                         <td class="table-button">
                             <button type="submit" class="btn btn-primary" (click)="editButtonClick(drzava.value.id)" data-toggle="tooltip" data-html="true" title="Izmijeni drzavu">
-                                <i class="fas fa-pencil-alt"></i>
+                                <i class="far fa-edit"></i>
                             </button>
                         </td>
                         <td class="table-button">
@@ -51,14 +51,21 @@
                                     <i class="fas fa-trash"></i>
                             </button>
                         </td>
-                        <!-- <button type="submit" class="btn btn-primary" (click)="onSubmit(drzava)" [disabled]="drzava.invalid || drzava.pristine" data-toggle="tooltip" data-html="true" title="Izmijeni drzavu">
-                                    <i class="fas fa-pencil-alt"></i></button> -->
-
+                    </tr>
+                    <tr>
+                        <th class="collapsedItem"></th>
+                        <td class="collapsedItem"></td>
+                        <td colspan="3" class="collapsedItem">
+                            <div class="collapse" [attr.id]="drzava.value.ime">Gradovi:</div>
+                            <div class="collapse" [attr.id]="drzava.value.ime">- Copenhagen</div>
+                        </td>
                     </tr>
                 </tbody>
             </table>
-
-            <div class="grid-table" *ngIf="_drzaveListForms?.length; else emptyList">
+            <div *ngIf="!_drzaveListForms?.length;">
+                <h3 class="emptyList">Trenutno nemate niti jednu drzavu u bazi.</h3>
+            </div>
+            <!-- <div class="grid-table">
                 <div class="thead">
                     <div class="tr">
                         <div class="td">Ime drzave</div>
@@ -72,11 +79,7 @@
 
                     </form>
                 </div>
-            </div>
-
-            <ng-template #emptyList>
-                <h3 class="emptyList">Trenutno nemate niti jednu drzavu u bazi.</h3>
-            </ng-template>
+            </div> -->
         </div>
     </div>
 </div>
