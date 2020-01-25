@@ -18,7 +18,7 @@ export class GradService extends GenericHttpService<Grad> {
       this.parentName = 'drzave';
    }
 
-   getGradovibyDrzava(drzava: any): Observable<any>{
-    return this.http.get<any[]>(`${this.baseUrl}/${this.parentName}/${drzava.id}/${this.endpoint}`);
+   getGradovibyDrzava(id: number): Observable<any>{
+    return this.http.get<any[]>(`${this.baseUrl}/${this.parentName}/${id}/${this.endpoint}`);
    }
 }

@@ -21,6 +21,10 @@ export abstract class GenericHttpService<T extends any> {
     getAll(): Observable<T[]>{
       return this.http.get<T[]>(`${this.baseUrl}/${this.endpoint}`);
     }
+
+    getOne(id: number): Observable<T>{
+      return this.http.get<T>(`${this.baseUrl}/${this.endpoint}/${id}`);
+    }
   
     put(item: T): Observable<T>{
       return this.http.put<T>(`${this.baseUrl}/${this.endpoint}/${item.id}`, item);

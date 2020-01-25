@@ -77,15 +77,6 @@ export class DrzavaComponent implements OnInit {
     }));
   }
 
-  onSubmit(form: FormGroup) {
-    if (form.value.id == 0) {
-      this.insertDrzava(form);
-    }
-    else {
-      this.updateDrzava(form);
-    }
-  }
-
   insertDrzava(form: FormGroup) {
     this._drzavaService.post(form.value).subscribe(
       (res: any) => {
@@ -101,18 +92,7 @@ export class DrzavaComponent implements OnInit {
     );
   }
 
-  updateDrzava(form: FormGroup) {
-    this._drzavaService.put(form.value).subscribe(
-      res => {
-        console.log("DRZAVA USPJESNO IZMIJENJENA");
-        form.markAsPristine();
-      },
-      err => {
-        console.log("GRESKA u izmjeni drzave!", err);
-        console.log(form.value);
-      }
-    );
-  }
+  
 
   onDelete(id: number, i: number) {
     this._drzavaService.delete(id).subscribe(

@@ -1,1 +1,53 @@
-<p>drzava-edit works!</p>
+<div class="jumbotron">
+    <div class="col">
+        <h2 class="izmjenaNaslov text-center">Izmjena drzave: {{_drzavaIme}}</h2>
+        <br><br>
+        <div class="row">
+            <div class="col-md-4 formGroup">
+                <form class="tr" [formGroup]="_drzavaZaEdit">
+                    <div class="td ">
+                        <div>Id:</div>
+                        <input class="form-control" formControlName="id">
+                        <br>
+                        <div>Ime drzave:</div>
+                        <input class="form-control" formControlName="ime" maxlength="30">
+                        <br>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-5">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <td>Id</td>
+                            <td>Ime grada</td>
+                            <td>Populacija grada</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let grad of _listaGradova; let i = index">
+                            <th class="noPointer">{{i+1}}</th>
+                            <td class="noPointer">{{grad.id}}</td>
+                            <td class="noPointer">{{grad.ime}}</td>
+                            <td class="noPointer">{{grad.populacija | number:'2.'}}</td>
+
+                        </tr>
+                        <tr *ngIf="!_listaGradova?.length;">
+                            <td colspan="4">
+                                <h3 class="emptyList ">Drzava nema niti jedan grad u bazi.</h3>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br>
+        <div class="row editButtons">
+            <a href="/drzave">
+                <button type="button" class="btn btn-light">Povratak</button>
+            </a>
+            <button type="submit" class="btn btn-primary" (click)="updateDrzava(_drzavaZaEdit)" [disabled]="_drzavaZaEdit.invalid || _drzavaZaEdit.pristine">Izmijeni</button>
+        </div>
+    </div>
+</div>

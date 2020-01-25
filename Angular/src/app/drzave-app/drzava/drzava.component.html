@@ -1,91 +1,80 @@
 <div class="jumbotron">
-    <div class="row">
-        <div class="col-md-5">
-            <h1 class="izbornik">Drzave<span> / </span>
-                <a href="/gradovi"> <span class="neoznaceni">Gradovi</span> </a>
-            </h1>
-            <hr>
-            <form [formGroup]="_newDrzava" (ngSubmit)="onSubmit(_newDrzava)">
-                <div class="form-group">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">
-                                <i class="fas fa-globe-europe"></i>
+    <div class="col">
+        <h2 class="izmjenaNaslov text-center">Kreiranje drzave</h2>
+        <br><br>
+        <div class="row">
+            <div class="col-md-5">
+                <h1 class="izbornik">Drzave<span> / </span>
+                    <a href="/gradovi"> <span class="neoznaceni">Gradovi</span> </a>
+                </h1>
+                <hr>
+                <form [formGroup]="_newDrzava" (ngSubmit)="insertDrzava(_newDrzava)">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fas fa-globe-europe"></i>
+                                </div>
                             </div>
+                            <input class="form-control" formControlName="ime" placeholder="Unesi novu drzavu" required maxlength="30">
                         </div>
-                        <input class="form-control" formControlName="ime" placeholder="Unesi novu drzavu" required maxlength="30">
                     </div>
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-success btn-md btn-block" [disabled]="_newDrzava.invalid">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success btn-md btn-block" [disabled]="_newDrzava.invalid">
                         <i class="fas fa-database"></i>
                         Kreiraj drzavu</button>
-                </div>
-            </form>
-        </div>
-        <div class="separator"></div>
-        <div class="col-md-6">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th class="drzHeader" scope="col">#</th>
-                        <th class="drzHeader" scope="col">Id</th>
-                        <th class="drzHeader" scope="col">Ime drzave</th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody [formGroup]="drzava" *ngFor="let drzava of _listaDrzava.controls; let i=index;">
-                    <tr data-toggle="collapse" [attr.data-target]="'#' + drzava.value.ime" class="clickable">
-                        <th scope="row">{{i+1}}</th>
-                        <td data-toggle="tooltip" data-html="true" title="Klikni za popis gradova">{{drzava.value.id}}</td>
-                        <td data-toggle="tooltip" data-html="true" title="Klikni za popis gradova">{{drzava.value.ime}}</td>
-                        <td class="table-button">
-                            <button type="submit" class="btn btn-primary" (click)="editButtonClick(drzava.value.id)" data-toggle="tooltip" data-html="true" title="Izmijeni drzavu">
+                    </div>
+                </form>
+            </div>
+            <div class="separator"></div>
+            <div class="col-md-6">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th class="drzHeader" scope="col">#</th>
+                            <th class="drzHeader" scope="col">Id</th>
+                            <th class="drzHeader" scope="col">Ime drzave</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody [formGroup]="drzava" *ngFor="let drzava of _listaDrzava.controls; let i=index;">
+                        <tr data-toggle="collapse" [attr.data-target]="'#' + drzava.value.ime" class="clickable">
+                            <th scope="row">{{i+1}}</th>
+                            <td data-toggle="tooltip" data-html="true" title="Klikni za popis gradova">{{drzava.value.id}}</td>
+                            <td data-toggle="tooltip" data-html="true" title="Klikni za popis gradova">{{drzava.value.ime}}</td>
+                            <td class="table-button">
+                                <button type="submit" class="btn btn-primary" (click)="editButtonClick(drzava.value.id)" data-toggle="tooltip" data-html="true" title="Izmijeni drzavu">
                                 <i class="far fa-edit"></i>
                             </button>
-                        </td>
-                        <td class="table-button">
-                            <button class="btn btn-danger ml-1" [disabled]="drzava.invalid" mwlConfirmationPopover [popoverTitle]="_popover.popoverTitle" [popoverMessage]="this.popoverMessage" placement="bottom" (confirm)="_popover.cancelClicked = true; onDelete(drzava.value.id, i)"
-                                (cancel)="_popover.cancelClicked = true" [confirmText]="_popover.confirmText" [cancelText]="_popover.cancelText" data-toggle="tooltip" data-html="true" title="Izbrisi drzavu">
+                            </td>
+                            <td class="table-button">
+                                <button class="btn btn-danger ml-1" [disabled]="drzava.invalid" mwlConfirmationPopover [popoverTitle]="_popover.popoverTitle" [popoverMessage]="this.popoverMessage" placement="bottom" (confirm)="_popover.cancelClicked = true; onDelete(drzava.value.id, i)"
+                                    (cancel)="_popover.cancelClicked = true" [confirmText]="_popover.confirmText" [cancelText]="_popover.cancelText" data-toggle="tooltip" data-html="true" title="Izbrisi drzavu">
                                     <i class="fas fa-trash"></i>
                             </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="collapsedItem"></td>
-                        <td class="collapsedItem"></td>
-                        <td colspan="3" class="collapsedItem">
-                            <h6 class="collapse gradoviNaslov" [attr.id]="drzava.value.ime">Gradovi:</h6>
-                        </td>
-                    </tr>
-                    <tr [formGroup]="grad" *ngFor="let grad of _listaGradova.controls;">
-                        <th class="collapsedItem"></th>
-                        <td class="collapsedItem "></td>
-                        <td colspan="3" class="collapsedItem ">
-                            <div class="collapse gradIme" [attr.id]="drzava.value.ime">{{(grad.value.drzavaId == drzava.value.id) ? grad.value.ime : null }}</div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <div *ngIf="!_listaDrzava?.length; ">
-                <h3 class="emptyList ">Trenutno nemate niti jednu drzavu u bazi.</h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="collapsedItem"></td>
+                            <td class="collapsedItem"></td>
+                            <td colspan="3" class="collapsedItem">
+                                <h6 class="collapse gradoviNaslov" [attr.id]="drzava.value.ime">Gradovi:</h6>
+                            </td>
+                        </tr>
+                        <tr [formGroup]="grad" *ngFor="let grad of _listaGradova.controls;">
+                            <th class="collapsedItem"></th>
+                            <td class="collapsedItem "></td>
+                            <td colspan="3" class="collapsedItem ">
+                                <div class="collapse gradIme" [attr.id]="drzava.value.ime">{{(grad.value.drzavaId == drzava.value.id) ? grad.value.ime : null }}</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div *ngIf="!_listaDrzava?.length;">
+                    <h3 class="emptyList ">Trenutno nemate niti jednu drzavu u bazi.</h3>
+                </div>
             </div>
-            <!-- <div class="grid-table ">
-                <div class="thead ">
-                    <div class="tr ">
-                        <div class="td ">Ime drzave</div>
-                    </div>
-                </div>
-                <div class="tbody ">
-                    <form class="tr " [formGroup]="drzava " *ngFor="let drzava of _drzaveListForms.controls; let i=index; ">
-                        <div class="td ">
-                            <input class="form-control " formControlName="ime " maxlength="30 ">
-                        </div>
-
-                    </form>
-                </div>
-            </div> -->
         </div>
     </div>
 </div>

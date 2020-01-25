@@ -178,3 +178,25 @@ td.table-button {
     color: rgb(92, 92, 92);
     padding-left: 3.5%;
 }
+
+.izmjenaNaslov {
+    color: rgb(121, 121, 121);
+}
+
+.formGroup {
+    margin-left: 10%;
+}
+
+.noPointer {
+    cursor: initial;
+}
+
+.editButtons {
+    display: flex;
+    justify-content: center;
+}
+
+.editButtons button {
+    margin: 0 2%;
+    width: 150px;
+}
