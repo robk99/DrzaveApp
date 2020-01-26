@@ -31,8 +31,8 @@ export class DrzavaComponent implements OnInit {
 
   getDrzaveToList() {
     this._drzavaService.getAll().subscribe(
-      res => {
-        (res as []).forEach((drz: Drzava) => {
+      (res: Drzava[]) => {
+        res.forEach((drz: Drzava) => {
           this._listaDrzava.push(this._formBuilder.group({
             id: [drz.id],
             ime: [drz.ime, Validators.required]
@@ -46,8 +46,8 @@ export class DrzavaComponent implements OnInit {
 
   getGradoviToList() {
     this._gradService.getAll().subscribe(
-      res => {
-        (res as Grad[]).forEach((grad: Grad) => {
+      (res: Grad[]) => {
+        res.forEach((grad: Grad) => {
           this._listaGradova.push({
             id: grad.id,
             ime: grad.ime,
@@ -78,7 +78,7 @@ export class DrzavaComponent implements OnInit {
 
   insertDrzava(form: FormGroup) {
     this._drzavaService.post(form.value).subscribe(
-      (res: any) => {
+      (res: Drzava) => {
         form.patchValue({ id: res.id });
         console.log("DRZAVA USPJESNO ZAPISANA!");
         this.pushFormGroupIntoArray(form);
@@ -93,7 +93,7 @@ export class DrzavaComponent implements OnInit {
 
   onDelete(id: number, i: number) {
     this._drzavaService.delete(id).subscribe(
-      res => {
+      (res: Drzava) => {
         this._listaDrzava.removeAt(i);
         console.log("DRZAVA IZBRISANA", id);
       },

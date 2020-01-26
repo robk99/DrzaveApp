@@ -59,8 +59,8 @@ export class GradComponent implements OnInit {
 
   getDrzaveToList() {
     this._drzavaService.getAll().subscribe(
-      res => {
-        (res as Drzava[]).forEach((drz: Drzava) => {
+      (res: Drzava[]) => {
+        res.forEach((drz: Drzava) => {
           this._listaDrzava.push({
             id: drz.id,
             ime: drz.ime
@@ -86,7 +86,7 @@ export class GradComponent implements OnInit {
 
   insertGrad(form: FormGroup) {
     this._gradService.post(form.value).subscribe(
-      (res: any) => {
+      (res: Grad) => {
         form.patchValue({ id: res.id });
         console.log("GRAD USPJESNO ZAPISAN!");
         this.pushFormGroupIntoArray(form);
@@ -101,7 +101,7 @@ export class GradComponent implements OnInit {
 
   onDelete(id: number, i: number) {
     this._gradService.delete(id).subscribe(
-      res => {
+      (res: Grad) => {
         this._listaGradova.removeAt(i);
         console.log("GRAD IZBRISAN", id);
       },

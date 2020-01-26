@@ -35,7 +35,7 @@ export class DrzavaEditComponent implements OnInit {
 
   getDrzavaFromId(){
     this._drzavaService.getOne(this._id)
-    .subscribe(drz => {
+    .subscribe((drz: Drzava) => {
       this._drzavaZaEdit = this._formBuilder.group({
         id: [drz.id],
         ime: [drz.ime, Validators.required]
@@ -49,8 +49,8 @@ export class DrzavaEditComponent implements OnInit {
 
   getGradoviByDrzava(){
     this._gradService.getGradovibyDrzava(this._id).subscribe(
-      res => {
-        (res as Grad[]).forEach((grad: Grad) => {
+      (res: Grad[]) => {
+        res.forEach((grad: Grad) => {
           this._listaGradova.push({
             id: grad.id,
             ime: grad.ime,
