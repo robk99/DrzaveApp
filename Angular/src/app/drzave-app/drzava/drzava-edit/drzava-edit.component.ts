@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormArray, Validators, FormGroup, FormControl, FormControlName } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { DrzavaService } from '../../shared/services/http/drzava.service';
 import { GradService } from '../../shared/services/http/grad.service';

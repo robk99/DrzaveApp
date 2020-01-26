@@ -18,7 +18,6 @@ export class DrzavaComponent implements OnInit {
   private _listaDrzava: FormArray = this._formBuilder.array([]);
   private _listaGradova: FormArray = this._formBuilder.array([]);
   private _newDrzava: FormGroup;
-  private popoverMessage: string = 'Jeste li stvarno sigurni da zelite obrisati ovu drzavu? <b>Ukoliko drzava posjeduje gradove i oni ce biti uklonjeni iz baze!</b>';
 
   constructor(private _drzavaService: DrzavaService, private _gradService: GradService,
     private _formBuilder: FormBuilder, private _popover: PopoverService, private _router: Router) {
@@ -91,8 +90,6 @@ export class DrzavaComponent implements OnInit {
       }
     );
   }
-
-  
 
   onDelete(id: number, i: number) {
     this._drzavaService.delete(id).subscribe(

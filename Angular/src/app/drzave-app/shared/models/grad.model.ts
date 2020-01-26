@@ -1,6 +1,7 @@
 interface Grad {
     id?: number;
     ime: string;
-    populacija: number;
+    populacija?: number;
     drzavaId?: number;
+    drzavaIme?: string;
 }

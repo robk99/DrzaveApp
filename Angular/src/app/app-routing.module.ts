@@ -6,12 +6,10 @@ import { DrzavaEditComponent } from './drzave-app/drzava/drzava-edit/drzava-edit
 import { environment } from '../environments/environment';
 
 
-
-
 export const ROUTES: Routes = [
   { path: '', redirectTo: '/drzave', pathMatch: 'full' },
   { path: 'drzave', component: DrzavaComponent},
-  { path: 'gradovi', component: GradComponent},
+  { path: 'gradovi', component: GradComponent },
   { path: `${environment.drzaveEditRoute}/:id`, component: DrzavaEditComponent}
 ];
 

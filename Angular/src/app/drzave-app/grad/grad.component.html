@@ -1,14 +1,92 @@
 <div class="jumbotron">
-    <div class="row">
-        <div class="col-md-5">
-            <h1 class="izbornik">
-                <a href="/drzave">
-                    <span class="neoznaceni">Drzave</span></a>
-                <span> / </span>Gradovi</h1>
-            <hr>
-        </div>
-        <div class="col-md-7">
-            <p>lista-gradova works!</p>
+    <div class="col">
+        <h2 class="izmjenaNaslov text-center">Kreiranje grada</h2>
+        <br><br>
+        <div class="row">
+            <div class="col-md-5">
+                <h1 class="izbornik">
+                    <a href="/drzave">
+                        <span class="neoznaceni">Drzave</span></a>
+                    <span> / </span>Gradovi</h1>
+                <hr>
+                <form [formGroup]="_newGrad" (ngSubmit)="insertGrad(_newGrad)">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fas fa-city"></i>
+                                </div>
+                            </div>
+                            <input class="form-control" formControlName="ime" placeholder="Unesi novi grad" required maxlength="30">
+                        </div>
+                        <br>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                            </div>
+                            <input class="form-control" type="number" formControlName="populacija" placeholder="Unesi populaciju grada" maxlength="8">
+                        </div>
+                        <br>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fas fa-globe-europe"></i>
+                                </div>
+                            </div>
+                            <select class="form-control" type="number" formControlName="drzavaId">
+                                <option value=null default selected>Odaberi drzavu:</option>
+                                <option *ngFor="let drzava of _listaDrzava" [ngValue]=drzava.id>{{drzava.ime}}</option>+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success btn-md btn-block" [disabled]="_newGrad.invalid">
+                        <i class="fas fa-database"></i>
+                        Kreiraj grad</button>
+                    </div>
+                </form>
+            </div>
+            <div class="separator"></div>
+            <div class="col-md-6">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th class="listHeader" scope="col">#</th>
+                            <th class="listHeader" scope="col">Id</th>
+                            <th class="listHeader" scope="col">Ime grada</th>
+                            <th class="listHeader" scope="col">Populacija</th>
+                            <th class="listHeader text-center" scope="col">Ime drzave</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody [formGroup]="grad" *ngFor="let grad of _listaGradova.controls; let i=index;">
+                        <tr class="clickable">
+                            <th scope="row">{{i+1}}</th>
+                            <td>{{grad.value.id}}</td>
+                            <td>{{grad.value.ime}}</td>
+                            <td class="text-center">{{grad.value.populacija? (grad.value.populacija | number:'2.') : '-' }}</td>
+                            <td class="text-center">{{grad.value.drzavaIme? grad.value.drzavaIme : '-'}}</td>
+                            <td class="table-button">
+                                <button type="submit" class="btn btn-primary" (click)="editButtonClick(grad.value.id)" data-toggle="tooltip" data-html="true" title="Izmijeni grad">
+                                <i class="far fa-edit"></i>
+                            </button>
+                            </td>
+                            <td class="table-button">
+                                <button class="btn btn-danger ml-1" [disabled]="grad.invalid" mwlConfirmationPopover [popoverTitle]="_popover.popoverTitle" [popoverMessage]="_popover.popoverMessage[1]" placement="bottom" (confirm)="_popover.cancelClicked = true; onDelete(grad.value.id, i)"
+                                    (cancel)="_popover.cancelClicked = true" [confirmText]="_popover.confirmText" [cancelText]="_popover.cancelText" data-toggle="tooltip" data-html="true" title="Izbrisi grad">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div *ngIf="!_listaGradova?.length;">
+                    <h3 class="emptyList ">Trenutno nemate niti jedan grad u bazi.</h3>
+                </div>
+            </div>
         </div>
     </div>
 </div>
