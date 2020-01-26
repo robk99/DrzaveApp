@@ -5,6 +5,7 @@ import { GradService } from "../shared/services/http/grad.service";
 import { PopoverService } from '../shared/services/popover.service';
 import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -21,7 +22,8 @@ export class GradComponent implements OnInit {
   private _drzavaIme: string;
 
   constructor(private _gradService: GradService, private _drzavaService: DrzavaService,
-    private _formBuilder: FormBuilder, private _popover: PopoverService, private _router: Router) {
+    private _formBuilder: FormBuilder, private _popover: PopoverService, private _router: Router, 
+    private toastr: ToastrService) {
   }
 
   ngOnInit() {
@@ -91,10 +93,12 @@ export class GradComponent implements OnInit {
         console.log("GRAD USPJESNO ZAPISAN!");
         this.pushFormGroupIntoArray(form);
         this.setInputToDefaultValues();
+        this.toastr.success('Grad uspjesno zapisan!');
       },
       err => {
         console.log("GRESKA u zapisivanju grada!", err);
         console.log(form.value);
+        this.toastr.error('GRESKA u zapisivanju grada!');
       }
     );
   }
@@ -104,9 +108,11 @@ export class GradComponent implements OnInit {
       (res: Grad) => {
         this._listaGradova.removeAt(i);
         console.log("GRAD IZBRISAN", id);
+        this.toastr.success('Grad uspjesno izbrisan!');
       },
       err => {
         console.log(`GRESKA u brisanju grada( ID: ${id} )`, err);
+        this.toastr.error('GRESKA u brisanju grada!');
       }
     );
   }

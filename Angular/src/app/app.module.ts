@@ -27,7 +27,7 @@ import { GradEditComponent } from './drzave-app/grad/grad-edit/grad-edit.compone
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ToastrModule,
+    ToastrModule.forRoot(),
     ReactiveFormsModule,
     ConfirmationPopoverModule.forRoot({
       cancelButtonType:"light", 

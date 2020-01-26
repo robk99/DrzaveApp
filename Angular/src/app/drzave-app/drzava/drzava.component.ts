@@ -5,6 +5,7 @@ import { GradService } from "../shared/services/http/grad.service";
 import { PopoverService } from '../shared/services/popover.service';
 import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -20,7 +21,8 @@ export class DrzavaComponent implements OnInit {
   private _newDrzava: FormGroup;
 
   constructor(private _drzavaService: DrzavaService, private _gradService: GradService,
-    private _formBuilder: FormBuilder, private _popover: PopoverService, private _router: Router) {
+    private _formBuilder: FormBuilder, private _popover: PopoverService, private _router: Router, 
+    private toastr: ToastrService) {
   }
 
   ngOnInit() {
@@ -83,10 +85,13 @@ export class DrzavaComponent implements OnInit {
         console.log("DRZAVA USPJESNO ZAPISANA!");
         this.pushFormGroupIntoArray(form);
         this.setInputToDefaultValues();
+        this.toastr.success('Drzava uspjesno zapisana!');
       },
       err => {
         console.log("GRESKA u zapisivanju drzave!", err);
         console.log(form.value);
+        this.toastr.error('GRESKA u zapisivanju drzave!');
+
       }
     );
   }
@@ -96,9 +101,11 @@ export class DrzavaComponent implements OnInit {
       (res: Drzava) => {
         this._listaDrzava.removeAt(i);
         console.log("DRZAVA IZBRISANA", id);
+        this.toastr.success('Drzava uspjesno izbrisana!');
       },
       err => {
         console.log(`GRESKA u brisanju drzave( ID: ${id} )`, err);
+        this.toastr.error('GRESKA u brisanju drzave!');
       }
     );
   }

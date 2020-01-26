@@ -3,6 +3,7 @@ import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms'
 import { ActivatedRoute } from '@angular/router';
 import { DrzavaService } from '../../shared/services/http/drzava.service';
 import { GradService } from '../../shared/services/http/grad.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-grad-edit',
@@ -23,7 +24,7 @@ export class GradEditComponent implements OnInit {
 
 
   constructor(private _route: ActivatedRoute, private _drzavaService: DrzavaService,
-    private _gradService: GradService, private _formBuilder: FormBuilder) { }
+    private _gradService: GradService, private _formBuilder: FormBuilder, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.getGradIdFromRoute();
@@ -57,10 +58,13 @@ export class GradEditComponent implements OnInit {
       res => {
         console.log("GRAD USPJESNO IZMIJENJEN");
         form.markAsPristine();
+        this.toastr.success('Grad uspjesno izmijenjen!');
+
       },
       err => {
         console.log("GRESKA u izmjeni grada!", err);
         console.log(form.value);
+        this.toastr.error('GRESKA u izmjeni grada!');
       }
     );
   }
