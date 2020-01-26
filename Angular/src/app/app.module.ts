@@ -12,13 +12,15 @@ import { DrzavaComponent } from './drzave-app/drzava/drzava.component';
 import { GradComponent } from './drzave-app/grad/grad.component';
 import { HttpErrorInterceptorService } from "./drzave-app/shared/services/http/http-error-interceptor.service";
 import { DrzavaEditComponent } from './drzave-app/drzava/drzava-edit/drzava-edit.component';
+import { GradEditComponent } from './drzave-app/grad/grad-edit/grad-edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DrzavaComponent,
     GradComponent,
-    DrzavaEditComponent
+    DrzavaEditComponent,
+    GradEditComponent
   ],
   imports: [
     BrowserModule,
