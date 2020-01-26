@@ -26,7 +26,7 @@ export class GradComponent implements OnInit {
 
   ngOnInit() {
     this.getDrzaveToList();
-    this.getGradoviToList();    
+    this.getGradoviToList();
     this.setInputToDefaultValues();
   }
 

@@ -16,7 +16,7 @@ import { environment } from '../../../environments/environment';
 export class DrzavaComponent implements OnInit {
 
   private _listaDrzava: FormArray = this._formBuilder.array([]);
-  private _listaGradova: FormArray = this._formBuilder.array([]);
+  private _listaGradova: Grad[] = [];
   private _newDrzava: FormGroup;
 
   constructor(private _drzavaService: DrzavaService, private _gradService: GradService,
@@ -47,13 +47,13 @@ export class DrzavaComponent implements OnInit {
   getGradoviToList() {
     this._gradService.getAll().subscribe(
       res => {
-        (res as []).forEach((grad: Grad) => {
-          this._listaGradova.push(this._formBuilder.group({
-            id: [grad.id],
-            ime: [grad.ime, Validators.required],
-            populacija: [grad.populacija],
-            drzavaId: [grad.drzavaId]
-          }));
+        (res as Grad[]).forEach((grad: Grad) => {
+          this._listaGradova.push({
+            id: grad.id,
+            ime: grad.ime,
+            populacija: grad.populacija,
+            drzavaId: grad.drzavaId
+          });
         })
       },
       err => {

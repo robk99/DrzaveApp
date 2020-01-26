@@ -62,11 +62,11 @@
                                 <h6 class="collapse gradoviNaslov" [attr.id]="drzava.value.ime">Gradovi:</h6>
                             </td>
                         </tr>
-                        <tr [formGroup]="grad" *ngFor="let grad of _listaGradova.controls;">
+                        <tr *ngFor="let grad of _listaGradova;">
                             <th class="collapsedItem"></th>
                             <td class="collapsedItem "></td>
                             <td colspan="3" class="collapsedItem ">
-                                <div class="collapse gradIme" [attr.id]="drzava.value.ime">{{(grad.value.drzavaId == drzava.value.id) ? grad.value.ime : null }}</div>
+                                <div class="collapse gradIme" [attr.id]="drzava.value.ime">{{(grad.drzavaId == drzava.value.id)? grad.ime : null }}</div>
                             </td>
                         </tr>
                     </tbody>
