@@ -44,13 +44,13 @@ export class GradComponent implements OnInit {
         })
       },
       err => {
-        console.log("Dohvacanje liste gradova iz baze: ", err);
+        console.log("GRESKA u dohvacanju liste gradova iz baze: ", err);
       });
   }
 
   findDrzavaIme(id: number): string {
-    const FOUND = this._listaDrzava.find(element =>
-      element.id == id)
+    const FOUND = this._listaDrzava.find(res =>
+      res.id == id)
     if (FOUND == null) {
       return '';
     }
@@ -68,7 +68,7 @@ export class GradComponent implements OnInit {
         })
       },
       err => {
-        console.log("Dohvacanje liste drzava iz baze: ", err);
+        console.log("GRESKA u dohvacanju liste drzava iz baze: ", err);
       });
   }
 

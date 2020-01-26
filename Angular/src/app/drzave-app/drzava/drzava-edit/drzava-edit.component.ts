@@ -43,7 +43,7 @@ export class DrzavaEditComponent implements OnInit {
       this._drzavaIme = drz.ime;
     },
     err =>{
-      console.log(`Dohvacanje drzave (Id: ${this._id})iz baze: `, err);
+      console.log(`GRESKA u dohvacanju drzave (Id: ${this._id})iz baze: `, err);
     });
   }
 
@@ -59,7 +59,7 @@ export class DrzavaEditComponent implements OnInit {
         })
       },
       err => {
-        console.log(`Dohvacanje gradova po drzavi (id: ${this._id}) iz baze: `, err);
+        console.log(`GRESKA u dohvacanju gradova po drzavi (id: ${this._id}) iz baze: `, err);
       });
   }
 
