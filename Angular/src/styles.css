@@ -204,3 +204,15 @@ td.table-button {
 .btn-warning {
     margin: 0 14%;
 }
+
+.jumbotron {
+    margin-bottom: 0;
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    color: rgb(85, 107, 141);
+}
