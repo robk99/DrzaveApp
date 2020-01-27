@@ -1,6 +1,22 @@
+/* START: Main semantic HTML elements */
+
 body {
     background-color: rgb(8, 19, 39);
 }
+
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    color: rgb(85, 107, 141);
+}
+
+
+/* END: Main semantic HTML elements */
+
+
+/* START: App-component elements */
 
 .container {
     background-color: rgb(192, 202, 211);
@@ -10,6 +26,87 @@ body {
 .container h1 {
     text-align: center;
 }
+
+
+/* END: App-component elements */
+
+
+/* START: ALL Component elements */
+
+.jumbotron {
+    margin-bottom: 0;
+}
+
+.form-control::placeholder {
+    color: rgb(228, 228, 228);
+}
+
+table tbody tr:hover {
+    cursor: pointer;
+}
+
+.thead {
+    display: table-header-group;
+    font-weight: bold;
+    border-bottom: 1px solid black;
+    text-align: center;
+    background-color: #f0f8ff;
+}
+
+.tbody {
+    display: table-row-group;
+}
+
+.tr {
+    display: table-row;
+}
+
+.td {
+    display: table-cell;
+    padding: 10px 1px 1px 5px;
+}
+
+.thead div.tr div.td:last-child {
+    background-color: #fff;
+}
+
+.emptyList {
+    font-weight: 200;
+    color: rgb(112, 112, 112);
+    text-align: center;
+    margin-top: 8.3%;
+}
+
+.row {
+    padding-left: 3%;
+}
+
+.table {
+    max-width: 550px;
+}
+
+.table tr {
+    margin: 10px 10px;
+}
+
+.table td {
+    max-width: 296px;
+}
+
+td.table-button {
+    padding: 0;
+    width: 48px;
+}
+
+.izmjenaNaslov {
+    color: rgb(121, 121, 121);
+}
+
+
+/* END: ALL Component elements */
+
+
+/* START: Drzava/Grad - component elements */
 
 .izbornik {
     color: rgb(46, 2, 2);
@@ -41,133 +138,28 @@ body {
     background-color: white;
 }
 
-.form-control::placeholder {
-    color: rgb(228, 228, 228);
-}
-
-table tbody tr:hover {
-    cursor: pointer;
-}
-
-.col-md-7 {
-    margin-top: 1.6%;
-}
-
-@media (max-width: 991px) {
-    .col-md-7 {
-        margin-top: 9.5%;
-    }
-}
-
-@media (max-width: 767px) {
-    .col-md-7 {
-        margin-top: 4%;
-    }
-}
-
-
-/* START: Input table */
-
-.grid-table {
-    display: table;
-}
-
-.thead {
-    display: table-header-group;
-    font-weight: bold;
-    border-bottom: 1px solid black;
-    text-align: center;
-    background-color: #f0f8ff;
-}
-
-.tbody {
-    display: table-row-group;
-}
-
-.tr {
-    display: table-row;
-}
-
-.td {
-    display: table-cell;
-    padding: 10px 1px 1px 5px;
-}
-
-.thead div.tr div.td:last-child {
-    background-color: #fff;
-}
-
-i:hover {
-    cursor: pointer;
-}
-
-input.ng-invalid.ng-touched,
-select.ng-invalid.ng-touched {
-    border-color: #dc3545;
-}
-
-.elementToFadeInAndOut {
-    -webkit-animation: fadeinout 2s linear forwards;
-    animation: fadeinout 2s linear forwards;
-    opacity: 0;
-}
-
-@-webkit-keyframes fadeinout {
-    50% {
-        opacity: 1;
-    }
-}
-
-@keyframes fadeinout {
-    50% {
-        opacity: 1;
-    }
-}
-
-.emptyList {
-    font-weight: 200;
-    color: rgb(112, 112, 112);
-    text-align: center;
-    margin-top: 8.3%;
-}
-
-
-/* END: Input table */
-
-.row {
-    padding-left: 3%;
+.popover {
+    min-width: 300px;
 }
 
 .separator {
     width: 2vw;
+    display: inline-block;
+    border-left: 1px solid #ccc;
+    margin: 0 10px;
 }
 
-.table {
-    max-width: 550px;
-}
 
-.table td {
-    max-width: 296px;
-}
+/* END: Drzava/Grad - component elements */
 
-td.table-button {
-    padding: 0;
-    width: 48px;
-}
 
-.popover {
-    min-width: 300px;
-}
+/* START: Drzava.component elements */
 
 .collapsedItem {
     padding-top: 0px !important;
     padding-bottom: 0px !important;
     border-top: 0 !important;
     height: 0px;
-}
-
-.table tr {
-    margin: 10px 10px;
 }
 
 .gradoviNaslov {
@@ -179,16 +171,34 @@ td.table-button {
     padding-left: 3.5%;
 }
 
-.izmjenaNaslov {
-    color: rgb(121, 121, 121);
+.tablica-drzava {
+    margin-top: 1.3%;
 }
+
+
+/* END: Drzava.component elements */
+
+
+/* START: Grad.component elements */
+
+.gradovi-row,
+.gradovi-col {
+    padding: 0 !important;
+}
+
+.tablica-gradova {
+    padding: 0 !important;
+    margin-top: 1.1%;
+}
+
+
+/* END: Grad.component elements */
+
+
+/* START: Edits - component elements */
 
 .formGroup {
     margin-left: 10%;
-}
-
-.noPointer {
-    cursor: initial;
 }
 
 .editButtons {
@@ -201,18 +211,64 @@ td.table-button {
     width: 150px;
 }
 
+
+/* END: Edits - component elements */
+
+
+/* START: Drzava-edit.component elements */
+
+.noPointer {
+    cursor: initial;
+}
+
+
+/* START: Drzava-edit.component elements */
+
+
+/* START: Grad-edit.component elements */
+
 .btn-warning {
     margin: 0 14%;
 }
 
-.jumbotron {
-    margin-bottom: 0;
+
+/* START: Grad-edit.component.component elements */
+
+
+/* START: Media Queries */
+
+@media (max-width: 1199px) {
+    .tablica-gradova {
+        margin-top: -1.1%;
+    }
 }
 
-footer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 30px;
-    color: rgb(85, 107, 141);
+@media (max-width: 991px) {
+    .tablica-drzava {
+        margin-top: 6.2%;
+    }
+    .col-md-5,
+    .col-md-6 {
+        flex: inherit !important;
+        max-width: unset !important;
+    }
+    .table {
+        margin: auto;
+    }
 }
+
+@media (max-width: 767px) {
+    .tablica-drzava {
+        margin-top: 4%;
+    }
+}
+
+@media (max-width: 508px) {
+    .idH,
+    .numberH {
+        display: none !important;
+    }
+}
+
+
+/* END: Media Queries */

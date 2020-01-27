@@ -27,12 +27,12 @@
                 </form>
             </div>
             <div class="separator"></div>
-            <div class="col-md-6">
+            <div class="col-md-6 tablica-drzava">
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th class="drzHeader" scope="col">#</th>
-                            <th class="drzHeader" scope="col">Id</th>
+                            <th class="drzHeader numberH" scope="col">#</th>
+                            <th class="drzHeader idH" scope="col">Id</th>
                             <th class="drzHeader" scope="col">Ime drzave</th>
                             <th></th>
                             <th></th>
@@ -40,8 +40,8 @@
                     </thead>
                     <tbody [formGroup]="drzava" *ngFor="let drzava of _listaDrzava.controls; let i=index;">
                         <tr data-toggle="collapse" [attr.data-target]="'#' + drzava.value.ime" class="clickable">
-                            <th scope="row">{{i+1}}</th>
-                            <td data-toggle="tooltip" data-html="true" title="Klikni za popis gradova">{{drzava.value.id}}</td>
+                            <th class="numberH" scope="row">{{i+1}}</th>
+                            <td class="idH" data-toggle="tooltip" data-html="true" title="Klikni za popis gradova">{{drzava.value.id}}</td>
                             <td data-toggle="tooltip" data-html="true" title="Klikni za popis gradova">{{drzava.value.ime}}</td>
                             <td class="table-button">
                                 <button type="submit" class="btn btn-primary" (click)="editButtonClick(drzava.value.id)" data-toggle="tooltip" data-html="true" title="Izmijeni drzavu">

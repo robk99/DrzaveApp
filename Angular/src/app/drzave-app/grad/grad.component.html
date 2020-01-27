@@ -1,8 +1,8 @@
 <div class="jumbotron">
-    <div class="col">
+    <div class="col gradovi-col">
         <h2 class="izmjenaNaslov text-center">Kreiranje grada</h2>
         <br><br>
-        <div class="row">
+        <div class="row gradovi-row">
             <div class="col-md-5">
                 <h1 class="izbornik">
                     <a href="/drzave">
@@ -49,12 +49,12 @@
                 </form>
             </div>
             <div class="separator"></div>
-            <div class="col-md-6">
+            <div class="col-md-6 tablica-gradova">
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th class="listHeader" scope="col">#</th>
-                            <th class="listHeader" scope="col">Id</th>
+                            <th class="listHeader numberH" scope="col">#</th>
+                            <th class="listHeader idH" scope="col">Id</th>
                             <th class="listHeader" scope="col">Ime grada</th>
                             <th class="listHeader" scope="col">Populacija</th>
                             <th class="listHeader text-center" scope="col">Ime drzave</th>
@@ -64,8 +64,8 @@
                     </thead>
                     <tbody [formGroup]="grad" *ngFor="let grad of _listaGradova.controls; let i=index;">
                         <tr class="clickable">
-                            <th scope="row">{{i+1}}</th>
-                            <td>{{grad.value.id}}</td>
+                            <th class="numberH" scope="row">{{i+1}}</th>
+                            <td class="idH">{{grad.value.id}}</td>
                             <td>{{grad.value.ime}}</td>
                             <td class="text-center">{{grad.value.populacija? (grad.value.populacija | number:'2.') : '-' }}</td>
                             <td class="text-center">{{grad.value.drzavaIme? grad.value.drzavaIme : '-'}}</td>
