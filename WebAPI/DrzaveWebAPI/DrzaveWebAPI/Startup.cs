@@ -9,7 +9,10 @@ using DAL;
 using BLL.Interfaces.Services;
 using BLL.Services;
 using BLL.ErrorHandling;
-
+using NLog;
+using System;
+using System.IO;
+using BLL.Logging;
 
 namespace DrzaveWebAPI
 {
@@ -17,6 +20,7 @@ namespace DrzaveWebAPI
     {
         public Startup(IConfiguration configuration)
         {
+            LogManager.LoadConfiguration(String.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
             Configuration = configuration;
         }
 
@@ -27,6 +31,7 @@ namespace DrzaveWebAPI
         {
             services.AddTransient<IDrzavaService, DrzavaService>();
             services.AddTransient<IGradService, GradService>();
+            services.AddSingleton<ILoggerManager, LoggerManager>();
             services.AddEntityFrameworkNpgsql().AddDbContext<DrzavedbContext>(opt => opt.UseNpgsql(Configuration.GetConnectionString("DrzaveConnection")))
                 .AddUnitOfWork<DrzavedbContext>();
             services.AddControllers();

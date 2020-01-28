@@ -2,16 +2,18 @@
 using System;
 using System.Threading.Tasks;
 using System.Net;
+using BLL.Interfaces.Services;
 
 namespace BLL.ErrorHandling
 {
     public class ExceptionMiddleware
     {
         private readonly RequestDelegate _next;
-
-        public ExceptionMiddleware(RequestDelegate next)
+        private readonly ILoggerManager _logger;
+        public ExceptionMiddleware(RequestDelegate next, ILoggerManager logger)
         {
             _next = next;
+            _logger = logger;
         }
 
         public async Task InvokeAsync(HttpContext httpContext)
@@ -22,6 +24,7 @@ namespace BLL.ErrorHandling
             }
             catch (Exception ex)
             {
+                _logger.LogError($"We encountered an InternalServerError Exception!: {ex}");
                 await HandleExceptionAsync(httpContext, ex);
             }
         }
