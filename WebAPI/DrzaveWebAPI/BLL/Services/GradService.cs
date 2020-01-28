@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using DAL.Interfaces.Services;
+using BLL.Interfaces.Services;
 using DAL;
 using DAL.Models;
 

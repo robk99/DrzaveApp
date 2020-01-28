@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
-using DAL.Interfaces.Services;
+using BLL.Interfaces.Services;
 using DAL.Models;
-using System;
 
 namespace DrzaveWebAPI.Controllers
 {

@@ -6,7 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using DAL;
-using DAL.Interfaces.Services;
+using BLL.Interfaces.Services;
 using BLL.Services;
 using BLL.ErrorHandling;
 

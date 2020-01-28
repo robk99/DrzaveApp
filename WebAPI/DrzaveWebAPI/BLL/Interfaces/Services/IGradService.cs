@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace DAL.Interfaces.Services
+namespace BLL.Interfaces.Services
 {
     public interface IGradService
     {
