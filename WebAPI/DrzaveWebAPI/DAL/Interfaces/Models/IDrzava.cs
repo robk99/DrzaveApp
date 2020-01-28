@@ -1,4 +1,4 @@
-﻿namespace BusinessLogic.Interfaces.Models
+﻿namespace DAL.Interfaces.Models
 {
     public interface IDrzava
     {

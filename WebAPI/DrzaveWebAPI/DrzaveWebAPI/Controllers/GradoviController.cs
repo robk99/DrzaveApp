@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using BusinessLogic.Interfaces.Services;
-using BusinessLogic.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
+using DAL.Interfaces.Services;
+using DAL.Models;
 
 namespace DrzaveWebAPI.Controllers
 {

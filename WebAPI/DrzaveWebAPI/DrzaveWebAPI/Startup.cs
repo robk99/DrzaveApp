@@ -1,13 +1,15 @@
 using Arch.EntityFrameworkCore.UnitOfWork;
-using BusinessLogic;
-using BusinessLogic.Interfaces.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using DataAccess.Services;
+using DAL;
+using DAL.Interfaces.Services;
+using BLL.Services;
+using BLL.ErrorHandling;
+
 
 namespace DrzaveWebAPI
 {
@@ -45,14 +47,16 @@ namespace DrzaveWebAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+            
+            app.UseMiddleware<ExceptionMiddleware>();
 
             app.UseHttpsRedirection();
 
             app.UseCors();
             
-            app.UseAuthorization();
-
             app.UseRouting();
+
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

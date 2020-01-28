@@ -1,8 +1,8 @@
-﻿using BusinessLogic.Models;
+﻿using DAL.Models;
 using Microsoft.EntityFrameworkCore;
 using DAL.Helpers;
 
-namespace BusinessLogic
+namespace DAL
 {
     public class DrzavedbContext : DbContext
     {

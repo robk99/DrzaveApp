@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
-using BusinessLogic.Interfaces.Services;
-using BusinessLogic.Models;
-using BusinessLogic;
 using System.Threading.Tasks;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using DAL.Interfaces.Services;
+using DAL;
+using DAL.Models;
 
-namespace DataAccess.Services
+namespace BLL.Services
 {
     public class GradService : IGradService
     {

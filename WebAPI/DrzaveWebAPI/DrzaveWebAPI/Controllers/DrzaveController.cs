@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using BusinessLogic.Interfaces.Services;
-using BusinessLogic.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
+using DAL.Interfaces.Services;
+using DAL.Models;
+using System;
 
 namespace DrzaveWebAPI.Controllers
 {
@@ -20,7 +21,7 @@ namespace DrzaveWebAPI.Controllers
 
         // GET: api/drzave
         [HttpGet]
-        public async Task<ActionResult> DohvatiDrzavu()
+        public async Task<ActionResult> DohvatiDrzave()
         {
             ICollection<Drzava> listaDrzava = await _drzavaService.DohvatiDrzave();
 

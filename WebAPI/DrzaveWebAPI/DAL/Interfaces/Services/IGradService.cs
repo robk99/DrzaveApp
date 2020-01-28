@@ -1,8 +1,8 @@
-﻿using BusinessLogic.Models;
+﻿using DAL.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace BusinessLogic.Interfaces.Services
+namespace DAL.Interfaces.Services
 {
     public interface IGradService
     {

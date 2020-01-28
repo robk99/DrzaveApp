@@ -1,12 +1,12 @@
-﻿using BusinessLogic.Interfaces.Services;
-using BusinessLogic.Models;
-using BusinessLogic;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using DAL.Interfaces.Services;
+using DAL;
+using DAL.Models;
 
-namespace DataAccess.Services
+namespace BLL.Services
 {
     public class DrzavaService : IDrzavaService
     {

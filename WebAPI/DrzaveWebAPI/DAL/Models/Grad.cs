@@ -1,14 +1,13 @@
-﻿using BusinessLogic.Interfaces.Models;
-using System.Collections.Generic;
+﻿using DAL.Interfaces.Models;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
-namespace BusinessLogic.Models
+namespace DAL.Models
 {
-    public class Drzava : IDrzava
+    public class Grad : IGrad
     {
-        public Drzava()
+        public Grad()
         {
         }
 
@@ -19,7 +18,12 @@ namespace BusinessLogic.Models
         [Required]
         public string Ime { get; set; }
 
+        public int? Populacija { get; set; }
+
+        [ForeignKey("drzava_id")]
+        public int? DrzavaId { get; set; }
+
         [JsonIgnore]
-        public virtual ICollection<Grad> Gradovi { get; set; }
+        public Drzava Drzava { get; set; }
     }
 }
