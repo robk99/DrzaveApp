@@ -9,10 +9,10 @@ using DAL;
 using BLL.Interfaces.Services;
 using BLL.Services;
 using BLL.ErrorHandling;
+using BLL.RequestLogging;
 using NLog;
 using System;
 using System.IO;
-using BLL.Logging;
 
 namespace DrzaveWebAPI
 {
@@ -26,12 +26,11 @@ namespace DrzaveWebAPI
 
         public IConfiguration Configuration { get; }
 
-        
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IDrzavaService, DrzavaService>();
             services.AddTransient<IGradService, GradService>();
-            services.AddSingleton<ILoggerManager, LoggerManager>();
             services.AddEntityFrameworkNpgsql().AddDbContext<DrzavedbContext>(opt => opt.UseNpgsql(Configuration.GetConnectionString("DrzaveConnection")))
                 .AddUnitOfWork<DrzavedbContext>();
             services.AddControllers();
@@ -45,21 +44,23 @@ namespace DrzaveWebAPI
             });
         }
 
-        
+
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseMiddleware<RequestLoggingMiddleware>();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-            
+
             app.UseMiddleware<ExceptionMiddleware>();
 
             app.UseHttpsRedirection();
 
-            app.UseCors();
-            
             app.UseRouting();
+
+            app.UseCors();
 
             app.UseAuthorization();
 

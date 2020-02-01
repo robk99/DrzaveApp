@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using System.Linq;
 using BLL.Interfaces.Services;
 using DAL.Models;
-using System;
 
 namespace DrzaveWebAPI.Controllers
 {
@@ -23,7 +22,7 @@ namespace DrzaveWebAPI.Controllers
         [HttpGet]
         public async Task<ActionResult> DohvatiDrzave()
         {
-            throw new Exception();
+            //throw new System.Exception();
             ICollection<Drzava> listaDrzava = await _drzavaService.DohvatiDrzave();
 
             if (!listaDrzava.Any())

@@ -20,7 +20,7 @@
     "DrzaveWebAPI": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "weatherforecast",
+      "launchUrl": "api/drzave",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
