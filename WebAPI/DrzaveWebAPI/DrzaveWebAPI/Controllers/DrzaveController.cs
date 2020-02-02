@@ -49,16 +49,18 @@ namespace DrzaveWebAPI.Controllers
 
         // POST: api/drzave
         [HttpPost]
-        public async Task<ActionResult> ZapisiDrzavu(Drzava drzava)
+        public async Task<ActionResult> ZapisiDrzavu([FromBody] Drzava drzava)
         {
             await _drzavaService.ZapisiDrzavu(drzava);
 
-            return CreatedAtAction("DohvatiDrzavu", new { id = drzava.Id }, drzava);
+
+            return Created("https://localhost:44326/api/drzave",drzava);
+            //return CreatedAtAction("DohvatiDrzavu", new { id = drzava.Id }, drzava);
         }
 
         // PUT: api/drzave/5
         [HttpPut("{id}")]
-        public async Task<ActionResult> IzmijeniDrzavu(int id, Drzava drzava)
+        public async Task<ActionResult> IzmijeniDrzavu([FromRoute] int id, [FromBody] Drzava drzava)
         {
             if (id != drzava.Id)
             {

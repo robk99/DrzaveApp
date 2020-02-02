@@ -13,6 +13,8 @@ using BLL.RequestLogging;
 using NLog;
 using System;
 using System.IO;
+using Microsoft.AspNetCore.Http;
+using System.Web.Http;
 
 namespace DrzaveWebAPI
 {
@@ -25,6 +27,7 @@ namespace DrzaveWebAPI
         }
 
         public IConfiguration Configuration { get; }
+        public HttpConfiguration Config { get; }
 
 
         public void ConfigureServices(IServiceCollection services)
@@ -33,7 +36,7 @@ namespace DrzaveWebAPI
             services.AddTransient<IGradService, GradService>();
             services.AddEntityFrameworkNpgsql().AddDbContext<DrzavedbContext>(opt => opt.UseNpgsql(Configuration.GetConnectionString("DrzaveConnection")))
                 .AddUnitOfWork<DrzavedbContext>();
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson();
             services.AddCors(options =>
             {
                 options.AddDefaultPolicy(
@@ -42,12 +45,13 @@ namespace DrzaveWebAPI
                         builder.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod();
                     });
             });
+
         }
 
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseMiddleware<RequestLoggingMiddleware>();
+            app.UseMyMiddleware();
 
             if (env.IsDevelopment())
             {
@@ -68,6 +72,8 @@ namespace DrzaveWebAPI
             {
                 endpoints.MapControllers();
             });
+
+
         }
     }
 }

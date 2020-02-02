@@ -5,6 +5,13 @@ using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 using NLog;
+using Microsoft.AspNetCore.Builder;
+using System.Collections.Generic;
+using Newtonsoft.Json;
+using System.Text;
+using Microsoft.AspNetCore.Mvc;
+using DAL.Models;
+using Newtonsoft.Json.Linq;
 
 namespace BLL.RequestLogging
 {
@@ -31,11 +38,23 @@ namespace BLL.RequestLogging
 
         private async Task LogRequest(HttpContext context)
         {
-            context.Request.Headers.Add("X-Request-Guid", Guid.NewGuid().ToString());
             _stopwatch = Stopwatch.StartNew();
+            context.Request.Headers.Add("X-Request-Guid", Guid.NewGuid().ToString());
+
             context.Request.EnableBuffering();
             await using var requestStream = _recyclableMemoryStreamManager.GetStream();
             await context.Request.Body.CopyToAsync(requestStream);
+            string bodyString = ReadStreamInChunks(requestStream);
+
+            Object body;
+            if (bodyString != string.Empty)
+            {
+                body = JsonConvert.DeserializeObject(bodyString);
+            }
+            else
+            {
+                body = new JObject();
+            }
 
             RequestModel requestModel = new RequestModel()
             {
@@ -44,14 +63,14 @@ namespace BLL.RequestLogging
                 schema = context.Request.Scheme,
                 host = context.Request.Host.ToString(),
                 path = context.Request.Path,
-                requestBody = ReadStreamInChunks(requestStream),
-                requestGUID = context.Request.Headers["X-Request-Guid"]
+                requestBody = body,
+                requestGuid = context.Request.Headers["X-Request-Guid"]
             };
-            _logger.Info("{REQUEST}", requestModel);
+
+            _logger.Info("{request}", requestModel);
 
             context.Request.Body.Position = 0;
         }
-
 
         private static string ReadStreamInChunks(Stream stream)
         {
@@ -77,26 +96,39 @@ namespace BLL.RequestLogging
             context.Response.Body = responseBody;
             await _next(context);
             context.Response.Body.Seek(0, SeekOrigin.Begin);
-            var text = await new StreamReader(context.Response.Body).ReadToEndAsync();
-            context.Response.Body.Seek(0, SeekOrigin.Begin);
+            string bodyString = await new StreamReader(context.Response.Body).ReadToEndAsync();
+
+            Object body;
+            if (bodyString != string.Empty)
+            {
+                body = JsonConvert.DeserializeObject(bodyString);
+            }
+            else
+            {
+                body = new JObject();
+            }
 
             ResponseModel responseModel = new ResponseModel()
             {
                 requestEnd = DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss.fff tt"),
-                schema = context.Request.Scheme,
-                host = context.Request.Host.ToString(),
-                path = context.Request.Path,
-                responseBody = text,
-                responseGUID = context.Response.Headers["X-Request-Guid"],
+                responseBody = body,
+                responseGuid = context.Response.Headers["X-Request-Guid"],
                 statusCode = context.Response.StatusCode.ToString(),
                 requestDuration = _stopwatch.ElapsedMilliseconds
             };
 
-            _logger.Info("{RESPONSE}", responseModel);
+            _logger.Info("{response}", responseModel);
 
+            context.Response.Body.Seek(0, SeekOrigin.Begin);
             await responseBody.CopyToAsync(originalBodyStream);
         }
+    }
 
-
+    public static class MyMiddlewareExtensions
+    {
+        public static IApplicationBuilder UseMyMiddleware(this IApplicationBuilder builder)
+        {
+            return builder.UseMiddleware<RequestLoggingMiddleware>();
+        }
     }
 }

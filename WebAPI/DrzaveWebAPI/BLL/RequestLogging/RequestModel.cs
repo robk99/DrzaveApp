@@ -1,4 +1,7 @@
-﻿using System;
+﻿using DAL.Models;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -11,7 +14,7 @@ namespace BLL.RequestLogging
         public string schema { get; set; }
         public string host { get; set; }
         public string path { get; set; }
-        public string requestBody { get; set; }
-        public string requestGUID { get; set; }
+        public Object requestBody { get; set; }
+        public string requestGuid { get; set; }
     }
 }
