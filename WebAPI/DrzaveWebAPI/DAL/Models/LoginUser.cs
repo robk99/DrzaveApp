@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DAL.Models
 {
-    class LoginUser : ILoginUser
+    public class LoginUser : ILoginUser
     {
         public string username { get; set; }
         public string password { get; set; }
