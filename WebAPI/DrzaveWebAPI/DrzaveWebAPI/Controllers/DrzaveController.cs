@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Linq;
 using BLL.Interfaces.Services;
 using DAL.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DrzaveWebAPI.Controllers
 {
@@ -19,7 +20,7 @@ namespace DrzaveWebAPI.Controllers
         }
 
         // GET: api/drzave
-        [HttpGet]
+        [HttpGet, Authorize]
         public async Task<ActionResult> DohvatiDrzave()
         {
             //throw new System.Exception();
