@@ -8,9 +8,10 @@ import { GradEditComponent } from './drzave-app/grad/grad-edit/grad-edit.compone
 
 
 export const ROUTES: Routes = [
-  { path: '', redirectTo: '/drzave', pathMatch: 'full' },
-  { path: 'drzave', component: DrzavaComponent},
-  { path: 'gradovi', component: GradComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: `${environment.loginRoute}`, redirectTo: '/login', pathMatch: 'full' },
+  { path: `${environment.drzaveRoute}`, component: DrzavaComponent},
+  { path: `${environment.gradoviRoute}`, component: GradComponent },
   { path: `${environment.drzaveEditRoute}/:id`, component: DrzavaEditComponent},
   { path: `${environment.gradoviEditRoute}/:id`, component: GradEditComponent}
 ];

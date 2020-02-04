@@ -5,8 +5,11 @@
 export const environment = {
   production: false,
   baseUrl: "https://localhost:44326/api",
+  drzaveRoute: "drzave",
+  gradoviRoute: "gradovi",
   drzaveEditRoute: "drzave/details",
-  gradoviEditRoute: "gradovi/details"
+  gradoviEditRoute: "gradovi/details",
+  loginRoute: "login"
 };
 
 /*

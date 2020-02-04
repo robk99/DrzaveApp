@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace DrzaveWebAPI.Controllers
 {
-    public class AuthController : Controller
+    public class LoginController : Controller
     {
         [Route("api/[controller]")]
         [HttpPost]
