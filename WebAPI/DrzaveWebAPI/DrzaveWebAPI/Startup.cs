@@ -16,6 +16,8 @@ using System.IO;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Microsoft.AspNetCore.Http;
+using System.Web.Http;
 
 namespace DrzaveWebAPI
 {
@@ -28,8 +30,6 @@ namespace DrzaveWebAPI
         }
 
         public IConfiguration Configuration { get; }
-
-
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IDrzavaService, DrzavaService>();
@@ -56,8 +56,7 @@ namespace DrzaveWebAPI
                     };
                 });
 
-
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson();
             services.AddCors(options =>
             {
                 options.AddDefaultPolicy(
@@ -66,12 +65,13 @@ namespace DrzaveWebAPI
                         builder.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod();
                     });
             });
+
         }
 
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseMiddleware<RequestLoggingMiddleware>();
+            app.UseMyMiddleware();
 
             if (env.IsDevelopment())
             {
@@ -93,6 +93,8 @@ namespace DrzaveWebAPI
             {
                 endpoints.MapControllers();
             });
+
+
         }
     }
 }
