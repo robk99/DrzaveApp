@@ -5,6 +5,7 @@ using System.Linq;
 using BLL.Interfaces.Services;
 using DAL.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Configuration;
 
 namespace DrzaveWebAPI.Controllers
 {
@@ -13,10 +14,15 @@ namespace DrzaveWebAPI.Controllers
     public class DrzaveController : Controller
     {
         private readonly IDrzavaService _drzavaService;
+        private IConfiguration configuration;
+        private string drzaveUrl;
 
-        public DrzaveController(IDrzavaService drzavaService)
+        public DrzaveController(IDrzavaService drzavaService, IConfiguration config)
         {
             _drzavaService = drzavaService;
+            configuration = config;
+            drzaveUrl = configuration.GetSection("DrzaveUrl").Value;
+
         }
 
         // GET: api/drzave
@@ -55,8 +61,7 @@ namespace DrzaveWebAPI.Controllers
             await _drzavaService.ZapisiDrzavu(drzava);
 
 
-            return Created("https://localhost:44326/api/drzave",drzava);
-            //return CreatedAtAction("DohvatiDrzavu", new { id = drzava.Id }, drzava);
+            return Created(drzaveUrl, drzava);
         }
 
         // PUT: api/drzave/5
@@ -72,7 +77,7 @@ namespace DrzaveWebAPI.Controllers
 
             if (spremljenaNovaDrzava == drzava)
             {
-                return CreatedAtAction("DohvatiDrzavu", new { id = drzava.Id }, spremljenaNovaDrzava);
+                return Created(drzaveUrl, spremljenaNovaDrzava);
             }
             else if (spremljenaNovaDrzava == null)
             {
@@ -91,7 +96,7 @@ namespace DrzaveWebAPI.Controllers
                 return NotFound();
             }
 
-            return obrisanaDrzava;
+            return Accepted(obrisanaDrzava);
         }
 
     }

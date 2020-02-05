@@ -23,10 +23,12 @@ namespace DrzaveWebAPI
 {
     public class Startup
     {
+        private string angularBaseUrl;
         public Startup(IConfiguration configuration)
         {
             LogManager.LoadConfiguration(String.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
             Configuration = configuration;
+            angularBaseUrl = configuration.GetSection("AngularBaseUrl").Value;
         }
 
         public IConfiguration Configuration { get; }
@@ -50,8 +52,8 @@ namespace DrzaveWebAPI
                         ValidateLifetime = true,
                         ValidateIssuerSigningKey = true,
 
-                        ValidIssuer = "http://localhost:4200",
-                        ValidAudience = "http://localhost:4200",
+                        ValidIssuer = angularBaseUrl,
+                        ValidAudience = angularBaseUrl,
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"))
                     };
                 });
@@ -62,7 +64,7 @@ namespace DrzaveWebAPI
                 options.AddDefaultPolicy(
                     builder =>
                     {
-                        builder.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod();
+                        builder.WithOrigins(angularBaseUrl).AllowAnyHeader().AllowAnyMethod();
                     });
             });
 

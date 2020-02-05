@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Linq;
 using BLL.Interfaces.Services;
 using DAL.Models;
+using Microsoft.Extensions.Configuration;
 
 namespace DrzaveWebAPI.Controllers
 {
@@ -12,10 +13,14 @@ namespace DrzaveWebAPI.Controllers
     public class GradoviController : Controller
     {
         private readonly IGradService _gradService;
+        private IConfiguration configuration;
+        private string gradoviUrl;
 
-        public GradoviController(IGradService gradService)
+        public GradoviController(IGradService gradService, IConfiguration config)
         {
             _gradService = gradService;
+            configuration = config;
+            gradoviUrl = configuration.GetSection("GradoviUrl").Value;
         }
 
         // GET: api/gradovi
@@ -67,7 +72,7 @@ namespace DrzaveWebAPI.Controllers
         {
             await _gradService.ZapisiGrad(grad);
 
-            return CreatedAtAction("DohvatiGrad", new { id = grad.Id }, grad);
+            return Created(gradoviUrl, grad);
         }
 
         // PUT: api/gradovi/5
@@ -83,7 +88,7 @@ namespace DrzaveWebAPI.Controllers
 
             if (spremljenNoviGrad == grad)
             {
-                return CreatedAtAction("DohvatiGrad", new { id = grad.Id }, spremljenNoviGrad);
+                return Created(gradoviUrl, spremljenNoviGrad);
             }
             else if (spremljenNoviGrad == null)
             {
@@ -101,7 +106,7 @@ namespace DrzaveWebAPI.Controllers
             {
                 return NotFound();
             }
-            return obrisaniGrad;
+            return Accepted(obrisaniGrad);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using DAL.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,15 @@ namespace DrzaveWebAPI.Controllers
     [ApiController]
     public class LoginController : Controller
     {
+        private IConfiguration configuration;
+        private string angularBaseUrl;
+
+        public LoginController(IConfiguration config)
+        {
+            this.configuration = config;
+            angularBaseUrl = configuration.GetSection("AngularBaseUrl").Value;
+        }
+
         [HttpPost]
         public IActionResult Login([FromBody]LoginUser user)
         {
@@ -29,8 +39,8 @@ namespace DrzaveWebAPI.Controllers
                 var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
 
                 var tokeOptions = new JwtSecurityToken(
-                    issuer: "http://localhost:4200",
-                    audience: "http://localhost:4200",
+                    issuer: angularBaseUrl,
+                    audience: angularBaseUrl,
                     expires: DateTime.Now.AddMinutes(100),
                     signingCredentials: signinCredentials
                 );
