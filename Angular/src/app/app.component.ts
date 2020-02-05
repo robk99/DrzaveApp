@@ -13,18 +13,17 @@ import { runInThisContext } from 'vm';
 export class AppComponent implements OnInit {
   title = 'Angular';
 
-  private currentLogged: string = "";
+  private currentLogged: string;
 
   constructor(private loginService: LoginService, private router: Router){
-
   }
 
+
   ngOnInit(){
-    this.loginService.getUsername().subscribe(
-      user => {
-        this.currentLogged = user;
-      }
-    );
+    this.currentLogged = this.loginService.getItem();
+    this.loginService.watchStorage().subscribe((data:string)  => {
+      this.currentLogged = data;
+      })
   }
 
   logOut(){
@@ -32,7 +31,4 @@ export class AppComponent implements OnInit {
     this.router.navigate([`/${environment.homeRoute}`]);
   }
 
-  addUser(username: string){
-    this.currentLogged = username;
-  }
 }

@@ -33,10 +33,9 @@ export class LoginComponent implements OnInit {
   }
 
   login(form: FormGroup) {
-    this.loginService.loggUser(form.value).subscribe(response => {
+    this.loginService.logIn(form.value).subscribe(response => {
       let token = (<any>response).token;
       localStorage.setItem('jwt', token);
-      sessionStorage.setItem('user', form.value.username);
       this.invalidLogin = false;
       this.router.navigate([`/${environment.drzaveRoute}`]);
     }, err => {

@@ -4,9 +4,9 @@
         Application with CRUD functions on lists of countries and cities
     </blockquote>
     <hr>
-    <div class="container logInformation">
+    <div *ngIf="currentLogged" class="container logInformation">
         <h6 class="loggedUser">User: {{currentLogged}}</h6>
-        <button class="btn btn-sm btn-primary btn-block col-lg-2 col-md-2 col-sm-2" (click)="logOut()">LOG OUT</button>
+        <button class="btn btn-sm btn-primary btn-block col-lg-2 col-md-2 col-sm-2 col-2" (click)="logOut()">LOG OUT</button>
     </div>
     <router-outlet></router-outlet>
     <footer>Robert Kamenski - 2020.</footer>
