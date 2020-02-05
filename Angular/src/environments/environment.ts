@@ -9,7 +9,8 @@ export const environment = {
   gradoviRoute: "gradovi",
   drzaveEditRoute: "drzave/details",
   gradoviEditRoute: "gradovi/details",
-  loginRoute: "login"
+  loginRoute: "login",
+  homeRoute: "home"
 };
 
 /*

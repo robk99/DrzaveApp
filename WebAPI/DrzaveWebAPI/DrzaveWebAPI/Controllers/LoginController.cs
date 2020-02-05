@@ -11,9 +11,10 @@ using System.Threading.Tasks;
 
 namespace DrzaveWebAPI.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class LoginController : Controller
     {
-        [Route("api/[controller]")]
         [HttpPost]
         public IActionResult Login([FromBody]LoginUser user)
         {
@@ -30,8 +31,7 @@ namespace DrzaveWebAPI.Controllers
                 var tokeOptions = new JwtSecurityToken(
                     issuer: "http://localhost:4200",
                     audience: "http://localhost:4200",
-                    claims: new List<Claim>(),
-                    expires: DateTime.Now.AddMinutes(5),
+                    expires: DateTime.Now.AddMinutes(100),
                     signingCredentials: signinCredentials
                 );
 

@@ -5,7 +5,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DrzavaComponent } from './drzave-app/drzava/drzava.component';
@@ -14,6 +13,14 @@ import { HttpErrorInterceptorService } from "./drzave-app/shared/services/http/h
 import { DrzavaEditComponent } from './drzave-app/drzava/drzava-edit/drzava-edit.component';
 import { GradEditComponent } from './drzave-app/grad/grad-edit/grad-edit.component';
 import { LoginComponent } from './login/login-component/login.component';
+import { HomeComponent } from "./home/home.component";
+import { JwtModule } from "@auth0/angular-jwt";
+import { LoginService } from './login/login-service/login.service';
+
+export function tokenGetter(){
+  return localStorage.getItem("jwt");
+}
+
 
 @NgModule({
   declarations: [
@@ -22,7 +29,9 @@ import { LoginComponent } from './login/login-component/login.component';
     GradComponent,
     DrzavaEditComponent,
     GradEditComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -34,6 +43,13 @@ import { LoginComponent } from './login/login-component/login.component';
     ConfirmationPopoverModule.forRoot({
       cancelButtonType:"light", 
       confirmButtonType:"danger"
+    }),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ["localhost:44326"],
+        blacklistedRoutes: []
+      }
     })
   ],
   providers: [{

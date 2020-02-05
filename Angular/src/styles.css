@@ -27,6 +27,17 @@ footer {
     text-align: center;
 }
 
+.loggedUser {
+    display: flex;
+    margin-bottom: 0.5%;
+    align-self: flex-end;
+}
+
+.logInformation {
+    display: flex;
+    justify-content: space-between;
+}
+
 
 /* END: App-component elements */
 
@@ -232,7 +243,19 @@ td.table-button {
 }
 
 
-/* START: Grad-edit.component.component elements */
+/* START: Grad-edit.component elements */
+
+
+/* START: Login.component elements */
+
+.container-fluid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* END: Login.component elements */
 
 
 /* START: Media Queries */
