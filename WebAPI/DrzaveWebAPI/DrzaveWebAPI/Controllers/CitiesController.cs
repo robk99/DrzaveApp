@@ -5,6 +5,7 @@ using System.Linq;
 using BLL.Interfaces.Services;
 using DAL.Models;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DrzaveWebAPI.Controllers
 {
@@ -24,7 +25,7 @@ namespace DrzaveWebAPI.Controllers
         }
 
         // GET: api/cities
-        [HttpGet]
+        [HttpGet, Authorize]
         public async Task<ActionResult> GetCities()
         {
             ICollection<City> listOfCities = await _cityService.GetCities();
@@ -38,7 +39,7 @@ namespace DrzaveWebAPI.Controllers
         }
 
         // GET: api/cities/5
-        [HttpGet("{id}")]
+        [HttpGet("{id}"), Authorize]
         public async Task<ActionResult> GetCity(int id)
         {
             City city = await _cityService.GetCity(id);
@@ -52,7 +53,7 @@ namespace DrzaveWebAPI.Controllers
         }
 
         // GET: api/countries/id/cities
-        [HttpGet]
+        [HttpGet, Authorize]
         [Route("~/api/countries/{id:int}/cities")]
         public async Task<ActionResult> GetCitiesByCountry(int id)
         {
@@ -67,7 +68,7 @@ namespace DrzaveWebAPI.Controllers
         }
 
         // POST: api/cities
-        [HttpPost]
+        [HttpPost, Authorize]
         public async Task<ActionResult> PostCity(City city)
         {
             await _cityService.PostCity(city);
@@ -76,7 +77,7 @@ namespace DrzaveWebAPI.Controllers
         }
 
         // PUT: api/cities/5
-        [HttpPut("{id}")]
+        [HttpPut("{id}"), Authorize]
         public async Task<ActionResult> PutCity(int id, City city)
         {
             if (id != city.Id)
@@ -98,7 +99,7 @@ namespace DrzaveWebAPI.Controllers
         }
 
         // DELETE: api/cities/5
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}"), Authorize]
         public async Task<ActionResult<City>> DeleteCity(int id)
         {
             City deletedCity = await _cityService.DeleteCity(id);

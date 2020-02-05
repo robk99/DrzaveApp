@@ -26,7 +26,7 @@ namespace DrzaveWebAPI.Controllers
         }
 
         // GET: api/countries
-        [HttpGet]
+        [HttpGet, Authorize]
         public async Task<ActionResult> GetCountries()
         {
             //throw new System.Exception();
@@ -41,7 +41,7 @@ namespace DrzaveWebAPI.Controllers
         }
 
         // GET: api/countries/5
-        [HttpGet("{id}")]
+        [HttpGet("{id}"), Authorize]
         public async Task<ActionResult> GetCountry(int id)
         {
             Country country = await _countryService.GetCountry(id);
@@ -55,7 +55,7 @@ namespace DrzaveWebAPI.Controllers
         }
 
         // POST: api/countries
-        [HttpPost]
+        [HttpPost, Authorize]
         public async Task<ActionResult> PostCountry([FromBody] Country country)
         {
             await _countryService.PostCountry(country);
@@ -64,7 +64,7 @@ namespace DrzaveWebAPI.Controllers
         }
 
         // PUT: api/countries/5
-        [HttpPut("{id}")]
+        [HttpPut("{id}"), Authorize]
         public async Task<ActionResult> PutCountry([FromRoute] int id, [FromBody] Country country)
         {
             if (id != country.Id)
@@ -86,7 +86,7 @@ namespace DrzaveWebAPI.Controllers
         }
 
         // DELETE: api/countries/5
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}"), Authorize]
         public async Task<ActionResult<Country>> DeleteCountry(int id)
         {
             Country deletedCountry = await _countryService.DeleteCountry(id);
