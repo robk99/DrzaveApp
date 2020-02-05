@@ -34,26 +34,7 @@ namespace DrzaveWebAPI
             services.AddTransient<IGradService, GradService>();
             services.AddEntityFrameworkNpgsql().AddDbContext<DrzavedbContext>(opt => opt.UseNpgsql(Configuration.GetConnectionString("DrzaveConnection")))
                 .AddUnitOfWork<DrzavedbContext>();
-
-            services.AddAuthentication(opt =>
-            {
-                opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            }).AddJwtBearer(options =>
-                {
-                    options.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidateIssuer = true,
-                        ValidateAudience = true,
-                        ValidateLifetime = true,
-                        ValidateIssuerSigningKey = true,
-
-                        ValidIssuer = angularBaseUrl,
-                        ValidAudience = angularBaseUrl,
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"))
-                    };
-                });
-
+            services.AddAuthenticationService(Configuration);
             services.AddControllers().AddNewtonsoftJson();
             services.AddCors(options =>
             {
