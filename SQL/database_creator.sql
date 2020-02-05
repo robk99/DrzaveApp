@@ -3,10 +3,11 @@
 -- Resetting database to default state
 DELETE FROM cities;
 DELETE FROM countries;
-DELETE FROM login_users
+DELETE FROM login_users;
 
 ALTER SEQUENCE "countries_Id_seq" RESTART WITH 1;
 ALTER SEQUENCE "cities_Id_seq" RESTART WITH 1;
+ALTER SEQUENCE "login_users_Id_seq" RESTART WITH 1;
 
 DROP FUNCTION get_cities_by_country(TEXT);
 DROP FUNCTION vrati_cities_i_countries_vece_od(INT);
@@ -28,6 +29,8 @@ INSERT INTO public.cities(name, population, country_id) VALUES ('Stockholm', 109
 INSERT INTO public.cities(name, population, country_id) VALUES ('Gothenburg', 99508, 3);
 INSERT INTO public.cities(name, population, country_id) VALUES ('Karlstad', 66912, 3);
 INSERT INTO public.cities(name, population, country_id) VALUES ('Uppsala', 46983, 3);
+
+INSERT INTO public.login_users(username, password) VALUES ('admin', 'admin');
 
 
 --Functions:

@@ -1,6 +1,6 @@
-import { Injectable, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { BehaviorSubject, Observable, of, Subject as Subject } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable, Subject as Subject } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { HeaderModel } from "../models/header-model";
 
@@ -20,7 +20,7 @@ export class LoginService {
   }
 
   getUser(): string{
-    return localStorage.getItem('user');
+    return localStorage.getItem('loginUser');
   }
 
   setUser(key: string, data: string) {
@@ -32,15 +32,15 @@ export class LoginService {
     return this.storageSubject.asObservable();
   }
 
-  logIn(user: User) {
-    this.setUser('user', user.username);
-    return this.http.post(`${this.baseUrl}/${this.endpoint}`, user, this.header);
+  logIn(loginUser: LoginUser) {
+    this.setUser('loginUser', loginUser.username);
+    return this.http.post(`${this.baseUrl}/${this.endpoint}`, loginUser, this.header);
   }
 
   logOut() {
     console.log("User logged off!");
     localStorage.removeItem('jwt');
-    this.setUser('user', '');
+    this.setUser('loginUser', '');
   }
   
 
