@@ -19,11 +19,11 @@ export class LoginService {
   constructor(private http: HttpClient) { 
   }
 
-  getItem(): string{
+  getUser(): string{
     return localStorage.getItem('user');
   }
 
-  setItem(key: string, data: any) {
+  setUser(key: string, data: string) {
     localStorage.setItem(key, data);
     this.storageSubject.next(data);
   }
@@ -33,14 +33,14 @@ export class LoginService {
   }
 
   logIn(user: User) {
-    this.setItem('user', user.username);
+    this.setUser('user', user.username);
     return this.http.post(`${this.baseUrl}/${this.endpoint}`, user, this.header);
   }
 
   logOut() {
     console.log("User izlogiran!");
     localStorage.removeItem('jwt');
-    this.setItem('user', '');
+    this.setUser('user', '');
   }
   
 

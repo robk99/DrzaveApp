@@ -31,6 +31,7 @@ footer {
     display: flex;
     margin-bottom: 0.5%;
     align-self: flex-end;
+    color: rgb(143, 143, 143);
 }
 
 .logInformation {

@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit(){
-    this.currentLogged = this.loginService.getItem();
+    this.currentLogged = this.loginService.getUser();
     this.loginService.watchStorage().subscribe((data:string)  => {
       this.currentLogged = data;
       })

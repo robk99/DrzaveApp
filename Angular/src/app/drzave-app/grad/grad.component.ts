@@ -16,13 +16,13 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class GradComponent implements OnInit {
 
-  private _listaGradova: FormArray = this._formBuilder.array([]);
-  private _listaDrzava: Drzava[] = [];
-  private _newGrad: FormGroup;
-  private _drzavaIme: string;
+  private listaGradova: FormArray = this.formBuilder.array([]);
+  private listaDrzava: Drzava[] = [];
+  private newGrad: FormGroup;
+  private drzavaIme: string;
 
-  constructor(private _gradService: GradService, private _drzavaService: DrzavaService,
-    private _formBuilder: FormBuilder, private _popover: PopoverService, private _router: Router, 
+  constructor(private gradService: GradService, private drzavaService: DrzavaService,
+    private formBuilder: FormBuilder, private popover: PopoverService, private router: Router, 
     private toastr: ToastrService) {
   }
 
@@ -32,11 +32,11 @@ export class GradComponent implements OnInit {
     this.setInputToDefaultValues();
   }
 
-  getGradoviToList() {
-    this._gradService.getAll().subscribe(
+  getGradoviToList(){
+    this.gradService.getAll().subscribe(
       res => {
         (res as Grad[]).forEach((grad: Grad) => {
-          this._listaGradova.push(this._formBuilder.group({
+          this.listaGradova.push(this.formBuilder.group({
             id: [grad.id],
             ime: [grad.ime, Validators.required],
             populacija: [grad.populacija],
@@ -51,7 +51,7 @@ export class GradComponent implements OnInit {
   }
 
   findDrzavaIme(id: number): string {
-    const FOUND = this._listaDrzava.find(res =>
+    const FOUND = this.listaDrzava.find(res =>
       res.id == id)
     if (FOUND == null) {
       return '';
@@ -60,10 +60,10 @@ export class GradComponent implements OnInit {
   }
 
   getDrzaveToList() {
-    this._drzavaService.getAll().subscribe(
+    this.drzavaService.getAll().subscribe(
       (res: Drzava[]) => {
         res.forEach((drz: Drzava) => {
-          this._listaDrzava.push({
+          this.listaDrzava.push({
             id: drz.id,
             ime: drz.ime
           });
@@ -77,7 +77,7 @@ export class GradComponent implements OnInit {
 
   pushFormGroupIntoArray(form: FormGroup) {
     console.log(form.value);
-    this._listaGradova.push(this._formBuilder.group({
+    this.listaGradova.push(this.formBuilder.group({
       id: [form.value.id],
       ime: [form.value.ime],
       populacija: [form.value.populacija],
@@ -87,7 +87,7 @@ export class GradComponent implements OnInit {
   }
 
   insertGrad(form: FormGroup) {
-    this._gradService.post(form.value).subscribe(
+    this.gradService.post(form.value).subscribe(
       (res: Grad) => {
         form.patchValue({ id: res.id });
         console.log("GRAD USPJESNO ZAPISAN!");
@@ -104,9 +104,9 @@ export class GradComponent implements OnInit {
   }
 
   onDelete(id: number, i: number) {
-    this._gradService.delete(id).subscribe(
+    this.gradService.delete(id).subscribe(
       (res: Grad) => {
-        this._listaGradova.removeAt(i);
+        this.listaGradova.removeAt(i);
         console.log("GRAD IZBRISAN", id);
         this.toastr.success('Grad uspjesno izbrisan!');
       },
@@ -118,7 +118,7 @@ export class GradComponent implements OnInit {
   }
 
   setInputToDefaultValues() {
-    this._newGrad = this._formBuilder.group({
+    this.newGrad = this.formBuilder.group({
       id: new FormControl(0),
       ime: new FormControl(''),
       populacija: new FormControl(),
@@ -128,7 +128,7 @@ export class GradComponent implements OnInit {
   }
 
   editButtonClick(id: number) {
-    this._router.navigateByUrl(`${environment.gradoviEditRoute}/${id}`);
+    this.router.navigateByUrl(`${environment.gradoviEditRoute}/${id}`);
   }
 
 }

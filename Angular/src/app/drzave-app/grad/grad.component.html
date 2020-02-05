@@ -9,7 +9,7 @@
                         <span class="neoznaceni">Drzave</span></a>
                     <span> / </span>Gradovi</h1>
                 <hr>
-                <form [formGroup]="_newGrad" (ngSubmit)="insertGrad(_newGrad)">
+                <form [formGroup]="newGrad" (ngSubmit)="insertGrad(newGrad)">
                     <div class="form-group">
                         <div class="input-group">
                             <div class="input-group-prepend">
@@ -37,12 +37,12 @@
                             </div>
                             <select class="form-control" type="number" formControlName="drzavaId">
                                 <option value=null default selected>Odaberi drzavu:</option>
-                                <option *ngFor="let drzava of _listaDrzava" [ngValue]=drzava.id>{{drzava.ime}}</option>+
+                                <option *ngFor="let drzava of listaDrzava" [ngValue]=drzava.id>{{drzava.ime}}</option>+
                             </select>
                         </div>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-success btn-md btn-block" [disabled]="_newGrad.invalid">
+                        <button type="submit" class="btn btn-success btn-md btn-block" [disabled]="newGrad.invalid">
                         <i class="fas fa-database"></i>
                         Kreiraj grad</button>
                     </div>
@@ -62,7 +62,7 @@
                             <th></th>
                         </tr>
                     </thead>
-                    <tbody [formGroup]="grad" *ngFor="let grad of _listaGradova.controls; let i=index;">
+                    <tbody [formGroup]="grad" *ngFor="let grad of listaGradova.controls; let i=index;">
                         <tr class="clickable">
                             <th class="numberH" scope="row">{{i+1}}</th>
                             <td class="idH">{{grad.value.id}}</td>
@@ -75,15 +75,15 @@
                             </button>
                             </td>
                             <td class="table-button">
-                                <button class="btn btn-danger ml-1" [disabled]="grad.invalid" mwlConfirmationPopover [popoverTitle]="_popover.popoverTitle" [popoverMessage]="_popover.popoverMessage[1]" placement="bottom" (confirm)="_popover.cancelClicked = true; onDelete(grad.value.id, i)"
-                                    (cancel)="_popover.cancelClicked = true" [confirmText]="_popover.confirmText" [cancelText]="_popover.cancelText" data-toggle="tooltip" data-html="true" title="Izbrisi grad">
+                                <button class="btn btn-danger ml-1" [disabled]="grad.invalid" mwlConfirmationPopover [popoverTitle]="popover.popoverTitle" [popoverMessage]="popover.popoverMessage[1]" placement="bottom" (confirm)="popover.cancelClicked = true; onDelete(grad.value.id, i)"
+                                    (cancel)="popover.cancelClicked = true" [confirmText]="popover.confirmText" [cancelText]="popover.cancelText" data-toggle="tooltip" data-html="true" title="Izbrisi grad">
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
-                <div *ngIf="!_listaGradova?.length;">
+                <div *ngIf="!listaGradova?.length;">
                     <h3 class="emptyList ">Trenutno nemate niti jedan grad u bazi.</h3>
                 </div>
             </div>
