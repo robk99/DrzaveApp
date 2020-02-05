@@ -1,14 +1,13 @@
 ﻿using DAL.Interfaces.Models;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
 namespace DAL.Models
 {
-    public class Drzava : IDrzava
+    public class City : ICity
     {
-        public Drzava()
+        public City()
         {
         }
 
@@ -17,9 +16,14 @@ namespace DAL.Models
         public int Id { get; set; }
 
         [Required]
-        public string Ime { get; set; }
+        public string Name { get; set; }
+
+        public int? Population { get; set; }
+
+        [ForeignKey("country_id")]
+        public int? CountryId { get; set; }
 
         [JsonIgnore]
-        public virtual ICollection<Grad> Gradovi { get; set; }
+        public Country Country { get; set; }
     }
 }

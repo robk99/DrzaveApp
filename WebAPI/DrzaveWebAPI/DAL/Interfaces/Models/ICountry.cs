@@ -1,9 +1,9 @@
 ﻿namespace DAL.Interfaces.Models
 {
-    public interface IDrzava
+    public interface ICountry
     {
         public int Id { get; set; }
-        public string Ime { get; set; }
+        public string Name { get; set; }
 
     }
 }

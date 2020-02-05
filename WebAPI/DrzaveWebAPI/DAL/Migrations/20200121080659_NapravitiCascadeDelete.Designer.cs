@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace DAL.Migrations
 {
-    [DbContext(typeof(DrzavedbContext))]
+    [DbContext(typeof(CountriesdbContext))]
     [Migration("20200121080659_NapravitiCascadeDelete")]
     partial class NapravitiCascadeDelete
     {

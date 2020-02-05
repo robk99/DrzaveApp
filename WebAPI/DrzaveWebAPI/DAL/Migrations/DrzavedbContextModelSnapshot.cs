@@ -8,7 +8,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace DAL.Migrations
 {
-    [DbContext(typeof(DrzavedbContext))]
+    [DbContext(typeof(CountriesdbContext))]
     partial class DrzavedbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

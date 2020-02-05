@@ -24,10 +24,14 @@ namespace DrzaveWebAPI.Controllers
         [HttpPost]
         public IActionResult Login([FromBody]LoginUser user)
         {
+            // Check User on database
+
             if (user == null)
             {
                 return BadRequest("Invalid client request");
             }
+
+            // Else create Token in own Service
 
             if (user.username == "john" && user.password == "123")
             {
@@ -37,7 +41,7 @@ namespace DrzaveWebAPI.Controllers
                 var tokeOptions = new JwtSecurityToken(
                     issuer: angularBaseUrl,
                     audience: angularBaseUrl,
-                    expires: DateTime.Now.AddMinutes(100),
+                    expires: DateTime.Now.AddMinutes(3600),
                     signingCredentials: signinCredentials
                 );
 

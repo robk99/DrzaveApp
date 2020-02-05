@@ -4,27 +4,28 @@ using DAL.Helpers;
 
 namespace DAL
 {
-    public class DrzavedbContext : DbContext
+    public class CountriesdbContext : DbContext
     {
-        public DrzavedbContext()
+        public CountriesdbContext()
         {
         }
-        public DrzavedbContext(DbContextOptions<DrzavedbContext> options)
+        public CountriesdbContext(DbContextOptions<CountriesdbContext> options)
             : base(options)
         {
 
         }
 
-        public DbSet<Drzava> Drzave { get; set; }
-        public DbSet<Grad> Gradovi { get; set; }
+        public DbSet<Country> Countries { get; set; }
+        public DbSet<City> Cities { get; set; }
+        public DbSet<LoginUser> LoginUsers { get; set;}
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
 
-            builder.Entity<Grad>()
-                .HasOne<Drzava>(g => g.Drzava)
-                .WithMany(d => d.Gradovi)
+            builder.Entity<City>()
+                .HasOne<Country>(g => g.Country)
+                .WithMany(d => d.Cities)
                 .OnDelete(DeleteBehavior.Cascade);
 
 

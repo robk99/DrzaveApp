@@ -11,9 +11,6 @@ using BLL.Services;
 using NLog;
 using System;
 using System.IO;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
 
 namespace DrzaveWebAPI
 {
@@ -30,10 +27,10 @@ namespace DrzaveWebAPI
         public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<IDrzavaService, DrzavaService>();
-            services.AddTransient<IGradService, GradService>();
-            services.AddEntityFrameworkNpgsql().AddDbContext<DrzavedbContext>(opt => opt.UseNpgsql(Configuration.GetConnectionString("DrzaveConnection")))
-                .AddUnitOfWork<DrzavedbContext>();
+            services.AddTransient<ICountryService, CountryService>();
+            services.AddTransient<ICityService, CityService>();
+            services.AddEntityFrameworkNpgsql().AddDbContext<CountriesdbContext>(opt => opt.UseNpgsql(Configuration.GetConnectionString("CountriesAPPConnection")))
+                .AddUnitOfWork<CountriesdbContext>();
             services.AddAuthenticationService(Configuration);
             services.AddControllers().AddNewtonsoftJson();
             services.AddCors(options =>
@@ -66,6 +63,7 @@ namespace DrzaveWebAPI
             app.UseCors();
 
             app.UseAuthentication();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
