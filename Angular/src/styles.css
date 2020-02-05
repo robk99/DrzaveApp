@@ -110,7 +110,7 @@ td.table-button {
     width: 48px;
 }
 
-.izmjenaNaslov {
+.changeTitle {
     color: rgb(121, 121, 121);
 }
 
@@ -118,23 +118,23 @@ td.table-button {
 /* END: ALL Component elements */
 
 
-/* START: Drzava/Grad - component elements */
+/* START: Country/City - component elements */
 
-.izbornik {
+.menu {
     color: rgb(46, 2, 2);
     font-weight: 400;
 }
 
-.izbornik span {
+.menu span {
     font-weight: 100;
     color: rgb(199, 199, 199);
 }
 
-.izbornik span.neoznaceni {
+.menu span.unmarked {
     transition: 0.5s;
 }
 
-.izbornik span.neoznaceni:hover {
+.menu span.unmarked:hover {
     color: rgb(46, 2, 2);
     font-weight: 200;
     cursor: pointer;
@@ -142,7 +142,7 @@ td.table-button {
     transition: 0.5s;
 }
 
-.izbornik a {
+.menu a {
     text-decoration: none;
 }
 
@@ -162,10 +162,10 @@ td.table-button {
 }
 
 
-/* END: Drzava/Grad - component elements */
+/* END: Country/City - component elements */
 
 
-/* START: Drzava.component elements */
+/* START: Country.component elements */
 
 .collapsedItem {
     padding-top: 0px !important;
@@ -174,37 +174,37 @@ td.table-button {
     height: 0px;
 }
 
-.gradoviNaslov {
+.citiesTitle {
     padding-left: 2%;
 }
 
-.gradIme {
+.cityName {
     color: rgb(92, 92, 92);
     padding-left: 3.5%;
 }
 
-.tablica-drzava {
+.table-country {
     margin-top: 1.3%;
 }
 
 
-/* END: Drzava.component elements */
+/* END: Country.component elements */
 
 
-/* START: Grad.component elements */
+/* START: City.component elements */
 
-.gradovi-row,
-.gradovi-col {
+.cities-row,
+.cities-col {
     padding: 0 !important;
 }
 
-.tablica-gradova {
+.table-city {
     padding: 0 !important;
     margin-top: 1.1%;
 }
 
 
-/* END: Grad.component elements */
+/* END: City.component elements */
 
 
 /* START: Edits - component elements */
@@ -227,24 +227,24 @@ td.table-button {
 /* END: Edits - component elements */
 
 
-/* START: Drzava-edit.component elements */
+/* START: Country-edit.component elements */
 
 .noPointer {
     cursor: initial;
 }
 
 
-/* START: Drzava-edit.component elements */
+/* START: Country-edit.component elements */
 
 
-/* START: Grad-edit.component elements */
+/* START: City-edit.component elements */
 
 .btn-warning {
     margin: 0 14%;
 }
 
 
-/* START: Grad-edit.component elements */
+/* START: City-edit.component elements */
 
 
 /* START: Login.component elements */
@@ -262,13 +262,13 @@ td.table-button {
 /* START: Media Queries */
 
 @media (max-width: 1199px) {
-    .tablica-gradova {
+    .table-city {
         margin-top: -1.1%;
     }
 }
 
 @media (max-width: 991px) {
-    .tablica-drzava {
+    .table-country {
         margin-top: 6.2%;
     }
     .col-md-5,
@@ -282,7 +282,7 @@ td.table-button {
 }
 
 @media (max-width: 767px) {
-    .tablica-drzava {
+    .table-country {
         margin-top: 4%;
     }
 }

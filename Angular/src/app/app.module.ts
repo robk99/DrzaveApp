@@ -7,15 +7,15 @@ import { ToastrModule } from 'ngx-toastr';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DrzavaComponent } from './drzave-app/drzava/drzava.component';
-import { GradComponent } from './drzave-app/grad/grad.component';
+import { CountryComponent } from './drzave-app/country/country.component';
+import { CityComponent } from './drzave-app/city/city.component';
 import { HttpErrorInterceptorService } from "./drzave-app/shared/services/http/http-error-interceptor.service";
-import { DrzavaEditComponent } from './drzave-app/drzava/drzava-edit/drzava-edit.component';
-import { GradEditComponent } from './drzave-app/grad/grad-edit/grad-edit.component';
+import { DrzavaEditComponent as CountryEditComponent } from './drzave-app/country/country-edit/country-edit.component';
+import { CityEditComponent as CityEditComponent } from './drzave-app/city/city-edit/city-edit.component';
 import { LoginComponent } from './login/login-component/login.component';
 import { HomeComponent } from "./home/home.component";
 import { JwtModule } from "@auth0/angular-jwt";
-import { LoginService } from './login/login-service/login.service';
+import { environment } from "../environments/environment";
 
 export function tokenGetter(){
   return localStorage.getItem("jwt");
@@ -25,10 +25,10 @@ export function tokenGetter(){
 @NgModule({
   declarations: [
     AppComponent,
-    DrzavaComponent,
-    GradComponent,
-    DrzavaEditComponent,
-    GradEditComponent,
+    CountryComponent,
+    CityComponent,
+    CountryEditComponent,
+    CityEditComponent,
     LoginComponent,
     HomeComponent,
 
@@ -47,7 +47,7 @@ export function tokenGetter(){
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        whitelistedDomains: ["localhost:44326"],
+        whitelistedDomains: [environment.whitelistedDomain],
         blacklistedRoutes: []
       }
     })

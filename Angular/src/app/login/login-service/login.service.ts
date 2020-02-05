@@ -38,7 +38,7 @@ export class LoginService {
   }
 
   logOut() {
-    console.log("User izlogiran!");
+    console.log("User logged off!");
     localStorage.removeItem('jwt');
     this.setUser('user', '');
   }

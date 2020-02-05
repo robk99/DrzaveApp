@@ -6,19 +6,19 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class GradService extends GenericHttpService<Grad> {
+export class CityService extends GenericHttpService<City> {
 
   protected parentName: string;
 
   constructor(private _http: HttpClient) {
     super(
       _http,
-      'gradovi'
+      'cities'
     );
-      this.parentName = 'drzave';
+      this.parentName = 'countries';
    }
 
-   getGradovibyDrzava(id: number): Observable<Grad[]>{
+   getCitiesByCountry(id: number): Observable<City[]>{
     return this.http.get<any[]>(`${this.baseUrl}/${this.parentName}/${id}/${this.endpoint}`);
    }
 }

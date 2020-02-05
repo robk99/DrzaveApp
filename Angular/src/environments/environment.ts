@@ -4,11 +4,12 @@
 
 export const environment = {
   production: false,
-  baseUrl: "https://localhost:44326/api",
-  drzaveRoute: "drzave",
-  gradoviRoute: "gradovi",
-  drzaveEditRoute: "drzave/details",
-  gradoviEditRoute: "gradovi/details",
+  whitelistedDomain: "http://localhost:44326",
+  baseUrl: "http://localhost:44326/api",
+  countriesRoute: "countries",
+  citiesRoute: "cities",
+  countriesEditRoute: "countries/details",
+  citiesEditRoute: "cities/details",
   loginRoute: "login",
   homeRoute: "home"
 };

@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DrzavaComponent } from './drzave-app/drzava/drzava.component';
-import { GradComponent } from './drzave-app/grad/grad.component';
-import { DrzavaEditComponent } from './drzave-app/drzava/drzava-edit/drzava-edit.component';
+import { CountryComponent } from './drzave-app/country/country.component';
+import { CityComponent } from './drzave-app/city/city.component';
+import { DrzavaEditComponent as CountryEditComponent } from './drzave-app/country/country-edit/country-edit.component';
 import { environment } from '../environments/environment';
-import { GradEditComponent } from './drzave-app/grad/grad-edit/grad-edit.component';
+import { CityEditComponent as CityEditComponent } from './drzave-app/city/city-edit/city-edit.component';
 import { LoginComponent } from './login/login-component/login.component';
 import { HomeComponent } from "./home/home.component";
 import { AuthGuard } from './guards/auth-guard.service';
@@ -15,10 +15,10 @@ export const ROUTES: Routes = [
   { path: '', redirectTo: `/${environment.homeRoute}`, pathMatch: 'full' },
   { path: `${environment.homeRoute}`, component:HomeComponent },
   { path: `${environment.loginRoute}`, component:LoginComponent },
-  { path: `${environment.drzaveRoute}`, component: DrzavaComponent, canActivate: [AuthGuard] },
-  { path: `${environment.gradoviRoute}`, component: GradComponent, canActivate: [AuthGuard] },
-  { path: `${environment.drzaveEditRoute}/:id`, component: DrzavaEditComponent, canActivate: [AuthGuard]},
-  { path: `${environment.gradoviEditRoute}/:id`, component: GradEditComponent, canActivate: [AuthGuard]}
+  { path: `${environment.countriesRoute}`, component: CountryComponent, canActivate: [AuthGuard] },
+  { path: `${environment.citiesRoute}`, component: CityComponent, canActivate: [AuthGuard] },
+  { path: `${environment.countriesEditRoute}/:id`, component: CountryEditComponent, canActivate: [AuthGuard]},
+  { path: `${environment.citiesEditRoute}/:id`, component: CityEditComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

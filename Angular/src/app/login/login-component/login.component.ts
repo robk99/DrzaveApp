@@ -2,10 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormArray, Validators, FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../login-service/login.service';
-import { HttpClient } from '@angular/common/http';
 import { environment } from "../../../environments/environment";
-import { Output, EventEmitter } from '@angular/core';
-import {Subject} from 'rxjs';   
 
 
 @Component({
@@ -37,9 +34,9 @@ export class LoginComponent implements OnInit {
       let token = (<any>response).token;
       localStorage.setItem('jwt', token);
       this.invalidLogin = false;
-      this.router.navigate([`/${environment.drzaveRoute}`]);
+      this.router.navigate([`/${environment.countriesRoute}`]);
     }, err => {
-      console.log("GRESKA u ulogiravanju!", err);
+      console.log("ERROR on login!", err);
       console.log(form.value);
       this.invalidLogin = true;
     });

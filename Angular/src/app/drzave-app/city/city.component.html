@@ -1,15 +1,15 @@
 <div class="jumbotron">
-    <div class="col gradovi-col">
-        <h2 class="izmjenaNaslov text-center">Kreiranje grada</h2>
+    <div class="col cities-col">
+        <h2 class="izmjenaNaslov text-center">City Creating</h2>
         <br><br>
-        <div class="row gradovi-row">
+        <div class="row cities-row">
             <div class="col-md-5">
                 <h1 class="izbornik">
-                    <a href="/drzave">
-                        <span class="neoznaceni">Drzave</span></a>
-                    <span> / </span>Gradovi</h1>
+                    <a href="/countries">
+                        <span class="neoznaceni">Countries</span></a>
+                    <span> / </span>Cities</h1>
                 <hr>
-                <form [formGroup]="newGrad" (ngSubmit)="insertGrad(newGrad)">
+                <form [formGroup]="newCity" (ngSubmit)="insertCity(newCity)">
                     <div class="form-group">
                         <div class="input-group">
                             <div class="input-group-prepend">
@@ -17,7 +17,7 @@
                                     <i class="fas fa-city"></i>
                                 </div>
                             </div>
-                            <input class="form-control" formControlName="ime" placeholder="Unesi novi grad" required maxlength="30">
+                            <input class="form-control" formControlName="name" placeholder="Enter city name" required maxlength="30">
                         </div>
                         <br>
                         <div class="input-group">
@@ -26,7 +26,7 @@
                                     <i class="fas fa-users"></i>
                                 </div>
                             </div>
-                            <input class="form-control" type="number" formControlName="populacija" placeholder="Unesi populaciju grada" maxlength="8">
+                            <input class="form-control" type="number" formControlName="population" placeholder="Enter city population" maxlength="8">
                         </div>
                         <br>
                         <div class="input-group">
@@ -35,56 +35,56 @@
                                     <i class="fas fa-globe-europe"></i>
                                 </div>
                             </div>
-                            <select class="form-control" type="number" formControlName="drzavaId">
+                            <select class="form-control" type="number" formControlName="countryId">
                                 <option value=null default selected>Odaberi drzavu:</option>
-                                <option *ngFor="let drzava of listaDrzava" [ngValue]=drzava.id>{{drzava.ime}}</option>+
+                                <option *ngFor="let country of listOfCountries" [ngValue]=country.id>{{country.name}}</option>+
                             </select>
                         </div>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-success btn-md btn-block" [disabled]="newGrad.invalid">
+                        <button type="submit" class="btn btn-success btn-md btn-block" [disabled]="newCity.invalid">
                         <i class="fas fa-database"></i>
-                        Kreiraj grad</button>
+                        Create city</button>
                     </div>
                 </form>
             </div>
             <div class="separator"></div>
-            <div class="col-md-6 tablica-gradova">
+            <div class="col-md-6 table-cities">
                 <table class="table table-hover">
                     <thead>
                         <tr>
                             <th class="listHeader numberH" scope="col">#</th>
                             <th class="listHeader idH" scope="col">Id</th>
-                            <th class="listHeader" scope="col">Ime grada</th>
-                            <th class="listHeader" scope="col">Populacija</th>
-                            <th class="listHeader text-center" scope="col">Ime drzave</th>
+                            <th class="listHeader" scope="col">City name</th>
+                            <th class="listHeader" scope="col">Population</th>
+                            <th class="listHeader text-center" scope="col">Country name</th>
                             <th></th>
                             <th></th>
                         </tr>
                     </thead>
-                    <tbody [formGroup]="grad" *ngFor="let grad of listaGradova.controls; let i=index;">
+                    <tbody [formGroup]="city" *ngFor="let city of listOfCities.controls; let i=index;">
                         <tr class="clickable">
                             <th class="numberH" scope="row">{{i+1}}</th>
-                            <td class="idH">{{grad.value.id}}</td>
-                            <td>{{grad.value.ime}}</td>
-                            <td class="text-center">{{grad.value.populacija? (grad.value.populacija | number:'2.') : '-' }}</td>
-                            <td class="text-center">{{grad.value.drzavaIme? (grad.value.drzavaIme | async) : '-'}}</td>
+                            <td class="idH">{{city.value.id}}</td>
+                            <td>{{city.value.name}}</td>
+                            <td class="text-center">{{city.value.population? (city.value.population | number:'2.') : '-' }}</td>
+                            <td class="text-center">{{city.value.countryIme? (city.value.countryIme | async) : '-'}}</td>
                             <td class="table-button">
-                                <button type="submit" class="btn btn-primary" (click)="editButtonClick(grad.value.id)" data-toggle="tooltip" data-html="true" title="Izmijeni grad">
+                                <button type="submit" class="btn btn-primary" (click)="editButtonClick(city.value.id)" data-toggle="tooltip" data-html="true" title="Change city">
                                 <i class="far fa-edit"></i>
                             </button>
                             </td>
                             <td class="table-button">
-                                <button class="btn btn-danger ml-1" [disabled]="grad.invalid" mwlConfirmationPopover [popoverTitle]="popover.popoverTitle" [popoverMessage]="popover.popoverMessage[1]" placement="bottom" (confirm)="popover.cancelClicked = true; onDelete(grad.value.id, i)"
-                                    (cancel)="popover.cancelClicked = true" [confirmText]="popover.confirmText" [cancelText]="popover.cancelText" data-toggle="tooltip" data-html="true" title="Izbrisi grad">
+                                <button class="btn btn-danger ml-1" [disabled]="city.invalid" mwlConfirmationPopover [popoverTitle]="popover.popoverTitle" [popoverMessage]="popover.popoverMessage[1]" placement="bottom" (confirm)="popover.cancelClicked = true; onDelete(city.value.id, i)"
+                                    (cancel)="popover.cancelClicked = true" [confirmText]="popover.confirmText" [cancelText]="popover.cancelText" data-toggle="tooltip" data-html="true" title="Delete city">
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
-                <div *ngIf="!listaGradova?.length;">
-                    <h3 class="emptyList ">Trenutno nemate niti jedan grad u bazi.</h3>
+                <div *ngIf="!listOfCities?.length;">
+                    <h3 class="emptyList ">List of cities is currently empty.</h3>
                 </div>
             </div>
         </div>

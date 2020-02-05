@@ -6,12 +6,12 @@ import { GenericHttpService } from './generic-http.service';
 @Injectable({
   providedIn: 'root'
 })
-export class DrzavaService extends GenericHttpService<Drzava> {
+export class CountryService extends GenericHttpService<Country> {
 
   constructor(_http:HttpClient) { 
     super(
       _http,
-      'drzave'
+      'countries'
     );
   }
 }

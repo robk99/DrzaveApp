@@ -1,0 +1,80 @@
+<div class="jumbotron">
+    <div class="col">
+        <h2 class="changeTitle text-center">Creating country</h2>
+        <br><br>
+        <div class="row">
+            <div class="col-md-5">
+                <h1 class="menu">Countries<span> / </span>
+                    <a href="/cities"> <span class="unmarked">Cities</span> </a>
+                </h1>
+                <hr>
+                <form [formGroup]="newCountry" (ngSubmit)="insertCountry(newCountry)">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fas fa-globe-europe"></i>
+                                </div>
+                            </div>
+                            <input class="form-control" formControlName="name" placeholder="Enter country name" required maxlength="30">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success btn-md btn-block" [disabled]="newCountry.invalid">
+                        <i class="fas fa-database"></i>
+                        Create Country</button>
+                    </div>
+                </form>
+            </div>
+            <div class="separator"></div>
+            <div class="col-md-6 table-country">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th class="numberH" scope="col">#</th>
+                            <th class="idH" scope="col">Id</th>
+                            <th scope="col">Country name</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody [formGroup]="country" *ngFor="let country of listOfCountries.controls; let i=index;">
+                        <tr data-toggle="collapse" [attr.data-target]="'#' + country.value.name" class="clickable">
+                            <th class="numberH" scope="row">{{i+1}}</th>
+                            <td class="idH" data-toggle="tooltip" data-html="true" title="Click for list of cities">{{country.value.id}}</td>
+                            <td data-toggle="tooltip" data-html="true" title="Click for list of cities">{{country.value.name}}</td>
+                            <td class="table-button">
+                                <button type="submit" class="btn btn-primary" (click)="editButtonClick(country.value.id)" data-toggle="tooltip" data-html="true" title="Change country">
+                                <i class="far fa-edit"></i>
+                            </button>
+                            </td>
+                            <td class="table-button">
+                                <button class="btn btn-danger ml-1" [disabled]="country.invalid" mwlConfirmationPopover [popoverTitle]="_popover.popoverTitle" [popoverMessage]="_popover.popoverMessage[0]" placement="bottom" (confirm)="_popover.cancelClicked = true; onDelete(country.value.id, i)"
+                                    (cancel)="_popover.cancelClicked = true" [confirmText]="_popover.confirmText" [cancelText]="_popover.cancelText" data-toggle="tooltip" data-html="true" title="Delete country">
+                                    <i class="fas fa-trash"></i>
+                            </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="collapsedItem"></td>
+                            <td class="collapsedItem"></td>
+                            <td colspan="3" class="collapsedItem">
+                                <h6 class="collapse citiesTitle" [attr.id]="country.value.name">Cities:</h6>
+                            </td>
+                        </tr>
+                        <tr *ngFor="let city of listOfCities;">
+                            <th class="collapsedItem"></th>
+                            <td class="collapsedItem "></td>
+                            <td colspan="3" class="collapsedItem ">
+                                <div class="collapse cityName" [attr.id]="country.value.name">{{(city.countryId == country.value.id)? city.name : null }}</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div *ngIf="!listOfCountries?.length;">
+                    <h3 class="emptyList ">List of countries is currently empty.</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

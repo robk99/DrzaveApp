@@ -1,9 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LoginService } from './login/login-service/login.service';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
-import { Observable, of } from 'rxjs';
-import { runInThisContext } from 'vm';
 
 @Component({
   selector: 'app-root',
