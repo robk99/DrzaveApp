@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { GenericHttpService } from './generic-http.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { City } from "../../models/city.model";
+
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +12,9 @@ export class CityService extends GenericHttpService<City> {
 
   protected parentName: string;
 
-  constructor(private _http: HttpClient) {
+  constructor(protected http: HttpClient) {
     super(
-      _http,
+      http,
       'cities'
     );
       this.parentName = 'countries';

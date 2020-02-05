@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormArray, Validators, FormGroup, FormControl } from '@angular/forms';
 import { CountryService } from "../shared/services/http/country.service";
 import { CityService } from "../shared/services/http/city.service";
@@ -6,6 +6,8 @@ import { PopoverService } from '../shared/services/popover.service';
 import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
 import { ToastrService } from 'ngx-toastr';
+import { City } from "./../shared/models/city.model";
+
 
 
 

@@ -8,9 +8,9 @@ import { GenericHttpService } from './generic-http.service';
 })
 export class CountryService extends GenericHttpService<Country> {
 
-  constructor(_http:HttpClient) { 
+  constructor(http:HttpClient) { 
     super(
-      _http,
+      http,
       'countries'
     );
   }

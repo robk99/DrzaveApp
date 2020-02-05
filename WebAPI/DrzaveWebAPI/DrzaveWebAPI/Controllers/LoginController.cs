@@ -17,7 +17,7 @@ namespace DrzaveWebAPI.Controllers
 
         public LoginController(IConfiguration config)
         {
-            this.configuration = config;
+            configuration = config;
             angularBaseUrl = configuration.GetSection("AngularBaseUrl").Value;
         }
 

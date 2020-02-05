@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CountryService } from '../../shared/services/http/country.service';
 import { CityService } from '../../shared/services/http/city.service';
 import { ToastrService } from 'ngx-toastr';
+import { City } from "../../shared/models/city.model";
 
 @Component({
   selector: 'app-city-edit',

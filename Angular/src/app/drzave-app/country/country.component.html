@@ -1,6 +1,6 @@
 <div class="jumbotron">
     <div class="col">
-        <h2 class="changeTitle text-center">Creating country</h2>
+        <h2 class="changeTitle text-center">Country creating</h2>
         <br><br>
         <div class="row">
             <div class="col-md-5">
@@ -49,8 +49,8 @@
                             </button>
                             </td>
                             <td class="table-button">
-                                <button class="btn btn-danger ml-1" [disabled]="country.invalid" mwlConfirmationPopover [popoverTitle]="_popover.popoverTitle" [popoverMessage]="_popover.popoverMessage[0]" placement="bottom" (confirm)="_popover.cancelClicked = true; onDelete(country.value.id, i)"
-                                    (cancel)="_popover.cancelClicked = true" [confirmText]="_popover.confirmText" [cancelText]="_popover.cancelText" data-toggle="tooltip" data-html="true" title="Delete country">
+                                <button class="btn btn-danger ml-1" [disabled]="country.invalid" mwlConfirmationPopover [popoverTitle]="popover.popoverTitle" [popoverMessage]="popover.popoverMessage[0]" placement="bottom" (confirm)="popover.cancelClicked = true; onDelete(country.value.id, i)"
+                                    (cancel)="popover.cancelClicked = true" [confirmText]="popover.confirmText" [cancelText]="popover.cancelText" data-toggle="tooltip" data-html="true" title="Delete country">
                                     <i class="fas fa-trash"></i>
                             </button>
                             </td>

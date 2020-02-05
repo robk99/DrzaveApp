@@ -1,12 +1,12 @@
 <div class="jumbotron">
     <div class="col cities-col">
-        <h2 class="izmjenaNaslov text-center">City Creating</h2>
+        <h2 class="changeTitle text-center">City Creating</h2>
         <br><br>
         <div class="row cities-row">
             <div class="col-md-5">
-                <h1 class="izbornik">
+                <h1 class="menu">
                     <a href="/countries">
-                        <span class="neoznaceni">Countries</span></a>
+                        <span class="unmarked">Countries</span></a>
                     <span> / </span>Cities</h1>
                 <hr>
                 <form [formGroup]="newCity" (ngSubmit)="insertCity(newCity)">
@@ -68,7 +68,7 @@
                             <td class="idH">{{city.value.id}}</td>
                             <td>{{city.value.name}}</td>
                             <td class="text-center">{{city.value.population? (city.value.population | number:'2.') : '-' }}</td>
-                            <td class="text-center">{{city.value.countryIme? (city.value.countryIme | async) : '-'}}</td>
+                            <td class="text-center">{{city.value.countryName? (city.value.countryName | async) : '-'}}</td>
                             <td class="table-button">
                                 <button type="submit" class="btn btn-primary" (click)="editButtonClick(city.value.id)" data-toggle="tooltip" data-html="true" title="Change city">
                                 <i class="far fa-edit"></i>

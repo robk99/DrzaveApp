@@ -26,7 +26,7 @@ namespace DrzaveWebAPI.Controllers
         }
 
         // GET: api/countries
-        [HttpGet, Authorize]
+        [HttpGet]
         public async Task<ActionResult> GetCountries()
         {
             //throw new System.Exception();

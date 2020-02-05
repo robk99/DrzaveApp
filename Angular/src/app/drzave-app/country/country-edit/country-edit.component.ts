@@ -12,7 +12,7 @@ import { City } from "../../shared/models/city.model";
   templateUrl: './country-edit.component.html',
   styles: []
 })
-export class DrzavaEditComponent implements OnInit {
+export class CountryEditComponent implements OnInit {
   private id: number;
   private countryForEdit: FormGroup = this.formBuilder.group({
     id: new FormControl({value: 0, disabled: true}),
