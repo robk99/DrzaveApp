@@ -10240,3 +10240,369 @@
 2020-02-05 16:49:05.8802 Trace Opening D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0\./../../../HttpRequestHandlingLogs/logs/2020-02-05_HttpLog.json with allowFileSharedWriting=False
 2020-02-05 16:49:05.9112 Trace Opening D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0\./../../../HttpRequestHandlingLogs/logs/2020-02-05_HttpLog.json with allowFileSharedWriting=False
 2020-02-05 16:49:05.9279 Trace Opening D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0\./../../../HttpRequestHandlingLogs/logs/2020-02-05_HttpLog.json with allowFileSharedWriting=False
+2020-02-05 17:04:31.8089 Debug ScanAssembly('NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2020-02-05 17:04:31.9020 Debug Found assembly location directory: 'D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0' (NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c)
+2020-02-05 17:04:31.9020 Debug Search for auto loading files in location: D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0
+2020-02-05 17:04:31.9181 Debug Start auto loading, location: D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0
+2020-02-05 17:04:31.9181 Info Auto loading assembly file: D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0\NLog.Extensions.Logging.dll
+2020-02-05 17:04:31.9295 Info Loading assembly file: D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0\NLog.Extensions.Logging.dll
+2020-02-05 17:04:31.9771 Info NLog.Extensions.Logging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 1.6.0.1196. Product version: 1.6.0.
+2020-02-05 17:04:31.9771 Debug ScanAssembly('NLog.Extensions.Logging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2020-02-05 17:04:31.9771 Info Auto loading assembly file: D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0\NLog.Extensions.Logging.dll succeeded!
+2020-02-05 17:04:31.9933 Info Auto loading assembly file: D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0\NLog.Web.AspNetCore.dll
+2020-02-05 17:04:31.9933 Info Loading assembly file: D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0\NLog.Web.AspNetCore.dll
+2020-02-05 17:04:32.0356 Info NLog.Web.AspNetCore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.9.0.1511. Product version: 4.9.0.
+2020-02-05 17:04:32.0356 Debug ScanAssembly('NLog.Web.AspNetCore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2020-02-05 17:04:32.0356 Info Auto loading assembly file: D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0\NLog.Web.AspNetCore.dll succeeded!
+2020-02-05 17:04:32.0532 Trace Assembly 'Microsoft.Extensions.Logging, Version=3.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60' will be hidden in callsite stacktrace
+2020-02-05 17:04:32.0532 Trace Assembly 'Microsoft.Extensions.Logging.Abstractions, Version=3.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60' will be hidden in callsite stacktrace
+2020-02-05 17:04:32.0532 Trace Assembly 'NLog.Extensions.Logging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c' will be hidden in callsite stacktrace
+2020-02-05 17:04:32.0684 Trace Assembly 'NLog.Web.AspNetCore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c' will be hidden in callsite stacktrace
+2020-02-05 17:04:32.0684 Debug Auto loading done
+2020-02-05 17:04:32.0684 Info Message Template Auto Format enabled
+2020-02-05 17:04:32.0864 Info Loading assembly: NLog.Web.AspNetCore
+2020-02-05 17:04:32.0864 Debug ScanAssembly('NLog.Web.AspNetCore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2020-02-05 17:04:32.1072 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-02-05 17:04:32.1143 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2020-02-05 17:04:32.1143 Debug Setting 'UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2020-02-05 17:04:32.1436 Trace Wrapping LevelLayoutRenderer with UppercaseLayoutRendererWrapper
+2020-02-05 17:04:32.1486 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-02-05 17:04:32.1486 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-02-05 17:04:32.1486 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-02-05 17:04:32.1630 Trace Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-02-05 17:04:32.1630 Trace  Scanning Property Culture '' System.Globalization
+2020-02-05 17:04:32.1630 Trace  Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-02-05 17:04:32.1808 Trace  Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-02-05 17:04:32.1808 Trace   Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-02-05 17:04:32.1808 Trace   Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-02-05 17:04:32.1957 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-02-05 17:04:32.1957 Trace Scanning LoggerNameLayoutRenderer 'Layout Renderer: ${logger}'
+2020-02-05 17:04:32.1957 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-02-05 17:04:32.2099 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2020-02-05 17:04:32.2099 Debug Setting 'FileTarget.name' to 'ExceptionMiddleware'
+2020-02-05 17:04:32.2271 Debug Setting 'FileTarget.fileName' to './../../../GlobalErrorHandlingLogs/logs/${shortdate}_logfile.txt'
+2020-02-05 17:04:32.2271 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-02-05 17:04:32.2271 Trace Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2020-02-05 17:04:32.2439 Debug Setting 'FileTarget.layout' to '${longdate} ${level:uppercase=true} ${message} ${exception:format=tostring}'
+2020-02-05 17:04:32.2439 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-02-05 17:04:32.2439 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2020-02-05 17:04:32.2589 Debug Setting 'UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2020-02-05 17:04:32.2589 Trace Wrapping LevelLayoutRenderer with UppercaseLayoutRendererWrapper
+2020-02-05 17:04:32.2589 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-02-05 17:04:32.2739 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-02-05 17:04:32.2739 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-02-05 17:04:32.2739 Trace Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-02-05 17:04:32.2881 Trace  Scanning Property Culture '' System.Globalization
+2020-02-05 17:04:32.2881 Trace  Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-02-05 17:04:32.2881 Trace  Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-02-05 17:04:32.3027 Trace   Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-02-05 17:04:32.3027 Trace   Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-02-05 17:04:32.3027 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-02-05 17:04:32.3169 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2020-02-05 17:04:32.3169 Debug Setting 'ExceptionLayoutRenderer.format' to 'tostring'
+2020-02-05 17:04:32.3362 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-02-05 17:04:32.3362 Trace Scanning ExceptionLayoutRenderer 'Layout Renderer: ${exception}'
+2020-02-05 17:04:32.3362 Trace  Scanning Property Formats 'System.Collections.Generic.List`1[NLog.Config.ExceptionRenderingFormat]' System.Collections.Generic
+2020-02-05 17:04:32.3508 Info Adding target FileTarget(Name=ExceptionMiddleware)
+2020-02-05 17:04:32.3508 Debug Registered target ExceptionMiddleware: NLog.Targets.FileTarget
+2020-02-05 17:04:32.3508 Debug Setting 'AutoFlushTargetWrapper.name' to 'file'
+2020-02-05 17:04:32.3667 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-02-05 17:04:32.3667 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2020-02-05 17:04:32.3667 Debug Setting 'UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2020-02-05 17:04:32.3817 Trace Wrapping LevelLayoutRenderer with UppercaseLayoutRendererWrapper
+2020-02-05 17:04:32.3817 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-02-05 17:04:32.3817 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-02-05 17:04:32.3965 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-02-05 17:04:32.3965 Trace Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-02-05 17:04:32.3965 Trace  Scanning Property Culture '' System.Globalization
+2020-02-05 17:04:32.3965 Trace  Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-02-05 17:04:32.4153 Trace  Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-02-05 17:04:32.4153 Trace   Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-02-05 17:04:32.4153 Trace   Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-02-05 17:04:32.4308 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-02-05 17:04:32.4308 Trace Scanning LoggerNameLayoutRenderer 'Layout Renderer: ${logger}'
+2020-02-05 17:04:32.4418 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-02-05 17:04:32.4418 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2020-02-05 17:04:32.4418 Debug Setting 'FileTarget.name' to 'RequestLoggingMiddleware'
+2020-02-05 17:04:32.4576 Debug Setting 'FileTarget.fileName' to './../../../HttpRequestHandlingLogs/logs/${shortdate}_HttpLog.json'
+2020-02-05 17:04:32.4576 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-02-05 17:04:32.4576 Trace Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2020-02-05 17:04:32.4745 Debug Setting 'JsonAttribute.name' to 'level'
+2020-02-05 17:04:32.4745 Debug Setting 'JsonAttribute.layout' to '${level:upperCase=true}'
+2020-02-05 17:04:32.4745 Debug Setting 'UppercaseLayoutRendererWrapper.upperCase' to 'true'
+2020-02-05 17:04:32.4894 Trace Wrapping LevelLayoutRenderer with UppercaseLayoutRendererWrapper
+2020-02-05 17:04:32.4894 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-02-05 17:04:32.4894 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-02-05 17:04:32.4894 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2020-02-05 17:04:32.5078 Trace Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-02-05 17:04:32.5078 Trace  Scanning Property Culture '' System.Globalization
+2020-02-05 17:04:32.5078 Trace  Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-02-05 17:04:32.5226 Trace  Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-02-05 17:04:32.5226 Trace   Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-02-05 17:04:32.5226 Trace   Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-02-05 17:04:32.5368 Debug Setting 'JsonAttribute.name' to 'eventProperties'
+2020-02-05 17:04:32.5368 Debug Setting 'JsonAttribute.encode' to 'false'
+2020-02-05 17:04:32.5368 Debug Setting 'JsonLayout.includeAllProperties' to 'true'
+2020-02-05 17:04:32.5368 Debug Setting 'JsonLayout.maxRecursionLimit' to '5'
+2020-02-05 17:04:32.5557 Debug Registered target RequestLoggingMiddleware: NLog.Targets.FileTarget
+2020-02-05 17:04:32.5557 Info Adding target AutoFlushTargetWrapper(Name=file)
+2020-02-05 17:04:32.5557 Debug Registered target file: NLog.Targets.Wrappers.AutoFlushTargetWrapper
+2020-02-05 17:04:32.5701 Trace ParseRulesElement
+2020-02-05 17:04:32.5838 Debug Unused target checking is started... Rule Count: 2, Target Count: 3
+2020-02-05 17:04:32.5838 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: file
+2020-02-05 17:04:32.5838 Debug Unused target checking is completed. Total Rule Count: 2, Total Target Count: 3, Unused Target Count: 1
+2020-02-05 17:04:32.6084 Debug Watching path 'D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI' filter 'nlog.config' for changes.
+2020-02-05 17:04:32.6139 Debug --- NLog configuration dump ---
+2020-02-05 17:04:32.6139 Debug Targets:
+2020-02-05 17:04:32.6139 Debug File Target[ExceptionMiddleware]
+2020-02-05 17:04:32.6295 Debug File Target[RequestLoggingMiddleware]
+2020-02-05 17:04:32.6295 Debug AutoFlushWrapper Target[file](File Target[RequestLoggingMiddleware])
+2020-02-05 17:04:32.6295 Debug Rules:
+2020-02-05 17:04:32.6461 Debug logNamePattern: (:All) levels: [ Error Fatal ] appendTo: [ ExceptionMiddleware ]
+2020-02-05 17:04:32.6461 Debug logNamePattern: (:All) levels: [ Info ] appendTo: [ RequestLoggingMiddleware ]
+2020-02-05 17:04:32.6461 Debug --- End of NLog configuration dump ---
+2020-02-05 17:04:32.6631 Trace FindReachableObject<System.Object>:
+2020-02-05 17:04:32.6631 Trace Scanning LoggingRule 'logNamePattern: (:All) levels: [ Error Fatal ] appendTo: [ ExceptionMiddleware ]'
+2020-02-05 17:04:32.6631 Trace  Scanning Property Targets 'System.Collections.Generic.List`1[NLog.Targets.Target]' System.Collections.Generic
+2020-02-05 17:04:32.6770 Trace  Scanning FileTarget 'File Target[ExceptionMiddleware]'
+2020-02-05 17:04:32.6770 Trace   Scanning Property FileName ''./../../../GlobalErrorHandlingLogs/logs/${shortdate}_logfile.txt'' NLog.Layouts
+2020-02-05 17:04:32.6770 Trace   Scanning SimpleLayout ''./../../../GlobalErrorHandlingLogs/logs/${shortdate}_logfile.txt''
+2020-02-05 17:04:32.6770 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-02-05 17:04:32.6963 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-02-05 17:04:32.6963 Trace    Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2020-02-05 17:04:32.6963 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-02-05 17:04:32.7106 Trace   Scanning Property Layout ''${longdate} ${level:uppercase=true} ${message} ${exception:format=tostring}'' NLog.Layouts
+2020-02-05 17:04:32.7106 Trace   Scanning SimpleLayout ''${longdate} ${level:uppercase=true} ${message} ${exception:format=tostring}''
+2020-02-05 17:04:32.7106 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-02-05 17:04:32.7248 Trace    Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2020-02-05 17:04:32.7248 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-02-05 17:04:32.7248 Trace    Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-02-05 17:04:32.7402 Trace     Scanning Property Culture '' System.Globalization
+2020-02-05 17:04:32.7402 Trace     Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-02-05 17:04:32.7402 Trace     Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-02-05 17:04:32.7545 Trace      Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-02-05 17:04:32.7545 Trace      Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-02-05 17:04:32.7545 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-02-05 17:04:32.7545 Trace    Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2020-02-05 17:04:32.7732 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-02-05 17:04:32.7732 Trace    Scanning ExceptionLayoutRenderer 'Layout Renderer: ${exception}'
+2020-02-05 17:04:32.7857 Trace     Scanning Property Formats 'System.Collections.Generic.List`1[NLog.Config.ExceptionRenderingFormat]' System.Collections.Generic
+2020-02-05 17:04:32.7857 Trace   Scanning Property LineEnding 'Default' NLog.Targets
+2020-02-05 17:04:32.7857 Trace   Scanning Property Encoding 'System.Text.UTF8Encoding+UTF8EncodingSealed' System.Text
+2020-02-05 17:04:32.7857 Trace  Scanning Property ChildRules 'System.Collections.Generic.List`1[NLog.Config.LoggingRule]' System.Collections.Generic
+2020-02-05 17:04:32.8059 Trace  Scanning Property Filters 'System.Collections.Generic.List`1[NLog.Filters.Filter]' System.Collections.Generic
+2020-02-05 17:04:32.8059 Trace Scanning LoggingRule 'logNamePattern: (:All) levels: [ Info ] appendTo: [ RequestLoggingMiddleware ]'
+2020-02-05 17:04:32.8059 Trace  Scanning Property Targets 'System.Collections.Generic.List`1[NLog.Targets.Target]' System.Collections.Generic
+2020-02-05 17:04:32.8201 Trace  Scanning FileTarget 'File Target[RequestLoggingMiddleware]'
+2020-02-05 17:04:32.8201 Trace   Scanning Property FileName ''./../../../HttpRequestHandlingLogs/logs/${shortdate}_HttpLog.json'' NLog.Layouts
+2020-02-05 17:04:32.8201 Trace   Scanning SimpleLayout ''./../../../HttpRequestHandlingLogs/logs/${shortdate}_HttpLog.json''
+2020-02-05 17:04:32.8360 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-02-05 17:04:32.8360 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-02-05 17:04:32.8360 Trace    Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2020-02-05 17:04:32.8524 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-02-05 17:04:32.8524 Trace   Scanning Property Layout 'JsonLayout=level-'${level:upperCase=true}'|eventProperties-NLog.Layouts.JsonLayout' NLog.Layouts
+2020-02-05 17:04:32.8524 Trace   Scanning JsonLayout 'JsonLayout=level-'${level:upperCase=true}'|eventProperties-NLog.Layouts.JsonLayout'
+2020-02-05 17:04:32.8681 Trace    Scanning Property Attributes 'System.Collections.Generic.List`1[NLog.Layouts.JsonAttribute]' System.Collections.Generic
+2020-02-05 17:04:32.8681 Trace    Scanning JsonAttribute 'NLog.Layouts.JsonAttribute'
+2020-02-05 17:04:32.8681 Trace     Scanning Property Layout ''${level:upperCase=true}'' NLog.Layouts
+2020-02-05 17:04:32.8831 Trace     Scanning SimpleLayout ''${level:upperCase=true}''
+2020-02-05 17:04:32.8831 Trace      Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-02-05 17:04:32.8951 Trace      Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-02-05 17:04:32.8951 Trace       Scanning Property Culture '' System.Globalization
+2020-02-05 17:04:32.8951 Trace       Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-02-05 17:04:32.9107 Trace       Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-02-05 17:04:32.9107 Trace        Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-02-05 17:04:32.9107 Trace        Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-02-05 17:04:32.9279 Trace    Scanning JsonAttribute 'NLog.Layouts.JsonAttribute'
+2020-02-05 17:04:32.9279 Trace     Scanning Property Layout 'NLog.Layouts.JsonLayout' NLog.Layouts
+2020-02-05 17:04:32.9279 Trace     Scanning JsonLayout 'NLog.Layouts.JsonLayout'
+2020-02-05 17:04:32.9431 Trace      Scanning Property Attributes 'System.Collections.Generic.List`1[NLog.Layouts.JsonAttribute]' System.Collections.Generic
+2020-02-05 17:04:32.9431 Trace      Scanning Property ExcludeProperties 'System.Collections.Generic.HashSet`1[System.String]' System.Collections.Generic
+2020-02-05 17:04:32.9431 Trace    Scanning Property ExcludeProperties 'System.Collections.Generic.HashSet`1[System.String]' System.Collections.Generic
+2020-02-05 17:04:32.9580 Trace   Scanning Property LineEnding 'Default' NLog.Targets
+2020-02-05 17:04:32.9580 Trace   Scanning Property Encoding 'System.Text.UTF8Encoding+UTF8EncodingSealed' System.Text
+2020-02-05 17:04:32.9580 Trace  Scanning Property ChildRules 'System.Collections.Generic.List`1[NLog.Config.LoggingRule]' System.Collections.Generic
+2020-02-05 17:04:32.9737 Trace  Scanning Property Filters 'System.Collections.Generic.List`1[NLog.Filters.Filter]' System.Collections.Generic
+2020-02-05 17:04:32.9737 Trace Scanning AutoFlushTargetWrapper 'AutoFlushWrapper Target[file](File Target[RequestLoggingMiddleware])'
+2020-02-05 17:04:32.9737 Trace  Scanning Property WrappedTarget 'File Target[RequestLoggingMiddleware]' NLog.Targets
+2020-02-05 17:04:32.9903 Info Found 31 configuration items
+2020-02-05 17:04:32.9903 Trace Initializing AutoFlushWrapper Target[file](File Target[RequestLoggingMiddleware])
+2020-02-05 17:04:32.9903 Trace FindReachableObject<NLog.Layouts.Layout>:
+2020-02-05 17:04:33.0073 Trace Scanning AutoFlushTargetWrapper 'AutoFlushWrapper Target[file](File Target[RequestLoggingMiddleware])'
+2020-02-05 17:04:33.0073 Trace  Scanning Property WrappedTarget 'File Target[RequestLoggingMiddleware]' NLog.Targets
+2020-02-05 17:04:33.0073 Trace  Scanning FileTarget 'File Target[RequestLoggingMiddleware]'
+2020-02-05 17:04:33.0215 Trace   Scanning Property FileName ''./../../../HttpRequestHandlingLogs/logs/${shortdate}_HttpLog.json'' NLog.Layouts
+2020-02-05 17:04:33.0215 Trace   Scanning SimpleLayout ''./../../../HttpRequestHandlingLogs/logs/${shortdate}_HttpLog.json''
+2020-02-05 17:04:33.0215 Trace   Scanning Property Layout 'JsonLayout=level-'${level:upperCase=true}'|eventProperties-NLog.Layouts.JsonLayout' NLog.Layouts
+2020-02-05 17:04:33.0365 Trace   Scanning JsonLayout 'JsonLayout=level-'${level:upperCase=true}'|eventProperties-NLog.Layouts.JsonLayout'
+2020-02-05 17:04:33.0365 Trace   Scanning Property LineEnding 'Default' NLog.Targets
+2020-02-05 17:04:33.0365 Trace   Scanning Property Encoding 'System.Text.UTF8Encoding+UTF8EncodingSealed' System.Text
+2020-02-05 17:04:33.0365 Trace AutoFlushWrapper Target[file](File Target[RequestLoggingMiddleware]) has 2 layouts
+2020-02-05 17:04:33.0582 Trace Initializing NLog.Layouts.JsonLayout
+2020-02-05 17:04:33.0582 Trace FindReachableObject<System.Object>:
+2020-02-05 17:04:33.0693 Trace Scanning JsonLayout 'NLog.Layouts.JsonLayout'
+2020-02-05 17:04:33.0693 Trace  Scanning Property Attributes 'System.Collections.Generic.List`1[NLog.Layouts.JsonAttribute]' System.Collections.Generic
+2020-02-05 17:04:33.0693 Trace  Scanning Property ExcludeProperties 'System.Collections.Generic.HashSet`1[System.String]' System.Collections.Generic
+2020-02-05 17:04:33.0858 Trace Initializing Layout Renderer: ${level}
+2020-02-05 17:04:33.0858 Trace Initializing SimpleLayout=Layout Renderer: ${level}
+2020-02-05 17:04:33.0858 Trace FindReachableObject<System.Object>:
+2020-02-05 17:04:33.1023 Trace Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-02-05 17:04:33.1023 Trace  Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-02-05 17:04:33.1023 Trace  Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-02-05 17:04:33.1161 Trace Initializing Layout Renderer: ${uppercase}
+2020-02-05 17:04:33.1161 Trace Initializing '${level:upperCase=true}'
+2020-02-05 17:04:33.1161 Trace FindReachableObject<System.Object>:
+2020-02-05 17:04:33.1306 Trace Scanning SimpleLayout ''${level:upperCase=true}''
+2020-02-05 17:04:33.1306 Trace  Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-02-05 17:04:33.1306 Trace  Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-02-05 17:04:33.1452 Trace   Scanning Property Culture '' System.Globalization
+2020-02-05 17:04:33.1452 Trace   Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-02-05 17:04:33.1452 Trace   Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-02-05 17:04:33.1452 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-02-05 17:04:33.1638 Trace    Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-02-05 17:04:33.1638 Trace Initializing JsonLayout=level-'${level:upperCase=true}'|eventProperties-NLog.Layouts.JsonLayout
+2020-02-05 17:04:33.1638 Trace FindReachableObject<System.Object>:
+2020-02-05 17:04:33.1777 Trace Scanning JsonLayout 'JsonLayout=level-'${level:upperCase=true}'|eventProperties-NLog.Layouts.JsonLayout'
+2020-02-05 17:04:33.1777 Trace  Scanning Property Attributes 'System.Collections.Generic.List`1[NLog.Layouts.JsonAttribute]' System.Collections.Generic
+2020-02-05 17:04:33.1777 Trace  Scanning JsonAttribute 'NLog.Layouts.JsonAttribute'
+2020-02-05 17:04:33.1777 Trace   Scanning Property Layout ''${level:upperCase=true}'' NLog.Layouts
+2020-02-05 17:04:33.1962 Trace   Scanning SimpleLayout ''${level:upperCase=true}''
+2020-02-05 17:04:33.1962 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-02-05 17:04:33.1962 Trace    Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-02-05 17:04:33.2100 Trace     Scanning Property Culture '' System.Globalization
+2020-02-05 17:04:33.2100 Trace     Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-02-05 17:04:33.2100 Trace     Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-02-05 17:04:33.2241 Trace      Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-02-05 17:04:33.2241 Trace      Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-02-05 17:04:33.2241 Trace  Scanning JsonAttribute 'NLog.Layouts.JsonAttribute'
+2020-02-05 17:04:33.2387 Trace   Scanning Property Layout 'NLog.Layouts.JsonLayout' NLog.Layouts
+2020-02-05 17:04:33.2387 Trace   Scanning JsonLayout 'NLog.Layouts.JsonLayout'
+2020-02-05 17:04:33.2387 Trace    Scanning Property Attributes 'System.Collections.Generic.List`1[NLog.Layouts.JsonAttribute]' System.Collections.Generic
+2020-02-05 17:04:33.2387 Trace    Scanning Property ExcludeProperties 'System.Collections.Generic.HashSet`1[System.String]' System.Collections.Generic
+2020-02-05 17:04:33.2593 Trace  Scanning Property ExcludeProperties 'System.Collections.Generic.HashSet`1[System.String]' System.Collections.Generic
+2020-02-05 17:04:33.2593 Trace Initializing Layout Renderer: ${literal}
+2020-02-05 17:04:33.2593 Trace Initializing Layout Renderer: ${shortdate}
+2020-02-05 17:04:33.2738 Trace Initializing Layout Renderer: ${literal}
+2020-02-05 17:04:33.2738 Trace Initializing './../../../HttpRequestHandlingLogs/logs/${shortdate}_HttpLog.json'
+2020-02-05 17:04:33.2738 Trace FindReachableObject<System.Object>:
+2020-02-05 17:04:33.2879 Trace Scanning SimpleLayout ''./../../../HttpRequestHandlingLogs/logs/${shortdate}_HttpLog.json''
+2020-02-05 17:04:33.2879 Trace  Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-02-05 17:04:33.2879 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-02-05 17:04:33.3022 Trace  Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2020-02-05 17:04:33.3022 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-02-05 17:04:33.3022 Trace Initializing File Target[RequestLoggingMiddleware]
+2020-02-05 17:04:33.3170 Trace FindReachableObject<NLog.Layouts.Layout>:
+2020-02-05 17:04:33.3170 Trace Scanning FileTarget 'File Target[RequestLoggingMiddleware]'
+2020-02-05 17:04:33.3170 Trace  Scanning Property FileName ''./../../../HttpRequestHandlingLogs/logs/${shortdate}_HttpLog.json'' NLog.Layouts
+2020-02-05 17:04:33.3170 Trace  Scanning SimpleLayout ''./../../../HttpRequestHandlingLogs/logs/${shortdate}_HttpLog.json''
+2020-02-05 17:04:33.3360 Trace  Scanning Property Layout 'JsonLayout=level-'${level:upperCase=true}'|eventProperties-NLog.Layouts.JsonLayout' NLog.Layouts
+2020-02-05 17:04:33.3360 Trace  Scanning JsonLayout 'JsonLayout=level-'${level:upperCase=true}'|eventProperties-NLog.Layouts.JsonLayout'
+2020-02-05 17:04:33.3360 Trace  Scanning Property LineEnding 'Default' NLog.Targets
+2020-02-05 17:04:33.3501 Trace  Scanning Property Encoding 'System.Text.UTF8Encoding+UTF8EncodingSealed' System.Text
+2020-02-05 17:04:33.3501 Trace File Target[RequestLoggingMiddleware] has 2 layouts
+2020-02-05 17:04:33.3501 Trace FileTarget(Name=RequestLoggingMiddleware): Using appenderFactory: NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender+Factory
+2020-02-05 17:04:33.3642 Trace Initializing Layout Renderer: ${exception}
+2020-02-05 17:04:33.3642 Trace Initializing Layout Renderer: ${literal}
+2020-02-05 17:04:33.3642 Trace Initializing Layout Renderer: ${message}
+2020-02-05 17:04:33.3642 Trace Initializing Layout Renderer: ${literal}
+2020-02-05 17:04:33.3829 Trace Initializing Layout Renderer: ${level}
+2020-02-05 17:04:33.3829 Trace Initializing SimpleLayout=Layout Renderer: ${level}
+2020-02-05 17:04:33.3829 Trace FindReachableObject<System.Object>:
+2020-02-05 17:04:33.3971 Trace Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-02-05 17:04:33.3971 Trace  Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-02-05 17:04:33.3971 Trace  Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-02-05 17:04:33.4111 Trace Initializing Layout Renderer: ${uppercase}
+2020-02-05 17:04:33.4111 Trace Initializing Layout Renderer: ${literal}
+2020-02-05 17:04:33.4111 Trace Initializing Layout Renderer: ${longdate}
+2020-02-05 17:04:33.4111 Trace Initializing '${longdate} ${level:uppercase=true} ${message} ${exception:format=tostring}'
+2020-02-05 17:04:33.4300 Trace FindReachableObject<System.Object>:
+2020-02-05 17:04:33.4300 Trace Scanning SimpleLayout ''${longdate} ${level:uppercase=true} ${message} ${exception:format=tostring}''
+2020-02-05 17:04:33.4300 Trace  Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-02-05 17:04:33.4442 Trace  Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2020-02-05 17:04:33.4442 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-02-05 17:04:33.4442 Trace  Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2020-02-05 17:04:33.4593 Trace   Scanning Property Culture '' System.Globalization
+2020-02-05 17:04:33.4593 Trace   Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2020-02-05 17:04:33.4593 Trace   Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2020-02-05 17:04:33.4739 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-02-05 17:04:33.4739 Trace    Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2020-02-05 17:04:33.4739 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-02-05 17:04:33.4739 Trace  Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2020-02-05 17:04:33.4932 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-02-05 17:04:33.4932 Trace  Scanning ExceptionLayoutRenderer 'Layout Renderer: ${exception}'
+2020-02-05 17:04:33.4932 Trace   Scanning Property Formats 'System.Collections.Generic.List`1[NLog.Config.ExceptionRenderingFormat]' System.Collections.Generic
+2020-02-05 17:04:33.5079 Trace Initializing Layout Renderer: ${literal}
+2020-02-05 17:04:33.5079 Trace Initializing Layout Renderer: ${shortdate}
+2020-02-05 17:04:33.5079 Trace Initializing Layout Renderer: ${literal}
+2020-02-05 17:04:33.5221 Trace Initializing './../../../GlobalErrorHandlingLogs/logs/${shortdate}_logfile.txt'
+2020-02-05 17:04:33.5221 Trace FindReachableObject<System.Object>:
+2020-02-05 17:04:33.5221 Trace Scanning SimpleLayout ''./../../../GlobalErrorHandlingLogs/logs/${shortdate}_logfile.txt''
+2020-02-05 17:04:33.5364 Trace  Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2020-02-05 17:04:33.5364 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-02-05 17:04:33.5364 Trace  Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2020-02-05 17:04:33.5364 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2020-02-05 17:04:33.5555 Trace Initializing File Target[ExceptionMiddleware]
+2020-02-05 17:04:33.5555 Trace FindReachableObject<NLog.Layouts.Layout>:
+2020-02-05 17:04:33.5555 Trace Scanning FileTarget 'File Target[ExceptionMiddleware]'
+2020-02-05 17:04:33.5702 Trace  Scanning Property FileName ''./../../../GlobalErrorHandlingLogs/logs/${shortdate}_logfile.txt'' NLog.Layouts
+2020-02-05 17:04:33.5702 Trace  Scanning SimpleLayout ''./../../../GlobalErrorHandlingLogs/logs/${shortdate}_logfile.txt''
+2020-02-05 17:04:33.5702 Trace  Scanning Property Layout ''${longdate} ${level:uppercase=true} ${message} ${exception:format=tostring}'' NLog.Layouts
+2020-02-05 17:04:33.5845 Trace  Scanning SimpleLayout ''${longdate} ${level:uppercase=true} ${message} ${exception:format=tostring}''
+2020-02-05 17:04:33.5845 Trace  Scanning Property LineEnding 'Default' NLog.Targets
+2020-02-05 17:04:33.5845 Trace  Scanning Property Encoding 'System.Text.UTF8Encoding+UTF8EncodingSealed' System.Text
+2020-02-05 17:04:33.5992 Trace File Target[ExceptionMiddleware] has 2 layouts
+2020-02-05 17:04:33.5992 Trace FileTarget(Name=ExceptionMiddleware): Using appenderFactory: NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender+Factory
+2020-02-05 17:04:34.4274 Debug Targets for BLL.Services.ExceptionHandling.ExceptionMiddleware by level:
+2020-02-05 17:04:34.4274 Debug Trace =>
+2020-02-05 17:04:34.4274 Debug Debug =>
+2020-02-05 17:04:34.4274 Debug Info => RequestLoggingMiddleware
+2020-02-05 17:04:34.4469 Debug Warn =>
+2020-02-05 17:04:34.4469 Debug Error => ExceptionMiddleware
+2020-02-05 17:04:34.4469 Debug Fatal => ExceptionMiddleware
+2020-02-05 17:04:34.4992 Debug Targets for BLL.Services.RequestLogging.RequestLoggingMiddleware by level:
+2020-02-05 17:04:34.5046 Debug Trace =>
+2020-02-05 17:04:34.5046 Debug Debug =>
+2020-02-05 17:04:34.5046 Debug Info => RequestLoggingMiddleware
+2020-02-05 17:04:34.5046 Debug Warn =>
+2020-02-05 17:04:34.5239 Debug Error => ExceptionMiddleware
+2020-02-05 17:04:34.5239 Debug Fatal => ExceptionMiddleware
+2020-02-05 17:04:34.6377 Debug FileTarget(Name=RequestLoggingMiddleware): Process file 'D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0\./../../../HttpRequestHandlingLogs/logs/2020-02-05_HttpLog.json' on startup
+2020-02-05 17:04:34.6481 Debug Creating file appender: D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0\./../../../HttpRequestHandlingLogs/logs/2020-02-05_HttpLog.json
+2020-02-05 17:04:34.6481 Trace Opening D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0\./../../../HttpRequestHandlingLogs/logs/2020-02-05_HttpLog.json with allowFileSharedWriting=False
+2020-02-05 17:04:34.9426 Trace Opening D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0\./../../../HttpRequestHandlingLogs/logs/2020-02-05_HttpLog.json with allowFileSharedWriting=False
+2020-02-05 17:04:45.0206 Trace Opening D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0\./../../../HttpRequestHandlingLogs/logs/2020-02-05_HttpLog.json with allowFileSharedWriting=False
+2020-02-05 17:04:45.0427 Trace Opening D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0\./../../../HttpRequestHandlingLogs/logs/2020-02-05_HttpLog.json with allowFileSharedWriting=False
+2020-02-05 17:04:45.1260 Trace Opening D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0\./../../../HttpRequestHandlingLogs/logs/2020-02-05_HttpLog.json with allowFileSharedWriting=False
+2020-02-05 17:04:45.3410 Trace Opening D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0\./../../../HttpRequestHandlingLogs/logs/2020-02-05_HttpLog.json with allowFileSharedWriting=False
+2020-02-05 17:04:45.3831 Trace Opening D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0\./../../../HttpRequestHandlingLogs/logs/2020-02-05_HttpLog.json with allowFileSharedWriting=False
+2020-02-05 17:04:45.3831 Trace Opening D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0\./../../../HttpRequestHandlingLogs/logs/2020-02-05_HttpLog.json with allowFileSharedWriting=False
+2020-02-05 17:04:45.3952 Trace Opening D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0\./../../../HttpRequestHandlingLogs/logs/2020-02-05_HttpLog.json with allowFileSharedWriting=False
+2020-02-05 17:04:45.4149 Trace Opening D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0\./../../../HttpRequestHandlingLogs/logs/2020-02-05_HttpLog.json with allowFileSharedWriting=False
+2020-02-05 17:04:45.4263 Trace Opening D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0\./../../../HttpRequestHandlingLogs/logs/2020-02-05_HttpLog.json with allowFileSharedWriting=False
+2020-02-05 17:04:45.4263 Trace Opening D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0\./../../../HttpRequestHandlingLogs/logs/2020-02-05_HttpLog.json with allowFileSharedWriting=False
+2020-02-05 17:04:46.8348 Trace Opening D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0\./../../../HttpRequestHandlingLogs/logs/2020-02-05_HttpLog.json with allowFileSharedWriting=False
+2020-02-05 17:04:46.8492 Trace Opening D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0\./../../../HttpRequestHandlingLogs/logs/2020-02-05_HttpLog.json with allowFileSharedWriting=False
+2020-02-05 17:04:51.1184 Trace Opening D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0\./../../../HttpRequestHandlingLogs/logs/2020-02-05_HttpLog.json with allowFileSharedWriting=False
+2020-02-05 17:04:51.1616 Trace Opening D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0\./../../../HttpRequestHandlingLogs/logs/2020-02-05_HttpLog.json with allowFileSharedWriting=False
+2020-02-05 17:04:51.1794 Trace Opening D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0\./../../../HttpRequestHandlingLogs/logs/2020-02-05_HttpLog.json with allowFileSharedWriting=False
+2020-02-05 17:04:51.4147 Trace Opening D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0\./../../../HttpRequestHandlingLogs/logs/2020-02-05_HttpLog.json with allowFileSharedWriting=False
+2020-02-05 17:04:58.5206 Trace Opening D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0\./../../../HttpRequestHandlingLogs/logs/2020-02-05_HttpLog.json with allowFileSharedWriting=False
+2020-02-05 17:04:58.5206 Trace Opening D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0\./../../../HttpRequestHandlingLogs/logs/2020-02-05_HttpLog.json with allowFileSharedWriting=False
+2020-02-05 17:04:58.5489 Trace Opening D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0\./../../../HttpRequestHandlingLogs/logs/2020-02-05_HttpLog.json with allowFileSharedWriting=False
+2020-02-05 17:04:58.6909 Trace Opening D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0\./../../../HttpRequestHandlingLogs/logs/2020-02-05_HttpLog.json with allowFileSharedWriting=False
+2020-02-05 17:05:03.4464 Trace Opening D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0\./../../../HttpRequestHandlingLogs/logs/2020-02-05_HttpLog.json with allowFileSharedWriting=False
+2020-02-05 17:05:03.4592 Trace Opening D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0\./../../../HttpRequestHandlingLogs/logs/2020-02-05_HttpLog.json with allowFileSharedWriting=False
+2020-02-05 17:05:03.4745 Trace Opening D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0\./../../../HttpRequestHandlingLogs/logs/2020-02-05_HttpLog.json with allowFileSharedWriting=False
+2020-02-05 17:05:03.4882 Trace Opening D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0\./../../../HttpRequestHandlingLogs/logs/2020-02-05_HttpLog.json with allowFileSharedWriting=False
+2020-02-05 17:05:03.4882 Trace Opening D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0\./../../../HttpRequestHandlingLogs/logs/2020-02-05_HttpLog.json with allowFileSharedWriting=False
+2020-02-05 17:05:03.5054 Trace Opening D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0\./../../../HttpRequestHandlingLogs/logs/2020-02-05_HttpLog.json with allowFileSharedWriting=False
+2020-02-05 17:05:03.5433 Trace Opening D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0\./../../../HttpRequestHandlingLogs/logs/2020-02-05_HttpLog.json with allowFileSharedWriting=False
+2020-02-05 17:05:03.5570 Trace Opening D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0\./../../../HttpRequestHandlingLogs/logs/2020-02-05_HttpLog.json with allowFileSharedWriting=False
+2020-02-05 17:05:05.2392 Trace Opening D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0\./../../../HttpRequestHandlingLogs/logs/2020-02-05_HttpLog.json with allowFileSharedWriting=False
+2020-02-05 17:05:05.2392 Trace Opening D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0\./../../../HttpRequestHandlingLogs/logs/2020-02-05_HttpLog.json with allowFileSharedWriting=False
+2020-02-05 17:05:05.2659 Trace Opening D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0\./../../../HttpRequestHandlingLogs/logs/2020-02-05_HttpLog.json with allowFileSharedWriting=False
+2020-02-05 17:05:05.3168 Trace Opening D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0\./../../../HttpRequestHandlingLogs/logs/2020-02-05_HttpLog.json with allowFileSharedWriting=False
+2020-02-05 17:05:12.5523 Trace Opening D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0\./../../../HttpRequestHandlingLogs/logs/2020-02-05_HttpLog.json with allowFileSharedWriting=False
+2020-02-05 17:05:12.5523 Trace Opening D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0\./../../../HttpRequestHandlingLogs/logs/2020-02-05_HttpLog.json with allowFileSharedWriting=False
+2020-02-05 17:05:12.5811 Trace Opening D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0\./../../../HttpRequestHandlingLogs/logs/2020-02-05_HttpLog.json with allowFileSharedWriting=False
+2020-02-05 17:05:12.6609 Trace Opening D:\CODE\Web\DrzaveApp\DrzaveApp\WebAPI\DrzaveWebAPI\DrzaveWebAPI\bin\Debug\netcoreapp3.0\./../../../HttpRequestHandlingLogs/logs/2020-02-05_HttpLog.json with allowFileSharedWriting=False

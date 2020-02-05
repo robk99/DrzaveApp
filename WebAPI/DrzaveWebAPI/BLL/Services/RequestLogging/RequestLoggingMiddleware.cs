@@ -5,15 +5,10 @@ using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 using NLog;
-using Microsoft.AspNetCore.Builder;
-using System.Collections.Generic;
 using Newtonsoft.Json;
-using System.Text;
-using Microsoft.AspNetCore.Mvc;
-using DAL.Models;
 using Newtonsoft.Json.Linq;
 
-namespace BLL.RequestLogging
+namespace BLL.Services.RequestLogging
 {
     public class RequestLoggingMiddleware
     {
@@ -121,14 +116,6 @@ namespace BLL.RequestLogging
 
             context.Response.Body.Seek(0, SeekOrigin.Begin);
             await responseBody.CopyToAsync(originalBodyStream);
-        }
-    }
-
-    public static class MyMiddlewareExtensions
-    {
-        public static IApplicationBuilder UseMyMiddleware(this IApplicationBuilder builder)
-        {
-            return builder.UseMiddleware<RequestLoggingMiddleware>();
         }
     }
 }

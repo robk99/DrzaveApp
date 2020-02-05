@@ -1,12 +1,6 @@
-﻿using DAL.Models;
-using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 
-namespace BLL.RequestLogging
+namespace BLL.Services.RequestLogging
 {
     class ResponseModel
     {

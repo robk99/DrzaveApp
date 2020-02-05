@@ -8,16 +8,12 @@ using Microsoft.Extensions.Hosting;
 using DAL;
 using BLL.Interfaces.Services;
 using BLL.Services;
-using BLL.ErrorHandling;
-using BLL.RequestLogging;
 using NLog;
 using System;
 using System.IO;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using Microsoft.AspNetCore.Http;
-using System.Web.Http;
 
 namespace DrzaveWebAPI
 {
@@ -73,14 +69,14 @@ namespace DrzaveWebAPI
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseMyMiddleware();
+            app.UseCustomRequestLoggingMiddleware();
 
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseMiddleware<ExceptionMiddleware>();
+            app.UseCustomExceptionHandlingMiddleware();
 
             app.UseHttpsRedirection();
 

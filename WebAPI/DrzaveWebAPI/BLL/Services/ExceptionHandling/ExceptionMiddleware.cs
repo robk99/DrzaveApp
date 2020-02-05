@@ -3,7 +3,7 @@ using System;
 using System.Threading.Tasks;
 using System.Net;
 
-namespace BLL.ErrorHandling
+namespace BLL.Services.ExceptionHandling
 {
     public class ExceptionMiddleware
     {
@@ -33,7 +33,7 @@ namespace BLL.ErrorHandling
             context.Response.ContentType = "application/json";
             context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
             
-            return context.Response.WriteAsync(new ErrorDetails()
+            return context.Response.WriteAsync(new ExceptionDetails()
             {
                 StatusCode = context.Response.StatusCode,
                 Message = "Internal Server Error."

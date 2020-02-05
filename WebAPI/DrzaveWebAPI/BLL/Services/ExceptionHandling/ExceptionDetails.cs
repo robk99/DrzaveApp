@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace BLL.ErrorHandling
+namespace BLL.Services.ExceptionHandling
 {
-    public class ErrorDetails
+    public class ExceptionDetails
     {
         public int StatusCode { get; set; }
         public string Message { get; set; }
