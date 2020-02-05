@@ -68,7 +68,7 @@
                             <td class="idH">{{grad.value.id}}</td>
                             <td>{{grad.value.ime}}</td>
                             <td class="text-center">{{grad.value.populacija? (grad.value.populacija | number:'2.') : '-' }}</td>
-                            <td class="text-center">{{grad.value.drzavaIme? grad.value.drzavaIme : '-'}}</td>
+                            <td class="text-center">{{grad.value.drzavaIme? (grad.value.drzavaIme | async) : '-'}}</td>
                             <td class="table-button">
                                 <button type="submit" class="btn btn-primary" (click)="editButtonClick(grad.value.id)" data-toggle="tooltip" data-html="true" title="Izmijeni grad">
                                 <i class="far fa-edit"></i>

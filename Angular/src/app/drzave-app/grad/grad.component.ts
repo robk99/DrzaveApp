@@ -6,7 +6,8 @@ import { PopoverService } from '../shared/services/popover.service';
 import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
 import { ToastrService } from 'ngx-toastr';
-
+import { Grad } from "../shared/models/grad.model";
+import { of, Observable } from 'rxjs';
 
 
 @Component({
@@ -50,13 +51,13 @@ export class GradComponent implements OnInit {
       });
   }
 
-  findDrzavaIme(id: number): string {
+  findDrzavaIme(id: number): Observable<string> {
     const FOUND = this.listaDrzava.find(res =>
       res.id == id)
     if (FOUND == null) {
-      return '';
+      return of('');
     }
-    return FOUND.ime;
+    return of(FOUND.ime);
   }
 
   getDrzaveToList() {
