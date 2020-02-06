@@ -8,7 +8,7 @@ using DAL.Models;
 
 namespace BLL.Services
 {
-    class UserService : IUserService
+    public class UserService : IUserService
     {
         private readonly CountriesdbContext _context;
 
@@ -17,9 +17,9 @@ namespace BLL.Services
             _context = context;
         }
 
-        public async Task<User> GetUser(string username, string password)
+        public async Task<User> GetUser(string username)
         {
-            return await _context.Users.FindAsync(username, password);
+            return await _context.Users.FindAsync(username);
         }
 
         public async Task<User> PostUser(User user)

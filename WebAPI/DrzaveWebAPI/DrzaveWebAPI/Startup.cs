@@ -13,6 +13,7 @@ using NLog;
 using System;
 using System.IO;
 using System.Security.Cryptography;
+using DAL.Models;
 
 namespace DrzaveWebAPI
 {
@@ -32,6 +33,7 @@ namespace DrzaveWebAPI
             services.AddTransient<ICountryService, CountryService>();
             services.AddTransient<ICityService, CityService>();
             services.AddTransient<ITokenService, TokenService>();
+            services.AddTransient<IUserService, UserService>();
             services.AddEntityFrameworkNpgsql().AddDbContext<CountriesdbContext>(opt => opt.UseNpgsql(Configuration.GetConnectionString("CountriesAPPConnection")))
                 .AddUnitOfWork<CountriesdbContext>();
             services.AddAuthenticationService(Configuration);

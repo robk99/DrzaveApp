@@ -19,7 +19,6 @@ namespace DrzaveWebAPI.Controllers
     [ApiController]
     public class LoginController : Controller
     {
-
         private readonly CountriesdbContext _context;
         private readonly IConfiguration configuration;
         private readonly ITokenService tokenService;
@@ -34,11 +33,9 @@ namespace DrzaveWebAPI.Controllers
             _userService = service;
         }
 
-        // GET: api/users/admin
-        [HttpGet("{username}")]
-        public async Task<ActionResult<User>> GetUser(string username, string password)
+        public async Task<ActionResult<User>> GetUser(string username)
         {
-            User user = await _userService.GetUser(username, password);
+            User user = await _userService.GetUser(username);
 
             if (user == null)
             {
@@ -48,11 +45,11 @@ namespace DrzaveWebAPI.Controllers
             return user;
         }
 
-
+        // POST: api/login
         [HttpPost]
         public IActionResult Login([FromBody]User user)
         {
-            User fetchedUser = GetUser(user.Username, user.Password).Result.Value;
+            User fetchedUser = GetUser(user.Username).Result.Value;
 
             if (fetchedUser == null)
             {

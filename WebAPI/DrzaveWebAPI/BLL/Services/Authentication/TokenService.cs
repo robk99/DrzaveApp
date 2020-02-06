@@ -33,7 +33,6 @@ namespace BLL.Services.Authentication
 
                 var claims = new Claim[]
                 {
-                new Claim(JwtRegisteredClaimNames.Sub, (loginUser.Id).ToString()),
                 new Claim(JwtRegisteredClaimNames.UniqueName, loginUser.Username),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(JwtRegisteredClaimNames.Iat, utcNow.ToString())

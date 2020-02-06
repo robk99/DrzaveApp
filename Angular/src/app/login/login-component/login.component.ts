@@ -37,7 +37,6 @@ export class LoginComponent implements OnInit {
       this.router.navigate([`/${environment.countriesRoute}`]);
     }, err => {
       console.log("ERROR on login!", err);
-      console.log(form.value);
       this.invalidLogin = true;
     });
   }

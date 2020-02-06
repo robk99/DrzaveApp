@@ -10,10 +10,7 @@ namespace DAL.Models
         {
         }
 
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
-        [Required]
+        [Required, Key]
         public string Username { get; set; }
         [Required]
         public string Password { get; set; }
