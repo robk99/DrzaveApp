@@ -8,34 +8,59 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using BLL.Interfaces.Services;
+using System.Threading.Tasks;
+using DAL;
 
 namespace DrzaveWebAPI.Controllers
 {
+
+
     [Route("api/[controller]")]
     [ApiController]
     public class LoginController : Controller
     {
-        private IConfiguration configuration;
-        private ITokenService tokenService;
 
-        public LoginController(IConfiguration config, ITokenService tokenService)
+        private readonly CountriesdbContext _context;
+        private readonly IConfiguration configuration;
+        private readonly ITokenService tokenService;
+        private readonly IUserService _userService;
+
+
+        public LoginController(CountriesdbContext context, IConfiguration config, ITokenService tokenService, IUserService service)
         {
+            _context = context;
             configuration = config;
             this.tokenService = tokenService;
+            _userService = service;
         }
 
-        [HttpPost]
-        public IActionResult Login([FromBody]LoginUser user)
+        // GET: api/users/admin
+        [HttpGet("{username}")]
+        public async Task<ActionResult<User>> GetUser(string username, string password)
         {
-            // Check if User exists on database
+            User user = await _userService.GetUser(username, password);
 
             if (user == null)
+            {
+                return NotFound(user);
+            }
+
+            return user;
+        }
+
+
+        [HttpPost]
+        public IActionResult Login([FromBody]User user)
+        {
+            User fetchedUser = GetUser(user.Username, user.Password).Result.Value;
+
+            if (fetchedUser == null)
             {
                 return BadRequest("Invalid client request");
             }
 
            
-            if (user.Username == "john" && user.Password == "123")
+            if (user.Username == fetchedUser.Username && user.Password == fetchedUser.Password)
             {
                 
                 string tokenString = tokenService.GetToken(configuration, user);

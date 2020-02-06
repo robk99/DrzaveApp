@@ -16,7 +16,7 @@ namespace BLL.Services.Authentication
     {
         private string angularBaseUrl;
 
-        public string GetToken(IConfiguration configuration, LoginUser loginUser)
+        public string GetToken(IConfiguration configuration, User loginUser)
         {
             var utcNow = DateTime.UtcNow;
             angularBaseUrl = configuration.GetSection("AngularBaseUrl").Value;

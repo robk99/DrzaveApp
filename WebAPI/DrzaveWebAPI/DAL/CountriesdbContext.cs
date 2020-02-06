@@ -17,7 +17,7 @@ namespace DAL
 
         public DbSet<Country> Countries { get; set; }
         public DbSet<City> Cities { get; set; }
-        public DbSet<LoginUser> LoginUsers { get; set;}
+        public DbSet<User> Users { get; set;}
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

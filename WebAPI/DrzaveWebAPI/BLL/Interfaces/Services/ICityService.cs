@@ -9,8 +9,8 @@ namespace BLL.Interfaces.Services
         Task<ICollection<City>> GetCities();
         Task<City> GetCity(int id);
         Task<ICollection<City>> GetCitiesByCountry(int id);
-        Task<City> PostCity(City grad);
-        Task<City> PutCity(City grad);
+        Task<City> PostCity(City city);
+        Task<City> PutCity(City city);
         Task<City> DeleteCity(int id);
     }
 }

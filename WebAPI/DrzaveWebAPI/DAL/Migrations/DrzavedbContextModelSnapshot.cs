@@ -68,7 +68,7 @@ namespace DAL.Migrations
                     b.ToTable("countries");
                 });
 
-            modelBuilder.Entity("DAL.Models.LoginUser", b =>
+            modelBuilder.Entity("DAL.Models.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -76,20 +76,20 @@ namespace DAL.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<string>("password")
+                    b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnName("password")
                         .HasColumnType("text");
 
-                    b.Property<string>("username")
+                    b.Property<string>("Username")
                         .IsRequired()
                         .HasColumnName("username")
                         .HasColumnType("text");
 
                     b.HasKey("Id")
-                        .HasName("pk_login_users");
+                        .HasName("pk_users");
 
-                    b.ToTable("login_users");
+                    b.ToTable("users");
                 });
 
             modelBuilder.Entity("DAL.Models.City", b =>

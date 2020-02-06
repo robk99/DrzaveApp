@@ -8,8 +8,8 @@ namespace BLL.Interfaces.Services
     {
         Task<ICollection<Country>> GetCountries();
         Task<Country> GetCountry(int id);
-        Task<Country> PostCountry(Country drzava);
-        Task<Country> PutCountry(Country drzava);
+        Task<Country> PostCountry(Country country);
+        Task<Country> PutCountry(Country country);
         Task<Country> DeleteCountry(int id);
     }
 }

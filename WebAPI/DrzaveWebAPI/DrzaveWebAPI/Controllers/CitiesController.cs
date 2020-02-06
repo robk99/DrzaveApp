@@ -14,8 +14,8 @@ namespace DrzaveWebAPI.Controllers
     public class CitiesController : Controller
     {
         private readonly ICityService _cityService;
-        private IConfiguration _configuration;
-        private string _citiesUrl;
+        private readonly IConfiguration _configuration;
+        private readonly string _citiesUrl;
 
         public CitiesController(ICityService cityService, IConfiguration config)
         {

@@ -32,7 +32,7 @@ export class LoginService {
     return this.storageSubject.asObservable();
   }
 
-  logIn(loginUser: LoginUser) {
+  logIn(loginUser: User) {
     this.setUser('loginUser', loginUser.username);
     return this.http.post(`${this.baseUrl}/${this.endpoint}`, loginUser, this.header);
   }
