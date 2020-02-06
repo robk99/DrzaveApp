@@ -12,7 +12,6 @@ import { environment } from "../../../environments/environment";
 })
 export class LoginComponent implements OnInit {
 
-  invalidLogin: boolean;
   private loginForm: FormGroup;
 
   constructor(private router: Router, private loginService: LoginService, 
@@ -29,16 +28,5 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  login(form: FormGroup) {
-    this.loginService.logIn(form.value).subscribe(response => {
-      let token = (<any>response).token;
-      localStorage.setItem('jwt', token);
-      this.invalidLogin = false;
-      this.router.navigate([`/${environment.countriesRoute}`]);
-    }, err => {
-      console.log("ERROR on login!", err);
-      this.invalidLogin = true;
-    });
-  }
 
 }

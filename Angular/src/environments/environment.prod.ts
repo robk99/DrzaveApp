@@ -7,5 +7,6 @@ export const environment = {
   countriesEditRoute: "countries/details",
   citiesEditRoute: "cities/details",
   loginRoute: "login",
-  homeRoute: "home"
+  homeRoute: "home",
+  registerRoute: "register"
 };

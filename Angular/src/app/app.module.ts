@@ -16,6 +16,7 @@ import { LoginComponent } from './login/login-component/login.component';
 import { HomeComponent } from "./home/home.component";
 import { JwtModule } from "@auth0/angular-jwt";
 import { environment } from "../environments/environment";
+import { RegisterComponent } from './register/register.component';
 
 export function tokenGetter(){
   return localStorage.getItem("jwt");
@@ -31,6 +32,7 @@ export function tokenGetter(){
     CityEditComponent,
     LoginComponent,
     HomeComponent,
+    RegisterComponent,
 
   ],
   imports: [

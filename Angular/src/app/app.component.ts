@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService } from './login/login-service/login.service';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +22,7 @@ export class AppComponent implements OnInit {
     this.currentLogged = this.loginService.getUser();
     this.loginService.watchStorage().subscribe((data:string)  => {
       this.currentLogged = data;
-      })
+      });
   }
 
   logOut(){

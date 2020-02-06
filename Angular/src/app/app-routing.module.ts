@@ -8,6 +8,7 @@ import { CityEditComponent } from './drzave-app/city/city-edit/city-edit.compone
 import { LoginComponent } from './login/login-component/login.component';
 import { HomeComponent } from "./home/home.component";
 import { AuthGuard } from './guards/auth-guard.service';
+import { RegisterComponent } from './register/register.component';
 
 
 
@@ -15,6 +16,7 @@ export const ROUTES: Routes = [
   { path: '', redirectTo: `/${environment.homeRoute}`, pathMatch: 'full' },
   { path: `${environment.homeRoute}`, component:HomeComponent },
   { path: `${environment.loginRoute}`, component:LoginComponent },
+  { path: `${environment.registerRoute}`, component:RegisterComponent },
   { path: `${environment.countriesRoute}`, component: CountryComponent, canActivate: [AuthGuard] },
   { path: `${environment.citiesRoute}`, component: CityComponent, canActivate: [AuthGuard] },
   { path: `${environment.countriesEditRoute}/:id`, component: CountryEditComponent, canActivate: [AuthGuard]},

@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, of } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { HeaderModel } from "../models/header-model";
+import { Router } from '@angular/router';
+import { flatMap } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Injectable({
@@ -14,9 +17,11 @@ export class LoginService {
   protected endpoint = environment.loginRoute;
   protected header = new HeaderModel();
   private storageSubject = new Subject<String>();
+  private loginSucceded: boolean;
+  private wrongLogin: boolean;
 
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient, private router: Router) { 
   }
 
   getUser(): string{
@@ -32,15 +37,33 @@ export class LoginService {
     return this.storageSubject.asObservable();
   }
 
-  logIn(loginUser: User) {
-    this.setUser('loginUser', loginUser.username);
-    return this.http.post(`${this.baseUrl}/${this.endpoint}`, loginUser, this.header);
+  logIn(loginUser: User): boolean {
+    this.http.post(`${this.baseUrl}/${this.endpoint}`, loginUser, this.header)
+    .subscribe(response => {
+      let token = (<any>response).token;
+      localStorage.setItem('jwt', token);
+      this.loginSucceded = true;
+      this.wrongLogin = false;
+      this.router.navigate([`/${environment.countriesRoute}`])
+      this.setUser('loginUser', loginUser.username);
+
+    }, err => {
+      console.log("ERROR on login!", err);
+      this.loginSucceded = false;
+      this.wrongLogin = true;
+    });
+    return this.loginSucceded;
+  }
+
+  isUserLogedIn(): boolean{
+    return this.wrongLogin;
   }
 
   logOut() {
     console.log("User logged off!");
     localStorage.removeItem('jwt');
     this.setUser('loginUser', '');
+    this.loginSucceded = false;
   }
   
 

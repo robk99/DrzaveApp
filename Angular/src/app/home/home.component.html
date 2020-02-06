@@ -1,14 +1,6 @@
-<h1>Home Page</h1>
-
-<br>
-<div *ngIf="isUserAuthenticated()" style="color:blue;">
-    <h2>
-        YOU ARE LOGGED IN
-    </h2>
+<div class="container-fluid mainMenu">
+    <br><br>
+    <button class="btn btn-lg btn-primary btn-block col-lg-5 col-md-4" type="button" routerLink="/login">Login</button>
+    <button class="btn btn-lg btn-primary btn-block col-lg-5 col-md-4" type="button" routerLink="/register">Register</button>
+    <br><br>
 </div>
-
-<br>
-<ul>
-    <li *ngIf="!isUserAuthenticated()"><a routerLink="/login">Login</a></li>
-    <li *ngIf="isUserAuthenticated()"><a class="logout" (click)="logOut()">Logout</a></li>
-</ul>

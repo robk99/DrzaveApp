@@ -43,7 +43,12 @@ footer {
 /* END: App-component elements */
 
 
-/* START: ALL Component elements */
+/* START: Home.component elements */
+
+.mainMenu {}
+
+
+/* END: Home.Component elements */
 
 .jumbotron {
     margin-bottom: 0;

@@ -12,7 +12,11 @@ export class HttpErrorInterceptorService implements HttpInterceptor {
           let errorMessage = '';
           if (error.error instanceof ErrorEvent) {
             errorMessage = `Error: ${error.error.message}`;
-          } else {
+          }
+          if (error.status == 0) {
+            errorMessage = `Error in communication with server: ${error.error.message}`;
+          } 
+          else {
             errorMessage = `HTTP Error: ${error.status}\nMessage: ${error.message}`;
           }
           return throwError(errorMessage);
