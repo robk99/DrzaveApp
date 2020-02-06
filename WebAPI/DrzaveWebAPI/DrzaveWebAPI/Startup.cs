@@ -8,9 +8,11 @@ using Microsoft.Extensions.Hosting;
 using DAL;
 using BLL.Interfaces.Services;
 using BLL.Services;
+using BLL.Services.Authentication;
 using NLog;
 using System;
 using System.IO;
+using System.Security.Cryptography;
 
 namespace DrzaveWebAPI
 {
@@ -29,10 +31,11 @@ namespace DrzaveWebAPI
         {
             services.AddTransient<ICountryService, CountryService>();
             services.AddTransient<ICityService, CityService>();
+            services.AddTransient<ITokenService, TokenService>();
             services.AddEntityFrameworkNpgsql().AddDbContext<CountriesdbContext>(opt => opt.UseNpgsql(Configuration.GetConnectionString("CountriesAPPConnection")))
                 .AddUnitOfWork<CountriesdbContext>();
             services.AddAuthenticationService(Configuration);
-            services.AddControllers().AddNewtonsoftJson();
+            services.AddControllers();
             services.AddCors(options =>
             {
                 options.AddDefaultPolicy(

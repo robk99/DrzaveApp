@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  whitelistedDomain: "https://localhost:44326",
+  whitelistedDomain: "localhost:44326",
   baseUrl: "https://localhost:44326/api",
   countriesRoute: "countries",
   citiesRoute: "cities",

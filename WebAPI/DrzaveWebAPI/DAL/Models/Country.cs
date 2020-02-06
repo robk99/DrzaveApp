@@ -18,7 +18,6 @@ namespace DAL.Models
 
         [Required]
         public string Name { get; set; }
-
         [JsonIgnore]
         public virtual ICollection<City> Cities { get; set; }
     }

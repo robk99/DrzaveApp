@@ -41,6 +41,8 @@ namespace BLL.Services.RequestLogging
             await context.Request.Body.CopyToAsync(requestStream);
             string bodyString = ReadStreamInChunks(requestStream);
 
+            
+
             Object body;
             if (bodyString != string.Empty)
             {

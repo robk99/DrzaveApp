@@ -3,8 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
+using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Text;
+using BLL.Interfaces.Services;
 
 namespace DrzaveWebAPI.Controllers
 {
@@ -13,39 +16,30 @@ namespace DrzaveWebAPI.Controllers
     public class LoginController : Controller
     {
         private IConfiguration configuration;
-        private string angularBaseUrl;
+        private ITokenService tokenService;
 
-        public LoginController(IConfiguration config)
+        public LoginController(IConfiguration config, ITokenService tokenService)
         {
             configuration = config;
-            angularBaseUrl = configuration.GetSection("AngularBaseUrl").Value;
+            this.tokenService = tokenService;
         }
 
         [HttpPost]
         public IActionResult Login([FromBody]LoginUser user)
         {
-            // Check User on database
+            // Check if User exists on database
 
             if (user == null)
             {
                 return BadRequest("Invalid client request");
             }
 
-            // Else create Token in own Service
-
-            if (user.username == "john" && user.password == "123")
+           
+            if (user.Username == "john" && user.Password == "123")
             {
-                var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"));
-                var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
+                
+                string tokenString = tokenService.GetToken(configuration, user);
 
-                var tokeOptions = new JwtSecurityToken(
-                    issuer: angularBaseUrl,
-                    audience: angularBaseUrl,
-                    expires: DateTime.Now.AddMinutes(3600),
-                    signingCredentials: signinCredentials
-                );
-
-                var tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);
                 return Ok(new { Token = tokenString });
             }
             else
