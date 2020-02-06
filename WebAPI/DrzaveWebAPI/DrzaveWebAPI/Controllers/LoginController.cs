@@ -33,14 +33,9 @@ namespace DrzaveWebAPI.Controllers
             _userService = service;
         }
 
-        public async Task<ActionResult<User>> GetUser(string username)
+        public async Task<User> GetUser(string username)
         {
             User user = await _userService.GetUser(username);
-
-            if (user == null)
-            {
-                return NotFound(user);
-            }
 
             return user;
         }
@@ -49,19 +44,17 @@ namespace DrzaveWebAPI.Controllers
         [HttpPost]
         public IActionResult Login([FromBody]User user)
         {
-            User fetchedUser = GetUser(user.Username).Result.Value;
+            User fetchedUser = GetUser(user.Username).Result;
 
             if (fetchedUser == null)
             {
-                return BadRequest("Invalid client request");
+                return BadRequest();
             }
 
            
             if (user.Username == fetchedUser.Username && user.Password == fetchedUser.Password)
             {
-                
                 string tokenString = tokenService.GetToken(configuration, user);
-
                 return Ok(new { Token = tokenString });
             }
             else

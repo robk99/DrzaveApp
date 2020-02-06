@@ -46,7 +46,6 @@ namespace DrzaveWebAPI
                         builder.WithOrigins(angularBaseUrl).AllowAnyHeader().AllowAnyMethod();
                     });
             });
-
         }
 
 

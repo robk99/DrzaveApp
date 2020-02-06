@@ -16,7 +16,7 @@
                         <input class="form-control" type="number" formControlName="population" maxlength="8">
                         <br>
                         <div>Country:</div>
-                        <select class="form-control" type="number" formControlName="countryID">
+                        <select class="form-control" type="number" formControlName="countryId">
                             <option [ngValue]=null>Pick a country:</option>
                             <option *ngFor="let country of listOfCountries" [ngValue]=country.id>{{country.name}}</option>
                         </select>

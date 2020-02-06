@@ -37,7 +37,7 @@ namespace BLL.Services.RequestLogging
             context.Request.Headers.Add("X-Request-Guid", Guid.NewGuid().ToString());
 
             context.Request.EnableBuffering();
-            await using var requestStream = _recyclableMemoryStreamManager.GetStream();
+            await using MemoryStream requestStream = _recyclableMemoryStreamManager.GetStream();
             await context.Request.Body.CopyToAsync(requestStream);
             string bodyString = ReadStreamInChunks(requestStream);
 
@@ -73,9 +73,9 @@ namespace BLL.Services.RequestLogging
         {
             const int readChunkBufferLength = 4096;
             stream.Seek(0, SeekOrigin.Begin);
-            using var textWriter = new StringWriter();
-            using var reader = new StreamReader(stream);
-            var readChunk = new char[readChunkBufferLength];
+            using StringWriter textWriter = new StringWriter();
+            using StreamReader reader = new StreamReader(stream);
+            char[] readChunk = new char[readChunkBufferLength];
             int readChunkLength;
             do
             {
@@ -88,8 +88,8 @@ namespace BLL.Services.RequestLogging
         private async Task LogResponse(HttpContext context)
         {
             context.Response.Headers.Add("X-Request-Guid", context.Request.Headers["X-Request-Guid"].ToString());
-            var originalBodyStream = context.Response.Body;
-            await using var responseBody = _recyclableMemoryStreamManager.GetStream();
+            Stream originalBodyStream = context.Response.Body;
+            await using MemoryStream responseBody = _recyclableMemoryStreamManager.GetStream();
             context.Response.Body = responseBody;
             await _next(context);
             context.Response.Body.Seek(0, SeekOrigin.Begin);

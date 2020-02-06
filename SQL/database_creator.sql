@@ -7,7 +7,6 @@ DELETE FROM users;
 
 ALTER SEQUENCE "countries_Id_seq" RESTART WITH 1;
 ALTER SEQUENCE "cities_Id_seq" RESTART WITH 1;
-ALTER SEQUENCE "users_Id_seq" RESTART WITH 1;
 
 DROP FUNCTION get_cities_by_country(TEXT);
 DROP FUNCTION vrati_cities_i_countries_vece_od(INT);

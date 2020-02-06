@@ -6,6 +6,7 @@ using BLL.Interfaces.Services;
 using DAL.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Configuration;
+using System;
 
 namespace DrzaveWebAPI.Controllers
 {
@@ -29,7 +30,7 @@ namespace DrzaveWebAPI.Controllers
         [HttpGet, Authorize]
         public async Task<ActionResult> GetCountries()
         {
-            //throw new System.Exception();
+            //throw new Exception();
             ICollection<Country> listOfCountries = await _countryService.GetCountries();
 
             if (!listOfCountries.Any())

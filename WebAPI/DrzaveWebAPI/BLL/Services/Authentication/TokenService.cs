@@ -18,7 +18,7 @@ namespace BLL.Services.Authentication
 
         public string GetToken(IConfiguration configuration, User loginUser)
         {
-            var utcNow = DateTime.UtcNow;
+            DateTime utcNow = DateTime.UtcNow;
             angularBaseUrl = configuration.GetSection("AngularBaseUrl").Value;
 
 
@@ -27,18 +27,18 @@ namespace BLL.Services.Authentication
                 privateRsa.FromXmlFile(Path.Combine(Directory.GetCurrentDirectory(),
                                  configuration.GetValue<String>("Tokens:PrivateKey")
                                  ));
-                var privateKey = new RsaSecurityKey(privateRsa);
+                RsaSecurityKey privateKey = new RsaSecurityKey(privateRsa);
                 SigningCredentials signingCredentials = new SigningCredentials(privateKey, SecurityAlgorithms.RsaSha256);
 
 
-                var claims = new Claim[]
+                Claim[] claims = new Claim[]
                 {
                 new Claim(JwtRegisteredClaimNames.UniqueName, loginUser.Username),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(JwtRegisteredClaimNames.Iat, utcNow.ToString())
                 };
 
-                var jwt = new JwtSecurityToken(
+                JwtSecurityToken jwt = new JwtSecurityToken(
                     signingCredentials: signingCredentials,
                     claims: claims,
                     expires: utcNow.AddSeconds(configuration.GetValue<int>("Tokens:Lifetime")),

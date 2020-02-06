@@ -21,6 +21,10 @@ namespace BLL.Services.ExceptionHandling
             {
                 await _next(httpContext);
             }
+            catch (ApplicationException ex)
+            {
+                _logger.Log(NLog.LogLevel.Error, ex, $"We encountered an ApplicationException!: ");
+            }
             catch (Exception ex)
             {
                 _logger.Log(NLog.LogLevel.Error, ex, $"\nGUID: {httpContext.Request.Headers["X-Request-Guid"]}\n We encountered an InternalServerError Exception!: ");
