@@ -10,6 +10,8 @@ footer {
     justify-content: center;
     height: 30px;
     color: rgb(85, 107, 141);
+    background-color: rgb(8, 19, 39);
+    border-radius: 4pt 4pt 0 0;
 }
 
 
@@ -49,6 +51,22 @@ footer {
 
 
 /* END: Home.Component elements */
+
+
+/* START: Login/Registration - component elements */
+
+.backButton {
+    align-self: flex-start;
+    transition: 0.3s;
+}
+
+.backButton:hover {
+    color: rgb(136, 136, 136);
+    transition: 0.3s;
+}
+
+
+/* END: Login/Registration - component elements */
 
 .jumbotron {
     margin-bottom: 0;

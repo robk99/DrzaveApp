@@ -16,7 +16,7 @@ import { LoginComponent } from './login/login-component/login.component';
 import { HomeComponent } from "./home/home.component";
 import { JwtModule } from "@auth0/angular-jwt";
 import { environment } from "../environments/environment";
-import { RegisterComponent } from './register/register.component';
+import { RegisterComponent } from './register/register-component/register.component';
 
 export function tokenGetter(){
   return localStorage.getItem("jwt");

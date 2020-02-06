@@ -8,7 +8,7 @@ import { CityEditComponent } from './drzave-app/city/city-edit/city-edit.compone
 import { LoginComponent } from './login/login-component/login.component';
 import { HomeComponent } from "./home/home.component";
 import { AuthGuard } from './guards/auth-guard.service';
-import { RegisterComponent } from './register/register.component';
+import { RegisterComponent } from './register/register-component/register.component';
 
 
 

@@ -28,5 +28,9 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  goBack(){
+    this.setInputToDefaultValues();
+    this.router.navigateByUrl(`${environment.homeRoute}`);
+  }
 
 }
