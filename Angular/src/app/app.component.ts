@@ -27,7 +27,6 @@ export class AppComponent implements OnInit {
 
   logOut(){
     this.loginService.logOut();
-    this.router.navigate([`/${environment.homeRoute}`]);
   }
 
 }

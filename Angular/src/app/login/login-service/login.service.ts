@@ -6,6 +6,8 @@ import { HeaderModel } from "../models/header-model";
 import { Router } from '@angular/router';
 import { flatMap } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { Location } from '@angular/common';
 
 
 @Injectable({
@@ -17,15 +19,15 @@ export class LoginService {
   protected endpoint = environment.loginRoute;
   protected header = new HeaderModel();
   private storageSubject = new Subject<String>();
-  private loginSucceded: boolean;
-  private wrongLogin: boolean;
+  private loginSucceded: boolean = false;
+  private loginErrorOccured: boolean;
 
 
-  constructor(private http: HttpClient, private router: Router) { 
+  constructor(private http: HttpClient, private router: Router, private jwtHelper: JwtHelperService, private location: Location) { 
   }
 
   getUser(): string{
-    return localStorage.getItem('loginUser');
+    return localStorage.getItem('user');
   }
 
   setUser(key: string, data: string) {
@@ -37,35 +39,54 @@ export class LoginService {
     return this.storageSubject.asObservable();
   }
 
-  logIn(loginUser: User): boolean {
-    this.http.post(`${this.baseUrl}/${this.endpoint}`, loginUser, this.header)
+  logIn(user: User): boolean {
+    this.http.post(`${this.baseUrl}/${this.endpoint}`, user, this.header)
     .subscribe(response => {
       let token = (<any>response).token;
       localStorage.setItem('jwt', token);
       this.loginSucceded = true;
-      this.wrongLogin = false;
+      this.loginErrorOccured = false;
       this.router.navigate([`/${environment.countriesRoute}`])
-      this.setUser('loginUser', loginUser.username);
+      this.setUser('user', user.username);
 
     }, err => {
       console.log("ERROR on login!", err);
       this.loginSucceded = false;
-      this.wrongLogin = true;
+      this.loginErrorOccured = true;
     });
     return this.loginSucceded;
   }
 
-  isUserLogedIn(): boolean{
-    return this.wrongLogin;
+  isUserLoggedIn() {
+    let token: string = localStorage.getItem("jwt");
+    if (token && !this.jwtHelper.isTokenExpired(token)) {
+      this.location.back();
+    }
+  }
+
+  userDontExist(): boolean{
+    return this.loginErrorOccured;
+  }
+
+  loginErrorNotOccured(){
+    this.loginErrorOccured = false;
   }
 
   logOut() {
     console.log("User logged off!");
     localStorage.removeItem('jwt');
-    this.setUser('loginUser', '');
+    this.setUser('user', '');
     this.loginSucceded = false;
+    this.router.navigate([`/${environment.loginRoute}`]);
   }
   
+  isTokenExpired(): boolean{
+    if (this.jwtHelper.isTokenExpired()) {
+      this.logOut();
+      return true;
+    }
+    return false;
+  }
 
 
 }

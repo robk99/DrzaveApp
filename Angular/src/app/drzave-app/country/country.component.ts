@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
 import { ToastrService } from 'ngx-toastr';
 import { City } from "./../shared/models/city.model";
+import { LoginService } from 'src/app/login/login-service/login.service';
 
 
 
@@ -24,10 +25,11 @@ export class CountryComponent implements OnInit {
 
   constructor(private countryService: CountryService, private cityService: CityService,
     private formBuilder: FormBuilder, private popover: PopoverService, private router: Router, 
-    private toastr: ToastrService) {
+    private toastr: ToastrService, private loginService: LoginService) {
   }
 
   ngOnInit() {
+    this.loginService.isTokenExpired();
     this.getCountriesToList();
     this.getCitiesToList();
     this.setInputToDefaultValues();

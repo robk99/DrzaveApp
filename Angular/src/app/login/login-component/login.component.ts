@@ -18,6 +18,8 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    this.loginService.isUserLoggedIn();
+    this.loginService.loginErrorNotOccured();
     this.setInputToDefaultValues();
   }
 
@@ -32,5 +34,6 @@ export class LoginComponent implements OnInit {
     this.setInputToDefaultValues();
     this.router.navigateByUrl(`${environment.homeRoute}`);
   }
+
 
 }

@@ -5,6 +5,7 @@ import { CountryService } from '../../shared/services/http/country.service';
 import { CityService } from '../../shared/services/http/city.service';
 import { ToastrService } from 'ngx-toastr';
 import { City } from "../../shared/models/city.model";
+import { LoginService } from 'src/app/login/login-service/login.service';
 
 
 @Component({
@@ -22,9 +23,11 @@ export class CountryEditComponent implements OnInit {
   private listOfCities: City[] = [];
 
   constructor(private route: ActivatedRoute, private countryService: CountryService,
-    private cityService: CityService, private formBuilder: FormBuilder, private toastr: ToastrService) { }
+    private cityService: CityService, private formBuilder: FormBuilder, private toastr: ToastrService, 
+    private loginService: LoginService) { }
 
   ngOnInit() {
+    this.loginService.isTokenExpired();
     this.getCountryIdFromRoute();
     this.getCountryFromId();
     this.getCitiesBycountry();

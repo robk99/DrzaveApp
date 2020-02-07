@@ -68,7 +68,7 @@
                             <td class="idH">{{city.value.id}}</td>
                             <td>{{city.value.name}}</td>
                             <td class="text-center">{{city.value.population? (city.value.population | number:'2.') : '-' }}</td>
-                            <td class="text-center">{{city.value.countryName? (city.value.countryName | async) : '-'}}</td>
+                            <td class="text-center">{{(city.value.countryName? (city.value.countryName | async) : '')? (city.value.countryName | async) : '-'}}</td>
                             <td class="table-button">
                                 <button type="submit" class="btn btn-primary" (click)="editButtonClick(city.value.id)" data-toggle="tooltip" data-html="true" title="Change city">
                                 <i class="far fa-edit"></i>

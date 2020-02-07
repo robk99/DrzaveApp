@@ -39,7 +39,8 @@ namespace BLL.Services.Authentication
 
                     ValidIssuer = angularBaseUrl,
                     ValidAudience = angularBaseUrl,
-                    IssuerSigningKey = signingKey
+                    IssuerSigningKey = signingKey,
+                    ClockSkew = TimeSpan.Zero
                 };
             });
 

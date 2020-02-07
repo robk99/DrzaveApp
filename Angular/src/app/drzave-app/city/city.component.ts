@@ -8,6 +8,7 @@ import { environment } from '../../../environments/environment';
 import { ToastrService } from 'ngx-toastr';
 import { City } from "../shared/models/city.model";
 import { of, Observable } from 'rxjs';
+import { LoginService } from 'src/app/login/login-service/login.service';
 
 
 @Component({
@@ -24,12 +25,12 @@ export class CityComponent implements OnInit {
 
   constructor(private cityService: CityService, private countryService: CountryService,
     private formBuilder: FormBuilder, private popover: PopoverService, private router: Router, 
-    private toastr: ToastrService) {
+    private toastr: ToastrService, private loginService: LoginService) {
   }
 
   ngOnInit() {
+    this.loginService.isTokenExpired();
     this.getCountriesToList();
-    this.getCitiesToList();
     this.setInputToDefaultValues();
   }
 
@@ -68,7 +69,8 @@ export class CityComponent implements OnInit {
             id: country.id,
             name: country.name
           });
-        })
+        });
+        this.getCitiesToList();
       },
       err => {
         console.log("ERROR fetching list of countries from database: ", err);
