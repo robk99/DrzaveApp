@@ -57,7 +57,6 @@ export class CityEditComponent implements OnInit {
     err =>{
       console.log(`ERROR fetching city (Id: ${this.id}) from database: `, err);
       this.router.navigate([`/${environment.errorRoute}`])
-
     });
   }
 

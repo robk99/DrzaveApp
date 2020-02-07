@@ -4,10 +4,7 @@ import { Observable, Subject, of } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { HeaderModel } from "../models/header-model";
 import { Router } from '@angular/router';
-import { flatMap } from 'rxjs/operators';
-import { ToastrService } from 'ngx-toastr';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { Location } from '@angular/common';
 
 
 @Injectable({
@@ -23,7 +20,7 @@ export class LoginService {
   private loginErrorOccured: boolean;
 
 
-  constructor(private http: HttpClient, private router: Router, private jwtHelper: JwtHelperService, private location: Location) { 
+  constructor(private http: HttpClient, private router: Router, private jwtHelper: JwtHelperService) { 
   }
 
   getUser(): string{
@@ -60,7 +57,7 @@ export class LoginService {
   isUserLoggedIn() {
     let token: string = localStorage.getItem("jwt");
     if (token && !this.jwtHelper.isTokenExpired(token)) {
-      this.location.back();
+      this.router.navigate([`/${environment.countriesRoute}`]);
     }
   }
 

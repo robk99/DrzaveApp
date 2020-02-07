@@ -22,7 +22,8 @@ export const ROUTES: Routes = [
   { path: `${environment.citiesRoute}`, component: CityComponent, canActivate: [AuthGuard] },
   { path: `${environment.countriesEditRoute}/:id`, component: CountryEditComponent, canActivate: [AuthGuard]},
   { path: `${environment.citiesEditRoute}/:id`, component: CityEditComponent, canActivate: [AuthGuard]},
-  { path: `${environment.errorRoute}`, component: ErrorPageComponent}
+  { path: `${environment.errorRoute}`, component: ErrorPageComponent},
+  { path: `**`, component: ErrorPageComponent }
 ];
 
 @NgModule({
