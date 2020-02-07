@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CountryService } from '../../shared/services/http/country.service';
 import { CityService } from '../../shared/services/http/city.service';
 import { ToastrService } from 'ngx-toastr';
 import { City } from "../../shared/models/city.model";
 import { LoginService } from 'src/app/login/login-service/login.service';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -24,7 +25,7 @@ export class CountryEditComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private countryService: CountryService,
     private cityService: CityService, private formBuilder: FormBuilder, private toastr: ToastrService, 
-    private loginService: LoginService) { }
+    private loginService: LoginService, private router: Router) { }
 
   ngOnInit() {
     this.loginService.isTokenExpired();
@@ -49,6 +50,7 @@ export class CountryEditComponent implements OnInit {
     },
     err =>{
       console.log(`ERRROR fetching ocuntrie (Id: ${this.id}) from database: `, err);
+      this.router.navigate([`/${environment.errorRoute}`])
     });
   }
 

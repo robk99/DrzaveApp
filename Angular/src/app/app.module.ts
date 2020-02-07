@@ -17,6 +17,7 @@ import { HomeComponent } from "./home/home.component";
 import { JwtModule } from "@auth0/angular-jwt";
 import { environment } from "../environments/environment";
 import { RegisterComponent } from './register/register-component/register.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 export function tokenGetter(){
   return localStorage.getItem("jwt");
@@ -33,6 +34,7 @@ export function tokenGetter(){
     LoginComponent,
     HomeComponent,
     RegisterComponent,
+    ErrorPageComponent,
 
   ],
   imports: [

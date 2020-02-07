@@ -47,8 +47,6 @@ footer {
 
 /* START: Home.component elements */
 
-.mainMenu {}
-
 
 /* END: Home.Component elements */
 
@@ -280,6 +278,36 @@ td.table-button {
 
 
 /* END: Login.component elements */
+
+
+/* START: error-page.component elements */
+
+.oops {
+    font-size: 80pt;
+    font-weight: 650;
+    color: #353535;
+    text-shadow: 1px 1px 5px rgb(92, 92, 92);
+}
+
+.notFound {
+    font-weight: 650;
+    color: #353535;
+}
+
+.errorPageText {
+    margin: auto;
+}
+
+.goBackBtn {
+    box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.75);
+}
+
+.goBackBtn:hover {
+    box-shadow: 3px 3px 6px 0px rgba(48, 48, 48, 0.75);
+}
+
+
+/* END: error-page.component elements */
 
 
 /* START: Media Queries */

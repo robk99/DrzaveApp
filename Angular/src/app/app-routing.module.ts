@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login-component/login.component';
 import { HomeComponent } from "./home/home.component";
 import { AuthGuard } from './guards/auth-guard.service';
 import { RegisterComponent } from './register/register-component/register.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 
 
@@ -20,7 +21,8 @@ export const ROUTES: Routes = [
   { path: `${environment.countriesRoute}`, component: CountryComponent, canActivate: [AuthGuard] },
   { path: `${environment.citiesRoute}`, component: CityComponent, canActivate: [AuthGuard] },
   { path: `${environment.countriesEditRoute}/:id`, component: CountryEditComponent, canActivate: [AuthGuard]},
-  { path: `${environment.citiesEditRoute}/:id`, component: CityEditComponent, canActivate: [AuthGuard]}
+  { path: `${environment.citiesEditRoute}/:id`, component: CityEditComponent, canActivate: [AuthGuard]},
+  { path: `${environment.errorRoute}`, component: ErrorPageComponent}
 ];
 
 @NgModule({

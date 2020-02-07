@@ -9,5 +9,6 @@ export const environment = {
   loginRoute: "login",
   homeRoute: "home",
   registerRoute: "register",
+  errorRoute: "error",
   registrationEndpoint: "registration"
 };
