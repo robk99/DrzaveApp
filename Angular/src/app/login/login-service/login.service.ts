@@ -77,7 +77,7 @@ export class LoginService {
     localStorage.removeItem('jwt');
     this.setUser('user', '');
     this.loginSucceded = false;
-    this.router.navigate([`/${environment.loginRoute}`]);
+    this.router.navigate([`/${environment.homeRoute}`]);
   }
   
   isTokenExpired(): boolean{

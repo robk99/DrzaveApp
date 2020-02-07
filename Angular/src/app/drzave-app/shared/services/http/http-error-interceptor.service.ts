@@ -16,23 +16,22 @@ export class HttpErrorInterceptorService implements HttpInterceptor {
       .pipe( 
         catchError((error: HttpErrorResponse) => {
           let errorMessage = '';
+          let token = localStorage.getItem("token");
           
-          if (error.status == 400) {
+          if (error.status == 0) {
+            errorMessage = `Error in communication with server: ${error.message}`;
+          } 
+          else if (error.status == 400) {
             return throwError(`Invalid username or password - ${error.message}`);
           }
-
-          if (this.loginService.isTokenExpired()) {
-            return throwError(`TOKEN EXPIRED - ${error.message}`);
+          else if (token && this.loginService.isTokenExpired()) {
+            errorMessage = `TOKEN EXPIRED - ${error.message}`;
           }
-
-          if (error.error instanceof ErrorEvent) {
+          else if (error.error instanceof ErrorEvent) {
             errorMessage = `Error: ${error.error.message}`;
           }
-          if (error.status == 0) {
-            errorMessage = `Error in communication with server: ${error.error.message}`;
-          } 
           else {
-            errorMessage = `HTTP Error: ${error.status}\nMessage: ${error.message}`;
+            errorMessage = `Unknow error occured!;\nMessage: ${error.message}`;
           }
           return throwError(errorMessage);
         })
