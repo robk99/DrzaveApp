@@ -1,6 +1,6 @@
 <div class="jumbotron">
     <div class="col cities-col">
-        <h2 class="changeTitle text-center">City Creating</h2>
+        <h2 class="changeTitle text-center">City creating</h2>
         <br><br>
         <div class="row cities-row">
             <div class="col-md-5">
@@ -36,7 +36,7 @@
                                 </div>
                             </div>
                             <select class="form-control" type="number" formControlName="countryId">
-                                <option value=null default selected>Odaberi drzavu:</option>
+                                <option value=null default selected>Pick a country:</option>
                                 <option *ngFor="let country of listOfCountries" [ngValue]=country.id>{{country.name}}</option>+
                             </select>
                         </div>
