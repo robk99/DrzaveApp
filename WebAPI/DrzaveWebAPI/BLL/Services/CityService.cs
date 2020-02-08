@@ -18,7 +18,7 @@ namespace BLL.Services
 
         public async Task<ICollection<City>> GetCities()
         {
-            return await _context.Cities.ToListAsync();
+            return await _context.Cities.AsNoTracking().ToListAsync();
         }
 
         public async Task<City> GetCity(int id)
@@ -28,7 +28,7 @@ namespace BLL.Services
 
         public async Task<ICollection<City>> GetCitiesByCountry(int id)
         {
-            ICollection<City> listOfCities = await _context.Cities.Where<City>(g => g.CountryId == id).ToListAsync();
+            ICollection<City> listOfCities = await _context.Cities.AsNoTracking().Where<City>(g => g.CountryId == id).ToListAsync();
             return listOfCities;
         }
 

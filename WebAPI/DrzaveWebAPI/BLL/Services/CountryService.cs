@@ -18,7 +18,7 @@ namespace BLL.Services
         }
         public async Task<ICollection<Country>> GetCountries()
         {
-            return await _context.Countries.ToListAsync();
+            return await _context.Countries.AsNoTracking().ToListAsync();
         }
 
         public async Task<Country> GetCountry(int id)
