@@ -84,7 +84,7 @@ Angular 8.0
 - Clicking on "Cities" text you go to cities-route where you can edit cities likewise:  
 ![Image of cities-route](https://i.imgur.com/FCm27XG.png)  
 
-<a name="additions"/>
+<a name="additions"></a>
 ## Additions  
 - **Exception logging**  
   Inside "..\DrzaveWebAPI\GlobalErrorHandlingLogs\logs" you can find txt file logs for some basic exceptions:  
