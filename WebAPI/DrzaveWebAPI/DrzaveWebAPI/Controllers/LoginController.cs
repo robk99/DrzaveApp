@@ -10,6 +10,7 @@ using System.Text;
 using BLL.Interfaces.Services;
 using System.Threading.Tasks;
 using DAL;
+using Microsoft.AspNetCore.Http;
 
 namespace DrzaveWebAPI.Controllers
 {
@@ -23,6 +24,8 @@ namespace DrzaveWebAPI.Controllers
         private readonly IConfiguration configuration;
         private readonly ITokenService tokenService;
         private readonly IUserService _userService;
+        private readonly NLog.Logger _logger;
+
 
 
         public LoginController(CountriesdbContext context, IConfiguration config, ITokenService tokenService, IUserService service)
@@ -31,6 +34,8 @@ namespace DrzaveWebAPI.Controllers
             configuration = config;
             this.tokenService = tokenService;
             _userService = service;
+            _logger = NLog.LogManager.GetCurrentClassLogger();
+
         }
 
         public async Task<User> GetUser(string username)
@@ -44,23 +49,32 @@ namespace DrzaveWebAPI.Controllers
         [HttpPost]
         public IActionResult Login([FromBody]User user)
         {
-            User fetchedUser = GetUser(user.Username).Result;
+            try
+            {
+                User fetchedUser = GetUser(user.Username).Result;
+                if (fetchedUser == null)
+                {
+                    return BadRequest();
+                }
 
-            if (fetchedUser == null)
+
+                if (user.Username == fetchedUser.Username && user.Password == fetchedUser.Password)
+                {
+                    string tokenString = tokenService.GetToken(configuration, user);
+                    return Ok(new { Token = tokenString });
+                }
+                else
+                {
+                    return Unauthorized();
+                }
+            }
+            catch (AggregateException ex)
             {
-                return BadRequest();
+                _logger.Log(NLog.LogLevel.Error, ex, $"We encountered an exception in communicating with database!: ");
+                return new StatusCodeResult(StatusCodes.Status500InternalServerError);
             }
 
-           
-            if (user.Username == fetchedUser.Username && user.Password == fetchedUser.Password)
-            {
-                string tokenString = tokenService.GetToken(configuration, user);
-                return Ok(new { Token = tokenString });
-            }
-            else
-            {
-                return Unauthorized();
-            }
+            
         }
     }
 }

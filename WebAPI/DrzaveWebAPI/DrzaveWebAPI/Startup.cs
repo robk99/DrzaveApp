@@ -18,6 +18,7 @@ namespace DrzaveWebAPI
     public class Startup
     {
         private string angularBaseUrl;
+
         public Startup(IConfiguration configuration)
         {
             LogManager.LoadConfiguration(String.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
@@ -34,8 +35,6 @@ namespace DrzaveWebAPI
             services.AddTransient<IUserService, UserService>();
             services.AddEntityFrameworkNpgsql().AddDbContext<CountriesdbContext>(opt => opt.UseNpgsql(Configuration.GetConnectionString("CountriesAPPConnection")))
                 .AddUnitOfWork<CountriesdbContext>();
-            //throw new ApplicationException();
-
             services.AddAuthenticationService(Configuration);
             services.AddControllers();
             services.AddCors(options =>

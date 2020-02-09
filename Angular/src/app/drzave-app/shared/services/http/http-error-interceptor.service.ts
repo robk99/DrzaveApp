@@ -18,7 +18,7 @@ export class HttpErrorInterceptorService implements HttpInterceptor {
           let errorMessage = '';
           let token = localStorage.getItem("token");
           
-          if (error.status == 0) {
+          if (error.status == 0 || error.status == 500) {
             errorMessage = `Error in communication with server: ${error.message}`;
             this.toastr.error('Error in communication with server!');
             this.loginService.logOut();
