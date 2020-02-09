@@ -83,6 +83,8 @@ Angular 8.0
 ![Image of edit-route](https://i.imgur.com/0v5olsq.png)  
 - Clicking on "Cities" text you go to cities-route where you can edit cities likewise:  
 ![Image of cities-route](https://i.imgur.com/FCm27XG.png)  
+- Error Page  
+![Image of ErrorPage](https://i.imgur.com/s3yy4DP.png)  
 
 <a name="additions"></a>
 ## Additions  
