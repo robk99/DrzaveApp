@@ -47,22 +47,23 @@ Angular 8.0
   ![Image of creating database](https://i.imgur.com/rhMKXjU.png?1)  
   If built correctly you should see your tables in pgAdmin or psql.  
   4. Start Project with IIS Express:  
-  ![Imaeg of starting WebAPI project](https://i.imgur.com/WVWDKCd.png)
+  ![Image of starting WebAPI project](https://i.imgur.com/WVWDKCd.png)
   
 **SQL Shell (psql):**  
   1. Open psql and log in with your credentials:  
   ![Image logging in to psql](https://i.imgur.com/qPgxNM1.png)
-  2. Inside project folder find folder "SQL", copy its path and paste it to psql with "database_creator.sql" file like this and press ENTER: (psql should start creating database tables and functions)  
-  (If you are using Linux be sure to change forwardslashes to backslashes and if you have path that contains spaces be sure to put whole path in backticks)  
+  2. Inside project folder find folder "SQL", copy its path and paste it to psql with "database_creator.sql" file and press ENTER:  
+  (psql should start creating database tables and functions)  
+  (If you are using Linux be sure to change forwardslashes with backslashes and if you have path that contains spaces be sure to put whole path in backticks)  
   ![Image of creating tables](https://i.imgur.com/xIlWAEP.png?1)  
   If everything went well now you have populated you database with data.  
   
 **Visual Studio Code:**  
   1. Open VS Code and drag&drop "Angular" folder from project:  
   ![Image of drag&dropping](https://i.imgur.com/973f9ZI.png)
-  2. Inside VS Code go to Terminl -> New Terinal, write: "npm install" and hit ENTER:  
+  2. Inside VS Code go to Terminal -> New Terinal, write: "npm install" and hit ENTER:  
   ![Image of installing npm](https://i.imgur.com/dWvjf6Q.png)
-  (Node Package Manager should now install all of the dependent pacgages)  
+  (Node Package Manager should now install all of the dependent packages)  
   3. When done, open "environment.ts" inside environment folder and make sure to match localhost url of your API application:  
   ![Image of environment.ts file](https://i.imgur.com/F42Kkzd.png)  
   Right click on "DrzaveWebAPI" inside Visual Studio and select Properties:  
