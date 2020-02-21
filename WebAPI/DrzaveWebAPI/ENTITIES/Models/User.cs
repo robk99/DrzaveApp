@@ -1,7 +1,7 @@
-﻿using ENTITIES.Interfaces.Models;
+﻿using Entities.Interfaces.Models;
 using System.ComponentModel.DataAnnotations;
 
-namespace ENTITIES.Models
+namespace Entities.Models
 {
     public class User : IUser
     {

@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BLL", "BLL\BLL.csproj", "{6
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DALHelpers", "DALHelpers\DALHelpers.csproj", "{2F7D1B61-0BC9-4482-9BFF-7B24FC5224B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ENTITIES", "ENTITIES\ENTITIES.csproj", "{A4814DC8-D573-421D-8EF7-D8563482E331}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{A4814DC8-D573-421D-8EF7-D8563482E331}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -4,7 +4,7 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using BLL.Interfaces.Services;
 using DAL;
-using ENTITIES.Models;
+using Entities.Models;
 
 namespace BLL.Services.Entities
 {

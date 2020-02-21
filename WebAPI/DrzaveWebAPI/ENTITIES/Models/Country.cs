@@ -1,10 +1,10 @@
-﻿using ENTITIES.Interfaces.Models;
+﻿using Entities.Interfaces.Models;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
-namespace ENTITIES.Models
+namespace Entities.Models
 {
     public class Country : ICountry
     {

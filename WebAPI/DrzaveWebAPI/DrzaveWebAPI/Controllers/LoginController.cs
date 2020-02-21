@@ -1,4 +1,4 @@
-﻿using ENTITIES.Models;
+﻿using Entities.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;

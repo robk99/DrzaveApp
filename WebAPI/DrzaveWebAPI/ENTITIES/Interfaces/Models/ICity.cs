@@ -1,4 +1,4 @@
-﻿namespace ENTITIES.Interfaces.Models
+﻿namespace Entities.Interfaces.Models
 {
     public interface ICity
     {
