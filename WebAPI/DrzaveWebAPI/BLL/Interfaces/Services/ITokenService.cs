@@ -1,4 +1,4 @@
-﻿using DAL.Models;
+﻿using ENTITIES.Models;
 using Microsoft.Extensions.Configuration;
 
 namespace BLL.Interfaces.Services

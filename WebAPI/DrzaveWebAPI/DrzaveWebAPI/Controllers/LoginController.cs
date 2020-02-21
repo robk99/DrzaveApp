@@ -1,4 +1,4 @@
-﻿using DAL.Models;
+﻿using ENTITIES.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -9,7 +9,6 @@ using System.Security.Claims;
 using System.Text;
 using BLL.Interfaces.Services;
 using System.Threading.Tasks;
-using DAL;
 using Microsoft.AspNetCore.Http;
 using BLL.Services.ExceptionHandling;
 
@@ -21,17 +20,13 @@ namespace DrzaveWebAPI.Controllers
     [ApiController]
     public class LoginController : Controller
     {
-        private readonly CountriesdbContext _context;
         private readonly IConfiguration configuration;
         private readonly ITokenService tokenService;
         private readonly IUserService _userService;
         private readonly NLog.Logger _logger;
 
-
-
-        public LoginController(CountriesdbContext context, IConfiguration config, ITokenService tokenService, IUserService service)
+        public LoginController(IConfiguration config, ITokenService tokenService, IUserService service)
         {
-            _context = context;
             configuration = config;
             this.tokenService = tokenService;
             _userService = service;

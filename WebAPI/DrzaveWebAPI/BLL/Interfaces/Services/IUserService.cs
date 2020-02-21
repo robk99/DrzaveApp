@@ -1,4 +1,4 @@
-﻿using DAL.Models;
+﻿using ENTITIES.Models;
 using System.Threading.Tasks;
 
 namespace BLL.Interfaces.Services

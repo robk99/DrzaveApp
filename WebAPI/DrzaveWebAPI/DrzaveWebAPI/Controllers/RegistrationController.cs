@@ -1,5 +1,5 @@
 ﻿using BLL.Interfaces.Services;
-using DAL.Models;
+using ENTITIES.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System;

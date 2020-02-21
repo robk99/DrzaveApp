@@ -27,6 +27,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj" />
+    <ProjectReference Include="..\ENTITIES\ENTITIES.csproj" />
   </ItemGroup>
 
 </Project>

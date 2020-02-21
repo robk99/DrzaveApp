@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using DAL;
 using BLL.Interfaces.Services;
+using BLL.Services.Entities;
 using BLL.Services;
 using BLL.Services.Authentication;
 using NLog;
@@ -18,7 +19,8 @@ namespace DrzaveWebAPI
     public class Startup
     {
         private string angularBaseUrl;
-
+        public IConfiguration Configuration { get; }
+        
         public Startup(IConfiguration configuration)
         {
             LogManager.LoadConfiguration(String.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
@@ -26,15 +28,13 @@ namespace DrzaveWebAPI
             angularBaseUrl = configuration.GetSection("AngularBaseUrl").Value;
         }
 
-        public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<ICountryService, CountryService>();
-            services.AddTransient<ICityService, CityService>();
-            services.AddTransient<ITokenService, TokenService>();
-            services.AddTransient<IUserService, UserService>();
-            services.AddEntityFrameworkNpgsql().AddDbContext<CountriesdbContext>(opt => opt.UseNpgsql(Configuration.GetConnectionString("CountriesAPPConnection")))
-                .AddUnitOfWork<CountriesdbContext>();
+            services.AddScoped<ICountryService, CountryService>();
+            services.AddScoped<ICityService, CityService>();
+            services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddEFPostgresService(Configuration);
             services.AddAuthenticationService(Configuration);
             services.AddControllers();
             services.AddCors(options =>
@@ -73,8 +73,6 @@ namespace DrzaveWebAPI
             {
                 endpoints.MapControllers();
             });
-
-
         }
     }
 }
