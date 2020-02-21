@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System;
 using System.Threading.Tasks;
-using System.Net;
 
 namespace BLL.Services.ExceptionHandling
 {
@@ -14,7 +13,7 @@ namespace BLL.Services.ExceptionHandling
             _next = next;
             _logger = NLog.LogManager.GetCurrentClassLogger();
         }
-
+         
         public async Task InvokeAsync(HttpContext httpContext)
         {
             try
@@ -24,20 +23,8 @@ namespace BLL.Services.ExceptionHandling
             catch (Exception ex)
             {
                 _logger.Log(NLog.LogLevel.Error, ex, $"\nGUID: {httpContext.Request.Headers["X-Request-Guid"]}\n We encountered an InternalServerError Exception!: ");
-                await HandleExceptionAsync(httpContext, ex);
+                await ResponseExceptionHandling.HandleExceptionAsync(httpContext);
             }
-        }
-
-        private Task HandleExceptionAsync(HttpContext context, Exception exception)
-        {
-            context.Response.ContentType = "application/json";
-            context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-            
-            return context.Response.WriteAsync(new ExceptionDetails()
-            {
-                StatusCode = context.Response.StatusCode,
-                Message = "Internal Server Error."
-            }.ToString());
         }
     }
 }

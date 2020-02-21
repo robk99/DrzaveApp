@@ -11,6 +11,7 @@ using BLL.Interfaces.Services;
 using System.Threading.Tasks;
 using DAL;
 using Microsoft.AspNetCore.Http;
+using BLL.Services.ExceptionHandling;
 
 namespace DrzaveWebAPI.Controllers
 {
@@ -35,7 +36,6 @@ namespace DrzaveWebAPI.Controllers
             this.tokenService = tokenService;
             _userService = service;
             _logger = NLog.LogManager.GetCurrentClassLogger();
-
         }
 
         public async Task<User> GetUser(string username)
@@ -47,7 +47,7 @@ namespace DrzaveWebAPI.Controllers
 
         // POST: api/login
         [HttpPost]
-        public IActionResult Login([FromBody]User user)
+        public async Task<ActionResult> Login(User user)
         {
             try
             {
@@ -70,11 +70,10 @@ namespace DrzaveWebAPI.Controllers
             }
             catch (AggregateException ex)
             {
-                _logger.Log(NLog.LogLevel.Error, ex, $"We encountered an exception in communicating with database!: ");
+                _logger.Log(NLog.LogLevel.Error, ex, $"\nGUID: {this.HttpContext.Request.Headers["X-Request-Guid"]}\n We encountered an exception in communicating with database!: ");
+                await ResponseExceptionHandling.HandleExceptionAsync(this.HttpContext);
                 return new StatusCodeResult(StatusCodes.Status500InternalServerError);
             }
-
-            
         }
     }
 }

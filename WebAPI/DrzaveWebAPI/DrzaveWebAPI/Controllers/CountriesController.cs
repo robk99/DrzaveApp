@@ -23,7 +23,6 @@ namespace DrzaveWebAPI.Controllers
             _countryService = countryService;
             _configuration = config;
             _countriesUrl = _configuration.GetSection("CountriesUrl").Value;
-
         }
 
         // GET: api/countries
