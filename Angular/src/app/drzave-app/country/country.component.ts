@@ -8,6 +8,7 @@ import { environment } from '../../../environments/environment';
 import { ToastrService } from 'ngx-toastr';
 import { City } from "./../shared/models/city.model";
 import { LoginService } from 'src/app/login/login-service/login.service';
+import { DisableButtonService } from 'src/app/disable-button-service/disable-button.service';
 
 
 
@@ -24,8 +25,8 @@ export class CountryComponent implements OnInit {
   private newCountry: FormGroup;
 
   constructor(private countryService: CountryService, private cityService: CityService,
-    private formBuilder: FormBuilder, private popover: PopoverService, private router: Router, 
-    private toastr: ToastrService, private loginService: LoginService) {
+    private formBuilder: FormBuilder, private popover: PopoverService, private router: Router,
+    private toastr: ToastrService, private loginService: LoginService, private btnService: DisableButtonService) {
   }
 
   ngOnInit() {
@@ -33,6 +34,7 @@ export class CountryComponent implements OnInit {
     this.getCountriesToList();
     this.getCitiesToList();
     this.setInputToDefaultValues();
+    this.btnService.setButtonDisabler(false);
   }
 
   getCountriesToList() {
@@ -83,6 +85,7 @@ export class CountryComponent implements OnInit {
   }
 
   insertCountry(form: FormGroup) {
+    this.btnService.setButtonDisabler(true);
     this.countryService.post(form.value).subscribe(
       (country: Country) => {
         form.patchValue({ id: country.id });
@@ -90,12 +93,13 @@ export class CountryComponent implements OnInit {
         this.pushFormGroupIntoArray(form);
         this.setInputToDefaultValues();
         this.toastr.success('Country successfully posted!');
+        this.btnService.setButtonDisabler(false);
       },
       err => {
         console.log("ERROR posting the country!", err);
         console.log(form.value);
         this.toastr.error('ERROR posting the country!');
-
+        this.btnService.setButtonDisabler(false);
       }
     );
   }
@@ -114,7 +118,7 @@ export class CountryComponent implements OnInit {
     );
   }
 
-  editButtonClick(id: number){
+  editButtonClick(id: number) {
     this.router.navigateByUrl(`${environment.countriesEditRoute}/${id}`);
   }
 }

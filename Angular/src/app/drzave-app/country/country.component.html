@@ -20,7 +20,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-success btn-md btn-block" [disabled]="newCountry.invalid">
+                        <button type="submit" class="btn btn-success btn-md btn-block" [disabled]="newCountry.invalid || this.btnService.getButtonDisabler()">
                         <i class="fas fa-database"></i>
                         Create Country</button>
                     </div>

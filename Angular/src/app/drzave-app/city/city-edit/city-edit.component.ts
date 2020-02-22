@@ -7,6 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { City } from "../../shared/models/city.model";
 import { LoginService } from 'src/app/login/login-service/login.service';
 import { environment } from 'src/environments/environment';
+import { DisableButtonService } from 'src/app/disable-button-service/disable-button.service';
 
 @Component({
   selector: 'app-city-edit',
@@ -17,7 +18,7 @@ export class CityEditComponent implements OnInit {
 
   private id: number;
   private cityForEdit: FormGroup = this.formBuilder.group({
-    id: new FormControl({value: 0, disabled: true}),
+    id: new FormControl({ value: 0, disabled: true }),
     name: new FormControl('', Validators.required),
     population: new FormControl(),
     countryId: new FormControl()
@@ -28,11 +29,12 @@ export class CityEditComponent implements OnInit {
 
 
   constructor(private route: ActivatedRoute, private countryService: CountryService,
-    private cityService: CityService, private formBuilder: FormBuilder, private toastr: ToastrService, 
-    private loginService: LoginService, private router: Router) { }
+    private cityService: CityService, private formBuilder: FormBuilder, private toastr: ToastrService,
+    private loginService: LoginService, private router: Router, private btnService: DisableButtonService) { }
 
   ngOnInit() {
     this.loginService.isTokenExpired();
+    this.btnService.setButtonDisabler(false);
     this.getCityIdFromRoute();
     this.getCityFromId();
     this.getCountriesToList();
@@ -43,35 +45,37 @@ export class CityEditComponent implements OnInit {
     this.id = + this.route.snapshot.paramMap.get('id');
   }
 
-  getCityFromId(){
+  getCityFromId() {
     this.cityService.getOne(this.id)
-    .subscribe((city: City) => {
-      this.cityForEdit = this.formBuilder.group({
-        id: [city.id],
-        name: [city.name, Validators.required],
-        population: [city.population],
-        countryId: [city.countryId]
-      }),
-      this.cityName = city.name;
-    },
-    err =>{
-      console.log(`ERROR fetching city (Id: ${this.id}) from database: `, err);
-      this.router.navigate([`/${environment.errorRoute}`])
-    });
+      .subscribe((city: City) => {
+        this.cityForEdit = this.formBuilder.group({
+          id: [city.id],
+          name: [city.name, Validators.required],
+          population: [city.population],
+          countryId: [city.countryId]
+        }),
+          this.cityName = city.name;
+      },
+        err => {
+          console.log(`ERROR fetching city (Id: ${this.id}) from database: `, err);
+          this.router.navigate([`/${environment.errorRoute}`])
+        });
   }
 
   updateCity(form: FormGroup) {
+    this.btnService.setButtonDisabler(true);
     this.cityService.put(form.value).subscribe(
       res => {
         console.log("CITY SUCCESSFULLY CHANGED");
         form.markAsPristine();
         this.toastr.success('City successfully changed!');
-
+        this.btnService.setButtonDisabler(false);
       },
       err => {
         console.log("ERROR changing the city!", err);
         console.log(form.value);
         this.toastr.error('ERROR changing the city!');
+        this.btnService.setButtonDisabler(false);
       }
     );
   }
@@ -91,7 +95,7 @@ export class CityEditComponent implements OnInit {
       });
   }
 
-  anullCity(){
+  anullCity() {
     this.cityForEdit = this.formBuilder.group({
       name: new FormControl('', Validators.required),
       population: new FormControl(),

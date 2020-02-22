@@ -1,5 +1,9 @@
 /* START: Main semantic HTML elements */
 
+.cursor-progress {
+    cursor: progress !important;
+}
+
 body {
     background-color: rgb(8, 19, 39);
 }

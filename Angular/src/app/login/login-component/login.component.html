@@ -1,8 +1,8 @@
-<form class="form-signin" [formGroup]=loginForm (ngSubmit)="loginService.logIn(loginForm.value)">
+<form class="form-signin" [formGroup]=loginForm (ngSubmit)="logIn()">
     <div class="container-fluid">
         <i class="fas fa-arrow-left fa-2x backButton" (click)="goBack()"></i>
         <h2 class="form-signin-heading">Login</h2>
-        <div *ngIf="loginService.userDontExist()" class="alert alert-danger">Invalid username or password.</div>
+        <div *ngIf="userDontExist()" class="alert alert-danger">Invalid username or password.</div>
         <br/>
         <label for="username" class="sr-only"></label>
         <input type="username" id="username" name="username" formControlName="username" class="form-control col-lg-5" placeholder="Username" required autofocus maxlength="20">
@@ -10,7 +10,7 @@
         <label for="password" class="sr-only"></label>
         <input type="password" id="password" name="password" formControlName="password" class="form-control col-lg-5" placeholder="Password" required maxlength="20">
         <br/>
-        <button class="btn btn-lg btn-secondary btn-block col-lg-5" type="submit" [disabled]="loginForm.invalid">Sign in</button>
+        <button class="btn btn-lg btn-secondary btn-block col-lg-5" type="submit" [disabled]="loginForm.invalid || this.btnService.getButtonDisabler()">Sign in</button>
     </div>
 </form>
 <br><br>

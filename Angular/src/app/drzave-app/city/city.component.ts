@@ -9,6 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 import { City } from "../shared/models/city.model";
 import { of, Observable } from 'rxjs';
 import { LoginService } from 'src/app/login/login-service/login.service';
+import { DisableButtonService } from 'src/app/disable-button-service/disable-button.service';
 
 
 @Component({
@@ -24,17 +25,18 @@ export class CityComponent implements OnInit {
   private countryName: string;
 
   constructor(private cityService: CityService, private countryService: CountryService,
-    private formBuilder: FormBuilder, private popover: PopoverService, private router: Router, 
-    private toastr: ToastrService, private loginService: LoginService) {
+    private formBuilder: FormBuilder, private popover: PopoverService, private router: Router,
+    private toastr: ToastrService, private loginService: LoginService, private btnService: DisableButtonService) {
   }
 
   ngOnInit() {
     this.loginService.isTokenExpired();
+    this.btnService.setButtonDisabler(false);
     this.getCountriesToList();
     this.setInputToDefaultValues();
   }
 
-  getCitiesToList(){
+  getCitiesToList() {
     this.cityService.getAll().subscribe(
       res => {
         (res as City[]).forEach((city: City) => {
@@ -90,6 +92,7 @@ export class CityComponent implements OnInit {
   }
 
   insertCity(form: FormGroup) {
+    this.btnService.setButtonDisabler(true);
     this.cityService.post(form.value).subscribe(
       (res: City) => {
         form.patchValue({ id: res.id });
@@ -97,11 +100,13 @@ export class CityComponent implements OnInit {
         this.pushFormGroupIntoArray(form);
         this.setInputToDefaultValues();
         this.toastr.success('City successfully posted!');
+        this.btnService.setButtonDisabler(false);
       },
       err => {
         console.log("ERROR posting the city!", err);
         console.log(form.value);
         this.toastr.error('ERROR posting the city!');
+        this.btnService.setButtonDisabler(false);
       }
     );
   }

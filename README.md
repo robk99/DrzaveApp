@@ -92,9 +92,9 @@ Angular 8.0
 - **Exception logging**  
   Inside "..\DrzaveWebAPI\GlobalErrorHandlingLogs\logs" you can find txt file logs for some basic exceptions:  
 ![Image of exception logging](https://i.imgur.com/Wxfb8EL.png)  
-- **HTPP request logging**  
+- **HTTP request logging**  
   Inside "..\DrzaveWebAPI\HttpRequestHandlingLogs\logs" you can find JSON file logs for every HTTP request and response:  
-![JSON http logs](https://i.imgur.com/Qpp6b7M.png)  
+![JSON http logs](https://i.imgur.com/PZlyIwy.png)  
 - **JWT Authorization**  
   Inside browsers local storage you can find Json Web Token:  
 ![Image of jwt](https://i.imgur.com/Fa1EX2K.png)  

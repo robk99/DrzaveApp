@@ -31,7 +31,7 @@
             <a href="/cities">
                 <button type="button" class="btn btn-light">Return</button>
             </a>
-            <button type="submit" class="btn btn-primary" (click)="updateCity(cityForEdit)" [disabled]="cityForEdit.invalid || cityForEdit.pristine">Submit Change</button>
+            <button type="submit" class="btn btn-primary" (click)="updateCity(cityForEdit)" [disabled]="cityForEdit.invalid || cityForEdit.pristine || this.btnService.getButtonDisabler()">Submit Change</button>
         </div>
     </div>
 </div>

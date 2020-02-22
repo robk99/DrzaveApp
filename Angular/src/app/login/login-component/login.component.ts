@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../login-service/login.service';
 import { environment } from "../../../environments/environment";
+import { DisableButtonService } from 'src/app/disable-button-service/disable-button.service';
 
 
 @Component({
@@ -13,14 +14,17 @@ import { environment } from "../../../environments/environment";
 export class LoginComponent implements OnInit {
 
   private loginForm: FormGroup;
+  private isLoginButtonPressed: boolean;
 
   constructor(private router: Router, private loginService: LoginService, 
-    private formBuilder: FormBuilder) { }
+    private formBuilder: FormBuilder, private btnService: DisableButtonService) { }
 
   ngOnInit() {
     this.loginService.isUserLoggedIn();
     this.loginService.loginErrorNotOccured();
+    this.isLoginButtonPressed = false;
     this.setInputToDefaultValues();
+    this.btnService.setButtonDisabler(false);
   }
 
   setInputToDefaultValues() {
@@ -35,5 +39,13 @@ export class LoginComponent implements OnInit {
     this.router.navigateByUrl(`${environment.homeRoute}`);
   }
 
+  logIn(){
+    this.btnService.setButtonDisabler(true);
+    this.loginService.logIn(this.loginForm.value);
+  }
 
+  userDontExist(): boolean{
+    this.btnService.setButtonDisabler(false);
+    return this.loginService.userDontExist();
+  }
 }
