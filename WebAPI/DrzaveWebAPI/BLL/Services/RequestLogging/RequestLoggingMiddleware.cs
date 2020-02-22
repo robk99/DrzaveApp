@@ -26,8 +26,15 @@ namespace BLL.Services.RequestLogging
 
         public async Task Invoke(HttpContext context)
         {
-            await LogRequest(context);
-            await LogResponse(context);
+            if (context.Request.Method != "OPTIONS")
+            {
+                await LogRequest(context);
+                await LogResponse(context);
+            }
+            else
+            {
+                await _next(context);
+            }
         }
 
 
@@ -40,9 +47,7 @@ namespace BLL.Services.RequestLogging
             await using MemoryStream requestStream = _recyclableMemoryStreamManager.GetStream();
             await context.Request.Body.CopyToAsync(requestStream);
             string bodyString = ReadStreamInChunks(requestStream);
-
             
-
             Object body;
             if (bodyString != string.Empty)
             {
