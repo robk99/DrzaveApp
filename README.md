@@ -98,3 +98,6 @@ Angular 8.0
 - **JWT Authorization**  
   Inside browsers local storage you can find Json Web Token:  
 ![Image of jwt](https://i.imgur.com/Fa1EX2K.png)  
+- **Password Hashing**  
+  User passwords are hashed with PBKDF2 and SHA512 Encryption:  
+![Image of hashed password](https://i.imgur.com/tVkoV4x.png)  

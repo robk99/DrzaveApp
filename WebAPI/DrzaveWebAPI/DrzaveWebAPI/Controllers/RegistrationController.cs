@@ -1,4 +1,5 @@
 ﻿using BLL.Interfaces.Services;
+using BLL.Services;
 using Entities.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -29,7 +30,6 @@ namespace DrzaveWebAPI.Controllers
         public async Task<ActionResult> PostUser(User user)
         {
             await _userService.PostUser(user);
-
             return Created(_registrationUrl, user);
         }
 

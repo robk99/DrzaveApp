@@ -11,6 +11,8 @@ using BLL.Interfaces.Services;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using BLL.Services.ExceptionHandling;
+using BLL.Services;
+
 
 namespace DrzaveWebAPI.Controllers
 {
@@ -24,6 +26,8 @@ namespace DrzaveWebAPI.Controllers
         private readonly ITokenService tokenService;
         private readonly IUserService _userService;
         private readonly NLog.Logger _logger;
+        private string hashedPassword;
+
 
         public LoginController(IConfiguration config, ITokenService tokenService, IUserService service)
         {
@@ -52,8 +56,9 @@ namespace DrzaveWebAPI.Controllers
                     return BadRequest();
                 }
 
+                bool isPasswordCorrect = HashUserPasswordService.ValidatePassword(fetchedUser.Password, user.Password);
 
-                if (user.Username == fetchedUser.Username && user.Password == fetchedUser.Password)
+                if (isPasswordCorrect)
                 {
                     string tokenString = tokenService.GetToken(configuration, user);
                     return Ok(new { Token = tokenString });
