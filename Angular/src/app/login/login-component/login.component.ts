@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   private loginForm: FormGroup;
   private isLoginButtonPressed: boolean;
 
-  constructor(private router: Router, private loginService: LoginService, 
+  constructor(private router: Router, private loginService: LoginService,
     private formBuilder: FormBuilder, private btnService: DisableButtonService) { }
 
   ngOnInit() {
@@ -34,18 +34,23 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  goBack(){
+  goBack() {
     this.setInputToDefaultValues();
     this.router.navigateByUrl(`${environment.homeRoute}`);
   }
 
-  logIn(){
+  logIn() {
     this.btnService.setButtonDisabler(true);
     this.loginService.logIn(this.loginForm.value);
   }
 
-  userDontExist(): boolean{
-    this.btnService.setButtonDisabler(false);
-    return this.loginService.userDontExist();
+  userDontExist(): boolean {
+    if (this.loginService.userDontExist()) {
+      this.btnService.setButtonDisabler(false);
+      return true;
+    }
+    else{
+      return false;
+    }
   }
 }

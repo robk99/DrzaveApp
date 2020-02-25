@@ -11,18 +11,17 @@ export class AppComponent implements OnInit {
 
   private currentLogged: string;
 
-  constructor(private loginService: LoginService, private router: Router){
+  constructor(private loginService: LoginService, private router: Router) {
   }
 
-
-  ngOnInit(){
+  ngOnInit() {
     this.currentLogged = this.loginService.getUser();
-    this.loginService.watchStorage().subscribe((data:string)  => {
+    this.loginService.watchStorage().subscribe((data: string) => {
       this.currentLogged = data;
-      });
+    });
   }
 
-  logOut(){
+  logOut() {
     this.loginService.logOut();
   }
 

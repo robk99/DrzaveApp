@@ -18,5 +18,4 @@ export class HomeComponent implements OnInit {
     this.loginService.isUserLoggedIn();
     this.btnService.setButtonDisabler(false);
   }
-
 }
