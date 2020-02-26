@@ -2,6 +2,7 @@
     <div class="container-fluid">
         <i class="fas fa-arrow-left fa-2x backButton" (click)="goBack()"></i>
         <h2 class="form-signin-heading">Registration</h2>
+        <div *ngIf="userExists()" class="alert alert-danger">User already exists.</div>
         <br/>
         <label for="username" class="sr-only"></label>
         <input type="username" id="username" name="username" formControlName="username" class="form-control col-lg-5" placeholder="Username" required autofocus maxlength="20">

@@ -1,5 +1,5 @@
 ﻿using BLL.Interfaces.Services;
-using Entities.Models;
+using Entities.DTOs;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -14,7 +14,7 @@ namespace BLL.Services.Authentication
     {
         private string angularBaseUrl;
 
-        public string GetToken(IConfiguration configuration, User loginUser)
+        public string GetToken(IConfiguration configuration, UserDto loginUser)
         {
             DateTime utcNow = DateTime.UtcNow;
             angularBaseUrl = configuration.GetSection("AngularBaseUrl").Value;

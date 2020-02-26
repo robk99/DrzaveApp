@@ -8,6 +8,7 @@ body.waiting,
 body.waiting a:hover,
 body.waiting * {
     cursor: wait !important;
+    filter: blur(0.4px);
 }
 
 footer {
@@ -67,6 +68,7 @@ footer {
 .backButton:hover {
     color: rgb(136, 136, 136);
     transition: 0.3s;
+    cursor: pointer;
 }
 
 

@@ -4,12 +4,13 @@ import { catchError } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { LoginService } from 'src/app/login/login-service/login.service';
 import { ToastrService } from 'ngx-toastr';
+import { RegisterService } from 'src/app/register/register-service/register.service';
 
 @Injectable()
 export class HttpErrorInterceptorService implements HttpInterceptor {
 
 
-  constructor(private loginService: LoginService, private toastr: ToastrService ){}
+  constructor(private loginService: LoginService, private toastr: ToastrService, private registrerService: RegisterService ){}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(request)
@@ -26,6 +27,10 @@ export class HttpErrorInterceptorService implements HttpInterceptor {
           else if (error.status == 400) {
             errorMessage = `Invalid username or password - ${error.message}`;
           }
+          else if (error.status == 409) {
+            errorMessage = `Username already exists in database - ${error.message}`;
+            this.registrerService.userIsFound(true);
+          }
           else if (token && this.loginService.isTokenExpired()) {
             errorMessage = `TOKEN EXPIRED - ${error.message}`;
           }
@@ -39,10 +44,4 @@ export class HttpErrorInterceptorService implements HttpInterceptor {
         })
       )
   }
-
-
-  checkIsTokenExpired(){
-    
-  }
-
 }

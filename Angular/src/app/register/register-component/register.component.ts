@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit {
 
   private registerForm: FormGroup;
 
-  constructor(private router: Router, private registerService: RegisterService, 
+  constructor(private router: Router, private registerService: RegisterService,
     private formBuilder: FormBuilder, private loginService: LoginService,
     private toastr: ToastrService, private btnService: DisableButtonService) { }
 
@@ -33,21 +33,33 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  goBack(){
+  goBack() {
     this.setInputToDefaultValues();
+    this.registerService.userIsFound(false);
     this.router.navigateByUrl(`${environment.homeRoute}`);
   }
 
-  async tryToRegisternewUser(regForm: FormGroup){
+  async tryToRegisternewUser(regForm: FormGroup) {
     this.btnService.setButtonDisabler(true);
     let response: boolean = await this.registerService.post(regForm.value);
     if (response) {
       this.toastr.success('New user successfully registered!');
+      this.btnService.setButtonDisabler(false);
       this.goBack();
-    }else{
-      this.toastr.error('Error occured in user registration!');
+    } else {
+      if (!this.userExists()) {
+        this.toastr.error('Error occured in user registration!');
+      }
+      this.btnService.setButtonDisabler(false);
     }
-    
+
+  }
+
+  userExists(): boolean {
+    if (this.registerService.isUserFound()) {
+      return true;
+    }
+    return false;
   }
 
 }

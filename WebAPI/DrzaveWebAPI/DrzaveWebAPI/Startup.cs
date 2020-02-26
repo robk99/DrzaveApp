@@ -13,6 +13,7 @@ using BLL.Services.Authentication;
 using NLog;
 using System;
 using System.IO;
+using AutoMapper;
 
 namespace DrzaveWebAPI
 {
@@ -30,6 +31,7 @@ namespace DrzaveWebAPI
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAutoMapper(typeof(MappingProfile));
             services.AddScoped<ICountryService, CountryService>();
             services.AddScoped<ICityService, CityService>();
             services.AddScoped<ITokenService, TokenService>();

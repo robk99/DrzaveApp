@@ -11,6 +11,7 @@ export class RegisterService {
 
   protected baseUrl = environment.baseUrl;
   private registrationSuccessfull: boolean = false;
+  private userAlereadyExists: boolean = false;
 
   async post(newUser: User): Promise<boolean>{
     return await new Promise(resolve => {
@@ -25,6 +26,14 @@ export class RegisterService {
         }
       );
     })
-    
   }
+
+  userIsFound(isFound: boolean){
+    this.userAlereadyExists = isFound;
+  }
+
+  isUserFound(): boolean{
+    return this.userAlereadyExists;
+  }
+
 }

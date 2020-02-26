@@ -63,6 +63,7 @@ export class CityEditComponent implements OnInit {
   }
 
   updateCity(form: FormGroup) {
+    console.log(form.value);
     this.btnService.setButtonDisabler(true);
     this.cityService.put(form.value).subscribe(
       res => {
@@ -97,6 +98,7 @@ export class CityEditComponent implements OnInit {
 
   anullCity() {
     this.cityForEdit = this.formBuilder.group({
+      id: this.cityForEdit.value.id,
       name: new FormControl('', Validators.required),
       population: new FormControl(),
       countryId: new FormControl()

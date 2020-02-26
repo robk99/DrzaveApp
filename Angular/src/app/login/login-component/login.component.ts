@@ -49,8 +49,6 @@ export class LoginComponent implements OnInit {
       this.btnService.setButtonDisabler(false);
       return true;
     }
-    else{
-      return false;
-    }
+    return false;
   }
 }

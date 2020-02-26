@@ -12,7 +12,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using BLL.Services.ExceptionHandling;
 using BLL.Services;
-
+using AutoMapper;
+using Entities.DTOs;
 
 namespace DrzaveWebAPI.Controllers
 {
@@ -27,30 +28,33 @@ namespace DrzaveWebAPI.Controllers
         private readonly IUserService _userService;
         private readonly NLog.Logger _logger;
         private string hashedPassword;
+        private IMapper _mapper;
 
 
-        public LoginController(IConfiguration config, ITokenService tokenService, IUserService service)
+        public LoginController(IConfiguration config, ITokenService tokenService, IUserService service, IMapper mapper)
         {
             configuration = config;
             this.tokenService = tokenService;
             _userService = service;
             _logger = NLog.LogManager.GetCurrentClassLogger();
+            _mapper = mapper;
         }
 
-        public async Task<User> GetUser(string username)
+        public async Task<UserDto> GetUser(string username)
         {
-            User user = await _userService.GetUser(username);
-
+            User userEntity = await _userService.GetUser(username);
+            UserDto user = _mapper.Map<UserDto>(userEntity);
+                
             return user;
         }
 
         // POST: api/login
         [HttpPost]
-        public async Task<ActionResult> Login(User user)
+        public async Task<ActionResult> Login(UserDto user)
         {
             try
             {
-                User fetchedUser = GetUser(user.Username).Result;
+                UserDto fetchedUser = GetUser(user.Username).Result;
                 if (fetchedUser == null)
                 {
                     return BadRequest();

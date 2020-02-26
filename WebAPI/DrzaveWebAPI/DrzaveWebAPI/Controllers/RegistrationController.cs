@@ -1,5 +1,7 @@
-﻿using BLL.Interfaces.Services;
+﻿using AutoMapper;
+using BLL.Interfaces.Services;
 using BLL.Services;
+using Entities.DTOs;
 using Entities.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -17,20 +19,37 @@ namespace DrzaveWebAPI.Controllers
         private readonly IUserService _userService;
         private readonly IConfiguration _configuration;
         private readonly string _registrationUrl;
+        private readonly IMapper _mapper;
 
-        public RegistrationController(IUserService service, IConfiguration config)
+        public RegistrationController(IUserService service, IConfiguration config, IMapper mapper)
         {
             _configuration = config;
             _userService = service;
             _registrationUrl = _configuration.GetSection("RegistrationUrl").Value;
+            _mapper = mapper;
         }
 
         // POST: api/registration
         [HttpPost]
-        public async Task<ActionResult> PostUser(User user)
+        public async Task<ActionResult> PostUser(UserDto user)
         {
-            await _userService.PostUser(user);
+            UserDto fetchedUser = GetUser(user.Username).Result;
+            if (fetchedUser != null)
+            {
+                return Conflict();
+            }
+
+            User userEntity = _mapper.Map<User>(user);
+            await _userService.PostUser(userEntity);
             return Created(_registrationUrl, user);
+        }
+
+        public async Task<UserDto> GetUser(string username)
+        {
+            User userEntity = await _userService.GetUser(username);
+            UserDto user = _mapper.Map<User, UserDto>(userEntity);
+
+            return user;
         }
 
     }
