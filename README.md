@@ -76,8 +76,8 @@ Angular 8.0
 ## Basic usage  
 - Login or Registration  
 ![Image of Homepage](https://i.imgur.com/2E4ZF2p.png)  
-- Login (default credentials are: admin/admin OR you can register new user on Registration page)  
-![Image of Loginpage](https://i.imgur.com/4P3tmcl.png)  
+- Register new user on Registration page and then Login  
+![Image of RegistrationPage](https://i.imgur.com/OCF7EQz.png)  
 - Clicking on any country you expand it and see if it contains cities:  
 ![Image of expanding](https://i.imgur.com/9cSWg2i.png)  
 - Clicking on blue "edit" button you go to edit-route:  

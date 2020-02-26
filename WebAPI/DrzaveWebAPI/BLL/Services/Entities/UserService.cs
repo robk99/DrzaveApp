@@ -2,6 +2,8 @@
 using BLL.Interfaces.Services;
 using DAL;
 using Entities.Models;
+using System.Linq;
+
 
 namespace BLL.Services.Entities
 {
@@ -18,7 +20,7 @@ namespace BLL.Services.Entities
 
         public async Task<User> GetUser(string username)
         {
-            return await _context.Users.FindAsync(username);
+            return _context.Users.Where(user => user.Username == username).FirstOrDefault();
         }
 
         public async Task<User> PostUser(User user)

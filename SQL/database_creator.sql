@@ -7,6 +7,7 @@ DELETE FROM users;
 
 ALTER SEQUENCE "countries_id_seq" RESTART WITH 1;
 ALTER SEQUENCE "cities_id_seq" RESTART WITH 1;
+ALTER SEQUENCE "users_id_seq" RESTART WITH 1;
 
 DROP FUNCTION get_cities_by_country(TEXT);
 DROP FUNCTION get_cities_and_countries_with_greater_population_then(INT);
@@ -28,8 +29,6 @@ INSERT INTO public.cities(name, population, country_id) VALUES ('Stockholm', 109
 INSERT INTO public.cities(name, population, country_id) VALUES ('Gothenburg', 99508, 3);
 INSERT INTO public.cities(name, population, country_id) VALUES ('Karlstad', 66912, 3);
 INSERT INTO public.cities(name, population, country_id) VALUES ('Uppsala', 46983, 3);
-
-INSERT INTO public.users(username, password) VALUES ('admin', 'admin');
 
 
 --Functions:

@@ -13,6 +13,8 @@
     <Compile Remove="Migrations\20200120184938_Cascade.Designer.cs" />
     <Compile Remove="Migrations\20200120192605_Cascade.cs" />
     <Compile Remove="Migrations\20200120192605_Cascade.Designer.cs" />
+    <Compile Remove="Migrations\20200206150055_Maknuti Id iz User modela.cs" />
+    <Compile Remove="Migrations\20200206150055_Maknuti Id iz User modela.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
