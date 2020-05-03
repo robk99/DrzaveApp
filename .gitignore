@@ -359,3 +359,4 @@ MigrationBackup/
 !.vscode/launch.json
 !.vscode/extensions.json
 *.code-workspace
+WebAPI/DrzaveWebAPI/DrzaveWebAPI/GlobalErrorHandlingLogs/internal_logs/internallog.txt

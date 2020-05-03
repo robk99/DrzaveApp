@@ -1,0 +1,6 @@
+FROM postgres:12.2-alpine
+ADD back.sql /docker-entrypoint-initdb.d
+POSTGRES_PASSWORD ss
+EXPOSE 5432
+
+RUN 

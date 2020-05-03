@@ -1,0 +1,17 @@
+version: '2.4'
+
+services:
+  db:
+    build:
+      context: ./dbDockerfiles
+      dockerfile: Dockerfile
+    ports:
+      - 5433:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=ss
+    volumes:
+      - db-data:/var/lib/postgresql/data:delegated
+
+volumes:
+  db-data:
