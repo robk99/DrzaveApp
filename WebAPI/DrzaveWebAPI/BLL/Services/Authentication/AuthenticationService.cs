@@ -19,8 +19,6 @@ namespace BLL.Services.Authentication
                              ));
             RsaSecurityKey signingKey = new RsaSecurityKey(publicRsa);
 
-
-
             services.AddAuthentication(opt =>
             {
                 opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

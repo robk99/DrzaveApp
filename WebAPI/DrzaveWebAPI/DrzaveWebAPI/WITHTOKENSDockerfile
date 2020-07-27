@@ -1,0 +1,29 @@
+FROM mcr.microsoft.com/dotnet/core/sdk:3.0 AS build
+WORKDIR app
+
+#copy csproj and restore as distinct layers
+COPY *.sln .
+COPY DrzaveWebAPI/*.csproj ./DrzaveWebAPI/
+COPY BLL/*.csproj ./BLL/
+COPY DAL/*.csproj ./DAL/
+COPY DALHelpers/*.csproj ./DALHelpers/
+COPY Entities/*.csproj ./Entities/
+
+
+RUN dotnet restore
+
+COPY DrzaveWebAPI/. ./DrzaveWebAPI/
+COPY BLL/. ./BLL/
+COPY DAL/. ./DAL/
+COPY DALHelpers/. ./DALHelpers/
+COPY Entities/. ./Entities/
+COPY TokenKeys/*.xml ./TokenKeys/
+
+WORKDIR /app/DrzaveWebAPI
+run dotnet publish -c Release -o out
+
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.0 AS runtime
+WORKDIR app/
+
+COPY --from=build /app/DrzaveWebAPI/out ./
+ENTRYPOINT ["dotnet", "DrzaveWebAPI.dll"]
