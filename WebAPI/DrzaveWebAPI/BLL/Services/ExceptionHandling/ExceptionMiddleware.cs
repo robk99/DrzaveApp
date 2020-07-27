@@ -23,7 +23,7 @@ namespace BLL.Services.ExceptionHandling
             catch (Exception ex)
             {
                 _logger.Log(NLog.LogLevel.Error, ex, $"\nGUID: {httpContext.Request.Headers["X-Request-Guid"]}\n We encountered an InternalServerError Exception!: ");
-                await ResponseExceptionHandling.HandleExceptionAsync(httpContext);
+                await new ResponseExceptionHandling().HandleExceptionAsync(httpContext);
             }
         }
     }

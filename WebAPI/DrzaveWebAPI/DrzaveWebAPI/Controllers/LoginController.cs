@@ -75,7 +75,7 @@ namespace DrzaveWebAPI.Controllers
             catch (AggregateException ex)
             {
                 _logger.Log(NLog.LogLevel.Error, ex, $"\nGUID: {this.HttpContext.Request.Headers["X-Request-Guid"]}\n We encountered an exception in communicating with database!: ");
-                await ResponseExceptionHandling.HandleExceptionAsync(this.HttpContext);
+                await new ResponseExceptionHandling().HandleExceptionAsync(this.HttpContext);
                 return new StatusCodeResult(StatusCodes.Status500InternalServerError);
             }
         }
